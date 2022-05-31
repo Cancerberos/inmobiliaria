@@ -1,0 +1,5 @@
+domainapp\webapp\integtests\smoke\Smoke_IntegTest.class
+domainapp\webapp\integtests\metamodel\ValidateDomainModel_IntegTest.class
+domainapp\webapp\integtests\WebAppIntegTestAbstract.class
+domainapp\webapp\integtests\metamodel\SwaggerExport_IntegTest.class
+domainapp\webapp\integtests\WebAppIntegTestAbstract$TestApp.class
