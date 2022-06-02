@@ -1,10 +1,13 @@
 domainapp\modules\simple\SimpleModule.class
+domainapp\modules\simple\dom\inmobiliaria\Inmobiliaria.class
 domainapp\modules\simple\dom\usuario\QUsuario.class
 domainapp\modules\simple\fixture\SimpleObjectBuilder.class
 domainapp\modules\simple\types\Name.class
 domainapp\modules\simple\dom\so\SimpleObject.class
+domainapp\modules\simple\dom\inmobiliaria\QInmobiliaria.class
 domainapp\modules\simple\dom\so\SimpleObjects.class
 domainapp\modules\simple\fixture\SimpleObject_persona.class
+domainapp\modules\simple\dom\inmobiliaria\InmobiliariaRepositorio.class
 domainapp\modules\simple\dom\usuario\Usuario.class
 domainapp\modules\simple\dom\usuario\UsuarioRepositorio.class
 domainapp\modules\simple\types\Notes.class
