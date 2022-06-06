@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: domainapp.webapp.integtests.metamodel.ValidateDomainModel_IntegTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.753 s - in domainapp.webapp.integtests.metamodel.ValidateDomainModel_IntegTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.285 s - in domainapp.webapp.integtests.metamodel.ValidateDomainModel_IntegTest
