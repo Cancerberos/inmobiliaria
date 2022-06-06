@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: domainapp.webapp.integtests.metamodel.SwaggerExport_IntegTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.624 s - in domainapp.webapp.integtests.metamodel.SwaggerExport_IntegTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.91 s - in domainapp.webapp.integtests.metamodel.SwaggerExport_IntegTest
