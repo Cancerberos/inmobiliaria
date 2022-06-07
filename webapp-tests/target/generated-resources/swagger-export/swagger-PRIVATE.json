@@ -1653,6 +1653,56 @@
         }
       }
     },
+    "/objects/simple.caracteristica/{objectId}" : {
+      "get" : {
+        "tags" : [ "simple" ],
+        "description" : "RO Spec v1.0, section 14.1",
+        "produces" : [ "application/json", "application/json;profile=urn:org.restfulobjects:repr-types/object", "application/json;profile=urn:org.apache.isis/v2", "application/json;profile=urn:org.apache.isis/v2;suppress=all" ],
+        "parameters" : [ {
+          "name" : "objectId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "simple.caracteristica , if Accept: application/json;profile=urn:org.apache.isis/v2",
+            "schema" : {
+              "$ref" : "#/definitions/simple.caracteristicaRepr"
+            }
+          }
+        }
+      }
+    },
+    "/objects/simple.caracteristica/{objectId}/actions/delete/invoke" : {
+      "post" : {
+        "tags" : [ "simple" ],
+        "description" : "RO Spec v1.0, section 19.1: (invoke) resource of simple.caracteristica#delete",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json", "application/json;profile=urn:org.restfulobjects:repr-types/action-result", "application/json;profile=urn:org.apache.isis/v2", "application/json;profile=urn:org.apache.isis/v2;suppress=all" ],
+        "parameters" : [ {
+          "name" : "objectId",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "type" : "object"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "simple.caracteristica#delete",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      }
+    },
     "/objects/simple.inmobiliaria/{objectId}" : {
       "get" : {
         "tags" : [ "simple" ],
@@ -1769,10 +1819,10 @@
         }
       }
     },
-    "/services/simple.Inmobiliaria/actions/create/invoke" : {
+    "/services/simple.Inmobiliaria/actions/createInmobiliaria/invoke" : {
       "post" : {
         "tags" : [ "simple" ],
-        "description" : "RO Spec v1.0, section 19.1: (invoke) resource of simple.Inmobiliaria#create",
+        "description" : "RO Spec v1.0, section 19.1: (invoke) resource of simple.Inmobiliaria#createInmobiliaria",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json", "application/json;profile=urn:org.restfulobjects:repr-types/object", "application/json;profile=urn:org.restfulobjects:repr-types/action-result", "application/json;profile=urn:org.apache.isis/v2", "application/json;profile=urn:org.apache.isis/v2;suppress=all" ],
         "parameters" : [ {
@@ -1782,7 +1832,7 @@
           "schema" : {
             "type" : "object",
             "properties" : {
-              "razonSocial" : {
+              "razonSociall" : {
                 "type" : "object",
                 "properties" : {
                   "value" : {
@@ -1821,16 +1871,50 @@
                     "type" : "string"
                   }
                 }
-              },
-              "password" : {
-                "type" : "object",
-                "properties" : {
-                  "value" : {
-                    "type" : "string"
-                  }
-                }
-              },
-              "esAdmin" : {
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "simple.Inmobiliaria#createInmobiliaria , if Accept: application/json;profile=urn:org.apache.isis/v2",
+            "schema" : {
+              "$ref" : "#/definitions/simple.inmobiliariaRepr"
+            }
+          }
+        }
+      }
+    },
+    "/services/simple.Repositorio" : {
+      "get" : {
+        "tags" : [ "simple" ],
+        "description" : "RO Spec v1.0, section 15.1",
+        "produces" : [ "application/json", "application/json;profile=urn:org.restfulobjects:repr-types/object", "application/json;profile=urn:org.apache.isis/v2", "application/json;profile=urn:org.apache.isis/v2;suppress=all" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/simple.RepositorioRepr"
+            }
+          }
+        }
+      }
+    },
+    "/services/simple.Repositorio/actions/createCaracteristica/invoke" : {
+      "post" : {
+        "tags" : [ "simple" ],
+        "description" : "RO Spec v1.0, section 19.1: (invoke) resource of simple.Repositorio#createCaracteristica",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json", "application/json;profile=urn:org.restfulobjects:repr-types/object", "application/json;profile=urn:org.restfulobjects:repr-types/action-result", "application/json;profile=urn:org.apache.isis/v2", "application/json;profile=urn:org.apache.isis/v2;suppress=all" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "descripcion" : {
                 "type" : "object",
                 "properties" : {
                   "value" : {
@@ -1843,9 +1927,9 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "simple.Inmobiliaria#create , if Accept: application/json;profile=urn:org.apache.isis/v2",
+            "description" : "simple.Repositorio#createCaracteristica , if Accept: application/json;profile=urn:org.apache.isis/v2",
             "schema" : {
-              "$ref" : "#/definitions/simple.inmobiliariaRepr"
+              "$ref" : "#/definitions/simple.caracteristicaRepr"
             }
           }
         }
@@ -2183,7 +2267,7 @@
       },
       "description" : "Abbreviated version of the Link resource, used primarily to reference non-value objects"
     },
-    "simple.InmobiliariaRepr" : {
+    "simple.RepositorioRepr" : {
       "type" : "object",
       "required" : [ "extensions", "links" ],
       "properties" : {
@@ -2201,13 +2285,39 @@
         },
         "serviceId" : {
           "type" : "string",
-          "default" : "simple.Inmobiliaria"
+          "default" : "simple.Repositorio"
         },
         "members" : {
           "type" : "object"
         }
       },
-      "description" : "RO Spec v1.0, section 15.1.2: representation of simple.Inmobiliaria"
+      "description" : "RO Spec v1.0, section 15.1.2: representation of simple.Repositorio"
+    },
+    "simple.UsuariosRepr" : {
+      "type" : "object",
+      "required" : [ "extensions", "links" ],
+      "properties" : {
+        "links" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/LinkRepr"
+          }
+        },
+        "extensions" : {
+          "type" : "object"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "serviceId" : {
+          "type" : "string",
+          "default" : "simple.Usuarios"
+        },
+        "members" : {
+          "type" : "object"
+        }
+      },
+      "description" : "RO Spec v1.0, section 15.1.2: representation of simple.Usuarios"
     },
     "simple.SimpleObjectsRepr" : {
       "type" : "object",
@@ -2261,7 +2371,7 @@
       },
       "description" : "RO Spec v1.0, section 15.1.2: representation of isis.security.LogoutMenu"
     },
-    "isis.applib.UserMenuRepr" : {
+    "simple.InmobiliariaRepr" : {
       "type" : "object",
       "required" : [ "extensions", "links" ],
       "properties" : {
@@ -2279,39 +2389,13 @@
         },
         "serviceId" : {
           "type" : "string",
-          "default" : "isis.applib.UserMenu"
+          "default" : "simple.Inmobiliaria"
         },
         "members" : {
           "type" : "object"
         }
       },
-      "description" : "RO Spec v1.0, section 15.1.2: representation of isis.applib.UserMenu"
-    },
-    "simple.UsuariosRepr" : {
-      "type" : "object",
-      "required" : [ "extensions", "links" ],
-      "properties" : {
-        "links" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/LinkRepr"
-          }
-        },
-        "extensions" : {
-          "type" : "object"
-        },
-        "title" : {
-          "type" : "string"
-        },
-        "serviceId" : {
-          "type" : "string",
-          "default" : "simple.Usuarios"
-        },
-        "members" : {
-          "type" : "object"
-        }
-      },
-      "description" : "RO Spec v1.0, section 15.1.2: representation of simple.Usuarios"
+      "description" : "RO Spec v1.0, section 15.1.2: representation of simple.Inmobiliaria"
     },
     "isis.conf.ConfigurationMenuRepr" : {
       "type" : "object",
@@ -2338,6 +2422,243 @@
         }
       },
       "description" : "RO Spec v1.0, section 15.1.2: representation of isis.conf.ConfigurationMenu"
+    },
+    "isis.applib.UserMenuRepr" : {
+      "type" : "object",
+      "required" : [ "extensions", "links" ],
+      "properties" : {
+        "links" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/LinkRepr"
+          }
+        },
+        "extensions" : {
+          "type" : "object"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "serviceId" : {
+          "type" : "string",
+          "default" : "isis.applib.UserMenu"
+        },
+        "members" : {
+          "type" : "object"
+        }
+      },
+      "description" : "RO Spec v1.0, section 15.1.2: representation of isis.applib.UserMenu"
+    },
+    "isis.applib.ParameterNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "parameter" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.ParameterNode (org.apache.isis.core.metamodel.inspect.model.ParameterNode)"
+    },
+    "isis.feat.ApplicationTypePropertyRepr" : {
+      "type" : "object",
+      "properties" : {
+        "returnType" : {
+          "type" : "string"
+        },
+        "derived" : {
+          "type" : "boolean"
+        },
+        "maxLength" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "typicalLength" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "namespaceName" : {
+          "type" : "string"
+        },
+        "typeSimpleName" : {
+          "type" : "string"
+        },
+        "memberName" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "parent" : {
+          "$ref" : "#/definitions/HrefRepr"
+        }
+      },
+      "description" : "isis.feat.ApplicationTypeProperty (org.apache.isis.applib.services.appfeatui.ApplicationTypeProperty)"
+    },
+    "isis.feat.ApplicationNamespaceRepr" : {
+      "type" : "object",
+      "properties" : {
+        "namespaceName" : {
+          "type" : "string"
+        },
+        "typeSimpleName" : {
+          "type" : "string"
+        },
+        "memberName" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "parent" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "contents" : {
+          "type" : "array",
+          "description" : "List of isis.feat.ApplicationFeatureViewModel",
+          "items" : {
+            "$ref" : "#/definitions/isis.feat.ApplicationFeatureViewModelRepr"
+          }
+        }
+      },
+      "description" : "isis.feat.ApplicationNamespace (org.apache.isis.applib.services.appfeatui.ApplicationNamespace)"
+    },
+    "isis.applib.TypeNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "domainClassDto" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.TypeNode (org.apache.isis.core.metamodel.inspect.model.TypeNode)"
+    },
+    "isis.conf.ConfigurationPropertyRepr" : {
+      "type" : "object",
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        }
+      },
+      "description" : "isis.conf.ConfigurationProperty (org.apache.isis.applib.services.confview.ConfigurationProperty)"
+    },
+    "isis.applib.FacetAttrNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "facetAttr" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.FacetAttrNode (org.apache.isis.core.metamodel.inspect.model.FacetAttrNode)"
+    },
+    "simple.SimpleObjectRepr" : {
+      "type" : "object",
+      "properties" : {
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "datanucleusVersionLong" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "datanucleusVersionTimestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "notes" : {
+          "type" : "string"
+        }
+      },
+      "description" : "simple.SimpleObject (domainapp.modules.simple.dom.so.SimpleObject)"
+    },
+    "simple.caracteristicaRepr" : {
+      "type" : "object",
+      "properties" : {
+        "descripcion" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "datanucleusVersionLong" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "datanucleusVersionTimestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      },
+      "description" : "simple.caracteristica (domainapp.modules.simple.dom.caracteristica.Caracteristica)"
     },
     "isis.applib.UserMementoRepr" : {
       "type" : "object",
@@ -2389,99 +2710,16 @@
       },
       "description" : "isis.applib.UserMemento (org.apache.isis.applib.services.user.UserMemento)"
     },
-    "isis.testing.fixtures.FixtureResultRepr" : {
+    "isis.feat.ApplicationTypeActionRepr" : {
       "type" : "object",
       "properties" : {
-        "fixtureScriptClassName" : {
+        "returnType" : {
           "type" : "string"
         },
-        "object" : {
-          "$ref" : "#/definitions/HrefRepr"
+        "actionSemantics" : {
+          "type" : "string",
+          "enum" : [ "SAFE_AND_REQUEST_CACHEABLE", "SAFE", "IDEMPOTENT", "NON_IDEMPOTENT", "IDEMPOTENT_ARE_YOU_SURE", "NON_IDEMPOTENT_ARE_YOU_SURE", "NOT_SPECIFIED" ]
         },
-        "className" : {
-          "type" : "string"
-        },
-        "key" : {
-          "type" : "string"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        }
-      },
-      "description" : "isis.testing.fixtures.FixtureResult (org.apache.isis.testing.fixtures.applib.fixturescripts.FixtureResult)"
-    },
-    "isis.applib.FacetAttrNodeRepr" : {
-      "type" : "object",
-      "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "facetAttr" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.FacetAttrNode (org.apache.isis.core.metamodel.inspect.model.FacetAttrNode)"
-    },
-    "simple.usuarioRepr" : {
-      "type" : "object",
-      "properties" : {
-        "apellido" : {
-          "type" : "string"
-        },
-        "esAdmin" : {
-          "type" : "boolean"
-        },
-        "mail" : {
-          "type" : "string"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "datanucleusVersionLong" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "datanucleusVersionTimestamp" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "nombre" : {
-          "type" : "string"
-        },
-        "password" : {
-          "type" : "string"
-        },
-        "telefono" : {
-          "type" : "string"
-        },
-        "username" : {
-          "type" : "string"
-        }
-      },
-      "description" : "simple.usuario (domainapp.modules.simple.dom.usuario.Usuario)"
-    },
-    "isis.feat.ApplicationNamespaceRepr" : {
-      "type" : "object",
-      "properties" : {
         "namespaceName" : {
           "type" : "string"
         },
@@ -2499,16 +2737,144 @@
         },
         "parent" : {
           "$ref" : "#/definitions/HrefRepr"
+        }
+      },
+      "description" : "isis.feat.ApplicationTypeAction (org.apache.isis.applib.services.appfeatui.ApplicationTypeAction)"
+    },
+    "isis.applib.DomainObjectListRepr" : {
+      "type" : "object",
+      "properties" : {
+        "actionArguments" : {
+          "type" : "string"
         },
-        "contents" : {
+        "actionId" : {
+          "type" : "string"
+        },
+        "actionOwningFqcn" : {
+          "type" : "string"
+        },
+        "elementTypeFqcn" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "objects" : {
           "type" : "array",
-          "description" : "List of isis.feat.ApplicationFeatureViewModel",
           "items" : {
-            "$ref" : "#/definitions/isis.feat.ApplicationFeatureViewModelRepr"
+            "type" : "object"
           }
         }
       },
-      "description" : "isis.feat.ApplicationNamespace (org.apache.isis.applib.services.appfeatui.ApplicationNamespace)"
+      "description" : "isis.applib.DomainObjectList (org.apache.isis.applib.domain.DomainObjectList)"
+    },
+    "isis.applib.FacetNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "facet" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.FacetNode (org.apache.isis.core.metamodel.inspect.model.FacetNode)"
+    },
+    "isis.applib.PropertyNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "property" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.PropertyNode (org.apache.isis.core.metamodel.inspect.model.PropertyNode)"
+    },
+    "isis.applib.FacetGroupNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "facets" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.FacetGroupNode (org.apache.isis.core.metamodel.inspect.model.FacetGroupNode)"
+    },
+    "isis.feat.ApplicationTypeCollectionRepr" : {
+      "type" : "object",
+      "properties" : {
+        "elementType" : {
+          "type" : "string"
+        },
+        "derived" : {
+          "type" : "boolean"
+        },
+        "namespaceName" : {
+          "type" : "string"
+        },
+        "typeSimpleName" : {
+          "type" : "string"
+        },
+        "memberName" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "parent" : {
+          "$ref" : "#/definitions/HrefRepr"
+        }
+      },
+      "description" : "isis.feat.ApplicationTypeCollection (org.apache.isis.applib.services.appfeatui.ApplicationTypeCollection)"
     },
     "isis.feat.ApplicationTypeRepr" : {
       "type" : "object",
@@ -2555,153 +2921,46 @@
       },
       "description" : "isis.feat.ApplicationType (org.apache.isis.applib.services.appfeatui.ApplicationType)"
     },
-    "isis.applib.FacetNodeRepr" : {
+    "simple.usuarioRepr" : {
       "type" : "object",
       "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "facet" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
+        "apellido" : {
           "type" : "string"
         },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.FacetNode (org.apache.isis.core.metamodel.inspect.model.FacetNode)"
-    },
-    "isis.applib.DomainObjectListRepr" : {
-      "type" : "object",
-      "properties" : {
-        "actionArguments" : {
-          "type" : "string"
-        },
-        "actionId" : {
-          "type" : "string"
-        },
-        "actionOwningFqcn" : {
-          "type" : "string"
-        },
-        "elementTypeFqcn" : {
-          "type" : "string"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "objects" : {
-          "type" : "array",
-          "items" : {
-            "type" : "object"
-          }
-        }
-      },
-      "description" : "isis.applib.DomainObjectList (org.apache.isis.applib.domain.DomainObjectList)"
-    },
-    "isis.feat.ApplicationTypePropertyRepr" : {
-      "type" : "object",
-      "properties" : {
-        "returnType" : {
-          "type" : "string"
-        },
-        "derived" : {
+        "esAdmin" : {
           "type" : "boolean"
         },
-        "maxLength" : {
+        "mail" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "datanucleusVersionLong" : {
           "type" : "integer",
-          "format" : "int32"
+          "format" : "int64"
         },
-        "typicalLength" : {
+        "datanucleusVersionTimestamp" : {
           "type" : "integer",
-          "format" : "int32"
+          "format" : "int64"
         },
-        "namespaceName" : {
+        "nombre" : {
           "type" : "string"
         },
-        "typeSimpleName" : {
+        "password" : {
           "type" : "string"
         },
-        "memberName" : {
+        "telefono" : {
           "type" : "string"
         },
-        "logicalTypeName" : {
+        "username" : {
           "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "parent" : {
-          "$ref" : "#/definitions/HrefRepr"
         }
       },
-      "description" : "isis.feat.ApplicationTypeProperty (org.apache.isis.applib.services.appfeatui.ApplicationTypeProperty)"
-    },
-    "isis.feat.ApplicationTypeCollectionRepr" : {
-      "type" : "object",
-      "properties" : {
-        "elementType" : {
-          "type" : "string"
-        },
-        "derived" : {
-          "type" : "boolean"
-        },
-        "namespaceName" : {
-          "type" : "string"
-        },
-        "typeSimpleName" : {
-          "type" : "string"
-        },
-        "memberName" : {
-          "type" : "string"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "parent" : {
-          "$ref" : "#/definitions/HrefRepr"
-        }
-      },
-      "description" : "isis.feat.ApplicationTypeCollection (org.apache.isis.applib.services.appfeatui.ApplicationTypeCollection)"
-    },
-    "isis.applib.PropertyNodeRepr" : {
-      "type" : "object",
-      "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "property" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.PropertyNode (org.apache.isis.core.metamodel.inspect.model.PropertyNode)"
+      "description" : "simple.usuario (domainapp.modules.simple.dom.usuario.Usuario)"
     },
     "simple.HomePageViewModelRepr" : {
       "type" : "object",
@@ -2721,262 +2980,6 @@
         }
       },
       "description" : "simple.HomePageViewModel (domainapp.webapp.application.services.homepage.HomePageViewModel)"
-    },
-    "isis.feat.ApplicationTypeActionRepr" : {
-      "type" : "object",
-      "properties" : {
-        "returnType" : {
-          "type" : "string"
-        },
-        "actionSemantics" : {
-          "type" : "string",
-          "enum" : [ "SAFE_AND_REQUEST_CACHEABLE", "SAFE", "IDEMPOTENT", "NON_IDEMPOTENT", "IDEMPOTENT_ARE_YOU_SURE", "NON_IDEMPOTENT_ARE_YOU_SURE", "NOT_SPECIFIED" ]
-        },
-        "namespaceName" : {
-          "type" : "string"
-        },
-        "typeSimpleName" : {
-          "type" : "string"
-        },
-        "memberName" : {
-          "type" : "string"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "parent" : {
-          "$ref" : "#/definitions/HrefRepr"
-        }
-      },
-      "description" : "isis.feat.ApplicationTypeAction (org.apache.isis.applib.services.appfeatui.ApplicationTypeAction)"
-    },
-    "isis.applib.CollectionNodeRepr" : {
-      "type" : "object",
-      "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "collection" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.CollectionNode (org.apache.isis.core.metamodel.inspect.model.CollectionNode)"
-    },
-    "isis.applib.ActionNodeRepr" : {
-      "type" : "object",
-      "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "action" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.ActionNode (org.apache.isis.core.metamodel.inspect.model.ActionNode)"
-    },
-    "isis.applib.FacetGroupNodeRepr" : {
-      "type" : "object",
-      "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "facets" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.FacetGroupNode (org.apache.isis.core.metamodel.inspect.model.FacetGroupNode)"
-    },
-    "isis.applib.RoleMementoRepr" : {
-      "type" : "object",
-      "properties" : {
-        "description" : {
-          "type" : "string"
-        },
-        "name" : {
-          "type" : "string"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        }
-      },
-      "description" : "isis.applib.RoleMemento (org.apache.isis.applib.services.user.RoleMemento)"
-    },
-    "isis.conf.ConfigurationPropertyRepr" : {
-      "type" : "object",
-      "properties" : {
-        "key" : {
-          "type" : "string"
-        },
-        "value" : {
-          "type" : "string"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        }
-      },
-      "description" : "isis.conf.ConfigurationProperty (org.apache.isis.applib.services.confview.ConfigurationProperty)"
-    },
-    "isis.conf.ConfigurationViewmodelRepr" : {
-      "type" : "object",
-      "properties" : {
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "configuration" : {
-          "type" : "array",
-          "description" : "List of isis.conf.ConfigurationProperty",
-          "items" : {
-            "$ref" : "#/definitions/isis.conf.ConfigurationPropertyRepr"
-          }
-        },
-        "environment" : {
-          "type" : "array",
-          "description" : "List of isis.conf.ConfigurationProperty",
-          "items" : {
-            "$ref" : "#/definitions/isis.conf.ConfigurationPropertyRepr"
-          }
-        }
-      },
-      "description" : "isis.conf.ConfigurationViewmodel (org.apache.isis.applib.services.confview.ConfigurationViewmodel)"
-    },
-    "simple.SimpleObjectRepr" : {
-      "type" : "object",
-      "properties" : {
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "datanucleusVersionLong" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "datanucleusVersionTimestamp" : {
-          "type" : "integer",
-          "format" : "int64"
-        },
-        "name" : {
-          "type" : "string"
-        },
-        "notes" : {
-          "type" : "string"
-        }
-      },
-      "description" : "simple.SimpleObject (domainapp.modules.simple.dom.so.SimpleObject)"
-    },
-    "isis.security.LoginRedirectRepr" : {
-      "type" : "object",
-      "properties" : {
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        }
-      },
-      "description" : "isis.security.LoginRedirect (org.apache.isis.core.security.authentication.logout.LogoutMenu$LoginRedirect)"
-    },
-    "isis.applib.ParameterNodeRepr" : {
-      "type" : "object",
-      "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "parameter" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.ParameterNode (org.apache.isis.core.metamodel.inspect.model.ParameterNode)"
-    },
-    "isis.applib.TypeNodeRepr" : {
-      "type" : "object",
-      "properties" : {
-        "parentNode" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "domainClassDto" : {
-          "$ref" : "#/definitions/HrefRepr"
-        },
-        "logicalTypeName" : {
-          "type" : "string"
-        },
-        "objectIdentifier" : {
-          "type" : "string"
-        },
-        "childNodes" : {
-          "type" : "array",
-          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
-          "items" : {
-            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
-          }
-        }
-      },
-      "description" : "isis.applib.TypeNode (org.apache.isis.core.metamodel.inspect.model.TypeNode)"
     },
     "simple.inmobiliariaRepr" : {
       "type" : "object",
@@ -3012,6 +3015,136 @@
         }
       },
       "description" : "simple.inmobiliaria (domainapp.modules.simple.dom.inmobiliaria.Inmobiliaria)"
+    },
+    "isis.security.LoginRedirectRepr" : {
+      "type" : "object",
+      "properties" : {
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        }
+      },
+      "description" : "isis.security.LoginRedirect (org.apache.isis.core.security.authentication.logout.LogoutMenu$LoginRedirect)"
+    },
+    "isis.applib.CollectionNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "collection" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.CollectionNode (org.apache.isis.core.metamodel.inspect.model.CollectionNode)"
+    },
+    "isis.conf.ConfigurationViewmodelRepr" : {
+      "type" : "object",
+      "properties" : {
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "configuration" : {
+          "type" : "array",
+          "description" : "List of isis.conf.ConfigurationProperty",
+          "items" : {
+            "$ref" : "#/definitions/isis.conf.ConfigurationPropertyRepr"
+          }
+        },
+        "environment" : {
+          "type" : "array",
+          "description" : "List of isis.conf.ConfigurationProperty",
+          "items" : {
+            "$ref" : "#/definitions/isis.conf.ConfigurationPropertyRepr"
+          }
+        }
+      },
+      "description" : "isis.conf.ConfigurationViewmodel (org.apache.isis.applib.services.confview.ConfigurationViewmodel)"
+    },
+    "isis.testing.fixtures.FixtureResultRepr" : {
+      "type" : "object",
+      "properties" : {
+        "fixtureScriptClassName" : {
+          "type" : "string"
+        },
+        "object" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "className" : {
+          "type" : "string"
+        },
+        "key" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        }
+      },
+      "description" : "isis.testing.fixtures.FixtureResult (org.apache.isis.testing.fixtures.applib.fixturescripts.FixtureResult)"
+    },
+    "isis.applib.RoleMementoRepr" : {
+      "type" : "object",
+      "properties" : {
+        "description" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        }
+      },
+      "description" : "isis.applib.RoleMemento (org.apache.isis.applib.services.user.RoleMemento)"
+    },
+    "isis.applib.ActionNodeRepr" : {
+      "type" : "object",
+      "properties" : {
+        "parentNode" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "action" : {
+          "$ref" : "#/definitions/HrefRepr"
+        },
+        "logicalTypeName" : {
+          "type" : "string"
+        },
+        "objectIdentifier" : {
+          "type" : "string"
+        },
+        "childNodes" : {
+          "type" : "array",
+          "description" : "List of org.apache.isis.core.metamodel.inspect.model.MMNode",
+          "items" : {
+            "$ref" : "#/definitions/org.apache.isis.core.metamodel.inspect.model.MMNodeRepr"
+          }
+        }
+      },
+      "description" : "isis.applib.ActionNode (org.apache.isis.core.metamodel.inspect.model.ActionNode)"
     },
     "org.apache.isis.core.metamodel.inspect.model.MMNodeRepr" : { },
     "java.util.stream.StreamRepr" : { },
