@@ -9,7 +9,7 @@ import javax.jdo.JDOQLTypedQuery;
 
 @DomainService(
         nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.Inmobiliaria"
+        logicalTypeName = "simple.InmobiliariaRepositorio"
 )
 @javax.annotation.Priority(PriorityPrecedence.EARLY)
 @lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
