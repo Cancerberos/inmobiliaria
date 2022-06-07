@@ -44,13 +44,7 @@
                 <artifactId>simpleapp-jdo-webapp</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>simpleapp-jdo-webapp-tests</artifactId>
-                <version>${project.version}</version>
-                <scope>test</scope>
-                <type>test-jar</type>
-            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

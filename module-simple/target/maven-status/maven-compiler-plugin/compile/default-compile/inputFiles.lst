@@ -1,11 +1,15 @@
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\fixture\SimpleObjectBuilder.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\so\SimpleObjects.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\UsuarioRepositorio.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmobiliaria\InmobiliariaRepositorio.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\types\Notes.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmobiliaria\Inmobiliaria.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\so\SimpleObject.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\SimpleModule.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\types\Name.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\Usuario.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\fixture\SimpleObject_persona.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\types\Name.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\direcciones\Direccion.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmobiliaria\InmobiliariaRepositorio.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\SimpleModule.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\Usuario.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\provincia\Provincia.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\so\SimpleObjects.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\provincia\ProvinciaRepositorio.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\so\SimpleObject.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\types\Notes.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\direcciones\DireccionRepositorio.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\fixture\SimpleObjectBuilder.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmobiliaria\Inmobiliaria.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\fixture\SimpleObject_persona.java
+C:\IFES\proyecto\final\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\UsuarioRepositorio.java
