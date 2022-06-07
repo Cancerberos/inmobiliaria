@@ -1,12 +1,14 @@
 domainapp\modules\simple\dom\imagenes\QImagen.class
 domainapp\modules\simple\dom\caracteristica\Caracteristica.class
 domainapp\modules\simple\dom\inmobiliaria\Inmobiliaria.class
+domainapp\modules\simple\dom\inmueble\QInmueble.class
 domainapp\modules\simple\fixture\SimpleObjectBuilder.class
 domainapp\modules\simple\dom\inmobiliaria\QInmobiliaria.class
 domainapp\modules\simple\dom\inmueble_caracteristica\QInmuebleCaracteristica.class
 domainapp\modules\simple\dom\caracteristica\QCaracteristica.class
 domainapp\modules\simple\dom\usuario\Usuario.class
 domainapp\modules\simple\dom\imagenes\Imagen.class
+domainapp\modules\simple\dom\inmueble\InmuebleRepositorio.class
 domainapp\modules\simple\fixture\SimpleObject_persona$PersistAll.class
 domainapp\modules\simple\SimpleModule$1.class
 domainapp\modules\simple\SimpleModule.class
@@ -23,3 +25,4 @@ domainapp\modules\simple\dom\usuario\UsuarioRepositorio.class
 domainapp\modules\simple\types\Notes.class
 domainapp\modules\simple\dom\so\QSimpleObject.class
 domainapp\modules\simple\dom\imagenes\ImagenRepositorio.class
+domainapp\modules\simple\dom\inmueble\Inmueble.class
