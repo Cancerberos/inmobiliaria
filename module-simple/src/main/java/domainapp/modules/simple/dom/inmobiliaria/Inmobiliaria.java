@@ -51,12 +51,12 @@ public class Inmobiliaria implements Comparable<Inmobiliaria>{
     @PropertyLayout(fieldSetId = "direccion", sequence = "3")
     private String direccion;
 
+    @PhoneNumber
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "telefono", sequence = "4")
     private String telefono;
-
-    @PhoneNumber
+    
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "logo", sequence = "5")
