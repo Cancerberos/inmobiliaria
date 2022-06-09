@@ -24,15 +24,15 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
                 name = "findAll", language = "JDOQL",
                 value = "SELECT "
                         + " FROM domainapp.modules.simple.dom.provincia.Provincia "
-                        + "ORDER BY descripcion ASC")
+                        + "ORDER BY id ASC")
 })
-@Unique(
-        name = "descripcion_UNQ", members = {"descripcion"}
-)
+//@Unique(
+    //    name = "descripcion_UNQ", members = {"descripcion"}
+//)
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(editing = Editing.DISABLED)
-//@DomainObject(logicalTypeName = "simple.direccion", entityChangePublishing = Publishing.ENABLED)
+//@DomainObject(logicalTypeName = "simple.Provincia", entityChangePublishing = Publishing.ENABLED)
 @DomainObjectLayout()
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)

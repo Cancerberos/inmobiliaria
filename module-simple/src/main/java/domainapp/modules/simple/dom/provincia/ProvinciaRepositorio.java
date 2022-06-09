@@ -1,6 +1,5 @@
 package domainapp.modules.simple.dom.provincia;
 
-import domainapp.modules.simple.dom.direcciones.Direccion;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
