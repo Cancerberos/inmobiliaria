@@ -19,7 +19,7 @@ public class TipoOperacionRepositorio {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public TipoOperacion create(
+    public TipoOperacion createTipoOperacion(
             final String descripcion) {
         return repositoryService.persist(new TipoOperacion(descripcion));
     }

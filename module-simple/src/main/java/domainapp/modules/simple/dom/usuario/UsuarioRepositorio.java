@@ -23,7 +23,7 @@ public class UsuarioRepositorio {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Usuario create(
+    public Usuario createUsuario(
             final String username,
             final String apellido,
             final String nombre,
