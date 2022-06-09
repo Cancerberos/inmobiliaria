@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.inmobiliaria;
 
+import domainapp.modules.simple.dom.direccion.Direccion;
 import domainapp.modules.simple.types.Name;
 import domainapp.modules.simple.types.PhoneNumber;
 import lombok.*;
@@ -49,7 +50,7 @@ public class Inmobiliaria implements Comparable<Inmobiliaria>{
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "direccion", sequence = "3")
-    private String direccion;
+    private Direccion direccion;
 
     @PhoneNumber
     @Getter @Setter
@@ -62,7 +63,7 @@ public class Inmobiliaria implements Comparable<Inmobiliaria>{
     @PropertyLayout(fieldSetId = "logo", sequence = "5")
     private String logo;
 
-    public Inmobiliaria(String razonSocial, String cuit, String direccion, String telefono, String logo) {
+    public Inmobiliaria(String razonSocial, String cuit, Direccion direccion, String telefono, String logo) {
         this.razonSocial = razonSocial;
         this.cuit = cuit;
         this.direccion = direccion;

@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.inmueble;
 
 import domainapp.modules.simple.dom.cliente.Cliente;
+import domainapp.modules.simple.dom.direccion.Direccion;
 import domainapp.modules.simple.dom.inmobiliaria.Inmobiliaria;
 import domainapp.modules.simple.dom.inmobiliaria.QInmobiliaria;
 import domainapp.modules.simple.dom.tipo_unidad.TipoUnidad;
@@ -30,8 +31,9 @@ public class InmuebleRepositorio {
             final Cliente cliente,
             final String descripcion,
             final Date fechaExclusividad,
-            final TipoUnidad tipoUnidad) {
-        return repositoryService.persist(new Inmueble(cliente, descripcion, fechaExclusividad, tipoUnidad));
+            final TipoUnidad tipoUnidad,
+            final Direccion direccion) {
+        return repositoryService.persist(new Inmueble(cliente, descripcion, fechaExclusividad, tipoUnidad, direccion));
     }
 
     @Programmatic

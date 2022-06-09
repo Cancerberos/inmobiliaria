@@ -31,7 +31,7 @@ public class QInmobiliaria extends PersistableExpressionImpl<Inmobiliaria> imple
 
     public final StringExpression razonSocial;
     public final StringExpression cuit;
-    public final StringExpression direccion;
+    public final domainapp.modules.simple.dom.direccion.QDireccion direccion;
     public final StringExpression telefono;
     public final StringExpression logo;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
@@ -43,7 +43,14 @@ public class QInmobiliaria extends PersistableExpressionImpl<Inmobiliaria> imple
         super(parent, name);
         this.razonSocial = new StringExpressionImpl(this, "razonSocial");
         this.cuit = new StringExpressionImpl(this, "cuit");
-        this.direccion = new StringExpressionImpl(this, "direccion");
+        if (depth > 0)
+        {
+            this.direccion = new domainapp.modules.simple.dom.direccion.QDireccion(this, "direccion", depth-1);
+        }
+        else
+        {
+            this.direccion = null;
+        }
         this.telefono = new StringExpressionImpl(this, "telefono");
         this.logo = new StringExpressionImpl(this, "logo");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
@@ -56,7 +63,7 @@ public class QInmobiliaria extends PersistableExpressionImpl<Inmobiliaria> imple
         super(type, name, exprType);
         this.razonSocial = new StringExpressionImpl(this, "razonSocial");
         this.cuit = new StringExpressionImpl(this, "cuit");
-        this.direccion = new StringExpressionImpl(this, "direccion");
+        this.direccion = new domainapp.modules.simple.dom.direccion.QDireccion(this, "direccion", 5);
         this.telefono = new StringExpressionImpl(this, "telefono");
         this.logo = new StringExpressionImpl(this, "logo");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
