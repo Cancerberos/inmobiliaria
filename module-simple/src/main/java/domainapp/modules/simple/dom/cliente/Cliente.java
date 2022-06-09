@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import javax.persistence.Column;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
@@ -56,9 +57,8 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "direccion", sequence = "3")
     private Direccion direccion;*/
 
-    @PhoneNumber
+    @Column(name = "telefono", length = PhoneNumber.MAX_LEN, nullable = true)
     @Getter @Setter
-    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "telefono", sequence = "4")
     private String telefono;
 

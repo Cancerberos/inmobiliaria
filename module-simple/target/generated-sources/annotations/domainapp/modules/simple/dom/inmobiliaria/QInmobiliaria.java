@@ -32,7 +32,7 @@ public class QInmobiliaria extends PersistableExpressionImpl<Inmobiliaria> imple
     public final StringExpression razonSocial;
     public final StringExpression cuit;
     public final StringExpression direccion;
-    public final ObjectExpression<domainapp.modules.simple.types.PhoneNumber> telefono;
+    public final StringExpression telefono;
     public final StringExpression logo;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
@@ -44,7 +44,7 @@ public class QInmobiliaria extends PersistableExpressionImpl<Inmobiliaria> imple
         this.razonSocial = new StringExpressionImpl(this, "razonSocial");
         this.cuit = new StringExpressionImpl(this, "cuit");
         this.direccion = new StringExpressionImpl(this, "direccion");
-        this.telefono = new ObjectExpressionImpl<domainapp.modules.simple.types.PhoneNumber>(this, "telefono");
+        this.telefono = new StringExpressionImpl(this, "telefono");
         this.logo = new StringExpressionImpl(this, "logo");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
@@ -57,7 +57,7 @@ public class QInmobiliaria extends PersistableExpressionImpl<Inmobiliaria> imple
         this.razonSocial = new StringExpressionImpl(this, "razonSocial");
         this.cuit = new StringExpressionImpl(this, "cuit");
         this.direccion = new StringExpressionImpl(this, "direccion");
-        this.telefono = new ObjectExpressionImpl<domainapp.modules.simple.types.PhoneNumber>(this, "telefono");
+        this.telefono = new StringExpressionImpl(this, "telefono");
         this.logo = new StringExpressionImpl(this, "logo");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");

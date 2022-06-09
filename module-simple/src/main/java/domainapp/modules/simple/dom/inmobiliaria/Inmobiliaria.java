@@ -54,14 +54,15 @@ public class Inmobiliaria implements Comparable<Inmobiliaria>{
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "telefono", sequence = "4")
-    private PhoneNumber telefono;
+    private String telefono;
 
+    @PhoneNumber
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "logo", sequence = "5")
     private String logo;
 
-    public Inmobiliaria(String razonSocial, String cuit, String direccion, PhoneNumber telefono, String logo) {
+    public Inmobiliaria(String razonSocial, String cuit, String direccion, String telefono, String logo) {
         this.razonSocial = razonSocial;
         this.cuit = cuit;
         this.direccion = direccion;
