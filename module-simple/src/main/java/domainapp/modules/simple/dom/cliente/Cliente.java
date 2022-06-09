@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.cliente;
 
+import domainapp.modules.simple.dom.direccion.Direccion;
 import domainapp.modules.simple.types.EmailAddress;
 import domainapp.modules.simple.types.LastName;
 import domainapp.modules.simple.types.Name;
@@ -52,10 +53,10 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "apellido", sequence = "2")
     private String apellido;
 
-    /*@Getter @Setter
+    @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "direccion", sequence = "3")
-    private Direccion direccion;*/
+    private Direccion direccion;
 
     @Column(name = "telefono", length = PhoneNumber.MAX_LEN, nullable = true)
     @Getter @Setter
@@ -68,10 +69,10 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "email", sequence = "5")
     private String email;
 
-    public Cliente(String nombre, String apellido, String telefono, String email) {
+    public Cliente(String nombre, String apellido, Direccion direccion, String telefono, String email) {
         this.nombre = nombre;
         this.apellido = apellido;
-        //this.direccion = direccion;
+        this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
     }

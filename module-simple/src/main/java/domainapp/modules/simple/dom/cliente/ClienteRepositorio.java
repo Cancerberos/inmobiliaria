@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.cliente;
 
-import domainapp.modules.simple.dom.imagen.Imagen;
-import domainapp.modules.simple.dom.imagen.QImagen;
+import domainapp.modules.simple.dom.direccion.Direccion;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
@@ -16,19 +15,18 @@ import javax.jdo.JDOQLTypedQuery;
 @javax.annotation.Priority(PriorityPrecedence.EARLY)
 @lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
 public class ClienteRepositorio {
-
     final RepositoryService repositoryService;
     final JdoSupportService jdoSupportService;
-
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public Cliente createCliente(
             final String nombre,
             final String apellido,
+            final Direccion direccion,
             final String telefono,
             final String email) {
-        return repositoryService.persist(new Cliente(nombre, apellido, telefono, email));
+        return repositoryService.persist(new Cliente(nombre, apellido, direccion, telefono, email));
     }
 
     @Programmatic
@@ -39,6 +37,4 @@ public class ClienteRepositorio {
         q.orderBy(candidate.nombre.asc());
         q.executeList();
     }
-
-
 }

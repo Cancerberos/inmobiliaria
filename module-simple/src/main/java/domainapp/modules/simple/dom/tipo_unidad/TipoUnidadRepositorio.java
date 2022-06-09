@@ -19,7 +19,7 @@ public class TipoUnidadRepositorio {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public TipoUnidad create(
+    public TipoUnidad createTipoUnidad(
             final String descripcion) {
         return repositoryService.persist(new TipoUnidad(descripcion));
     }

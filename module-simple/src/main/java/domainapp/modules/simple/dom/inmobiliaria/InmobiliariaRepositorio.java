@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.inmobiliaria;
 
+import domainapp.modules.simple.dom.direccion.Direccion;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
@@ -24,7 +25,7 @@ public class InmobiliariaRepositorio {
     public Inmobiliaria createInmobiliaria(
             final String razonSociall,
             final String cuit,
-            final String direccion,
+            final Direccion direccion,
             final String telefono,
             final String logo) {
         return repositoryService.persist(new Inmobiliaria(razonSociall, cuit, direccion, telefono, logo));

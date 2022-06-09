@@ -20,7 +20,7 @@ public class RedSocialRepositorio {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public RedSocial create(
+    public RedSocial createRedSocial(
             final String descripcion,
             final String url) {
         return repositoryService.persist(new RedSocial(descripcion, url));

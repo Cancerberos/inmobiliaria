@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.inmueble;
 
 import domainapp.modules.simple.dom.cliente.Cliente;
+import domainapp.modules.simple.dom.direccion.Direccion;
 import domainapp.modules.simple.dom.tipo_unidad.TipoUnidad;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
@@ -65,11 +66,18 @@ public class Inmueble implements Comparable<Inmueble>{
     @PropertyLayout(fieldSetId = "tipoUnidad", sequence = "5")
     private TipoUnidad tipoUnidad;
 
-    public Inmueble(Cliente cliente,String descripcion, Date fechaExclusividad, TipoUnidad tipoUnidad) {
+    @Getter
+    @Setter
+    @ToString.Include
+    @PropertyLayout(fieldSetId = "direccion", sequence = "1")
+    private Direccion direccion;
+
+    public Inmueble(Cliente cliente,String descripcion, Date fechaExclusividad, TipoUnidad tipoUnidad, Direccion direccion) {
         this.cliente = cliente;
         this.descripcion = descripcion;
         this.fechaExclusividad = fechaExclusividad;
         this.tipoUnidad = tipoUnidad;
+        this.direccion = direccion;
     }
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
