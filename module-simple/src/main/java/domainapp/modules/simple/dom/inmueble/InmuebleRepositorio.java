@@ -1,7 +1,9 @@
 package domainapp.modules.simple.dom.inmueble;
 
+import domainapp.modules.simple.dom.cliente.Cliente;
 import domainapp.modules.simple.dom.inmobiliaria.Inmobiliaria;
 import domainapp.modules.simple.dom.inmobiliaria.QInmobiliaria;
+import domainapp.modules.simple.dom.tipo_unidad.TipoUnidad;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
@@ -25,9 +27,11 @@ public class InmuebleRepositorio {
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public Inmueble createInmueble(
+            final Cliente cliente,
             final String descripcion,
-            final Date fechaExclusividad) {
-        return repositoryService.persist(new Inmueble(descripcion,fechaExclusividad));
+            final Date fechaExclusividad,
+            final TipoUnidad tipoUnidad) {
+        return repositoryService.persist(new Inmueble(cliente, descripcion, fechaExclusividad, tipoUnidad));
     }
 
     @Programmatic

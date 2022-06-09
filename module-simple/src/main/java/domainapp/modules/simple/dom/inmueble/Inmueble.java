@@ -1,5 +1,7 @@
 package domainapp.modules.simple.dom.inmueble;
 
+import domainapp.modules.simple.dom.cliente.Cliente;
+import domainapp.modules.simple.dom.tipo_unidad.TipoUnidad;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
@@ -43,10 +45,10 @@ public class Inmueble implements Comparable<Inmueble>{
     @PropertyLayout(fieldSetId = "direccion", sequence = "1")
     private Direccion direccion;*/
 
-    /*@Getter @Setter
+    @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "cliente", sequence = "2")
-    private Cliente cliente;*/
+    private Cliente cliente;
 
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
@@ -58,14 +60,16 @@ public class Inmueble implements Comparable<Inmueble>{
     @PropertyLayout(fieldSetId = "fechaExclusividad", sequence = "4")
     private Date fechaExclusividad;
 
-    /*@Getter @Setter
+    @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "tipoUnidad", sequence = "5")
-    private TipoUnidad tipoUnidad;*/
+    private TipoUnidad tipoUnidad;
 
-    public Inmueble(String descripcion, Date fechaExclusividad) {
+    public Inmueble(Cliente cliente,String descripcion, Date fechaExclusividad, TipoUnidad tipoUnidad) {
+        this.cliente = cliente;
         this.descripcion = descripcion;
         this.fechaExclusividad = fechaExclusividad;
+        this.tipoUnidad = tipoUnidad;
     }
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)

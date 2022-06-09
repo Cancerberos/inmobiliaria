@@ -9,9 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="simpleapp-jdo-webapp" />
         <module name="simpleapp-jdo-module-simple" />
-        <module name="simpleapp-jdo-webapp-tests" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="simpleapp-jdo-webapp-tests" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

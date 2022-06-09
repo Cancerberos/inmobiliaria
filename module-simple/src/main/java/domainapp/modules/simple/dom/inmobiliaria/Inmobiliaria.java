@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.inmobiliaria;
 
 import domainapp.modules.simple.types.Name;
+import domainapp.modules.simple.types.PhoneNumber;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
@@ -53,14 +54,14 @@ public class Inmobiliaria implements Comparable<Inmobiliaria>{
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "telefono", sequence = "4")
-    private String telefono;
+    private PhoneNumber telefono;
 
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "logo", sequence = "5")
     private String logo;
 
-    public Inmobiliaria(String razonSocial, String cuit, String direccion, String telefono, String logo) {
+    public Inmobiliaria(String razonSocial, String cuit, String direccion, PhoneNumber telefono, String logo) {
         this.razonSocial = razonSocial;
         this.cuit = cuit;
         this.direccion = direccion;
