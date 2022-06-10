@@ -38,14 +38,6 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 public class Inmueble implements Comparable<Inmueble>{
 
 
-    /*@Title
-    @Name
-    @Getter
-    @Setter
-    @ToString.Include
-    @PropertyLayout(fieldSetId = "direccion", sequence = "1")
-    private Direccion direccion;*/
-
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "cliente", sequence = "2")

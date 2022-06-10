@@ -30,6 +30,7 @@ public class QInmuebleCaracteristica extends PersistableExpressionImpl<InmuebleC
     }
 
     public final domainapp.modules.simple.dom.caracteristica.QCaracteristica caracteristica;
+    public final domainapp.modules.simple.dom.inmueble.QInmueble inmueble;
     public final NumericExpression<Integer> cantidad;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
@@ -46,6 +47,14 @@ public class QInmuebleCaracteristica extends PersistableExpressionImpl<InmuebleC
         {
             this.caracteristica = null;
         }
+        if (depth > 0)
+        {
+            this.inmueble = new domainapp.modules.simple.dom.inmueble.QInmueble(this, "inmueble", depth-1);
+        }
+        else
+        {
+            this.inmueble = null;
+        }
         this.cantidad = new NumericExpressionImpl<Integer>(this, "cantidad");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
@@ -56,6 +65,7 @@ public class QInmuebleCaracteristica extends PersistableExpressionImpl<InmuebleC
     {
         super(type, name, exprType);
         this.caracteristica = new domainapp.modules.simple.dom.caracteristica.QCaracteristica(this, "caracteristica", 5);
+        this.inmueble = new domainapp.modules.simple.dom.inmueble.QInmueble(this, "inmueble", 5);
         this.cantidad = new NumericExpressionImpl<Integer>(this, "cantidad");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");

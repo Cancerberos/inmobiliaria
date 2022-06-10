@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.imagen;
 
+import domainapp.modules.simple.dom.inmueble.Inmueble;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
@@ -23,8 +24,9 @@ public class ImagenRepositorio {
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public Imagen createImagen(
             final String url,
-            final String descripcion) {
-        return repositoryService.persist(new Imagen(url, descripcion));
+            final String descripcion,
+            final Inmueble inmueble) {
+        return repositoryService.persist(new Imagen(url, descripcion, inmueble));
     }
 
     @Programmatic

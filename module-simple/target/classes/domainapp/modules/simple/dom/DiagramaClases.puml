@@ -1,0 +1,155 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Aviso {
+- int id
+- String descripcion
+- Inmueble inmueble
+- double valor
+- TipoOperacion tipoOperacion
+- DateTime fecInicio
+- DateTime fecFin
+- EstadoAviso estadoAviso
++create()
+}
+class AvisoContacto {
+-int id
+-Usuario usuario
+-Aviso aviso
+-String mensaje
+-EstadoContacto estadoContacto
++create()
+}
+class Caracteristica{
+-int id
+-String descripcion
++create()
+}
+class Cliente{
+-int id
+-Direccion direccion
+-String nombre
+-String apellido
+-String email
+-String telefono
++create()
+}
+class Direccion{
+-int id
+-Provincia provincia
+-Localidad localidad
+-int cp
+-int numero
+-String edificacion
+-String piso
+-String departamento
+-String latitud
+-String longitud
++create()
+}
+class EstadoAviso{
+-int id
+-String descripcion
++create()
+}
+class EstadoContacto{
+-int id
+-String descripcion
++create()
+}
+class Imagen{
+-int id
+-String url
+-String descripcion
+-Inmueble inmueble
++create()
+}
+class Inmobiliaria {
+-int id
+-String razonSocial
+-String cuit
+-Direccion direccion
+-String telefono
+-String logo
++create()
+}
+class Inmueble {
+-int id
+-Cliente cliente
+-String descripcion
+-Date fechaExclusividad
+-TipoUnidad tipoUnidad
+-Direccion direccion
++create()
+}
+class InmuebleCaracteristica {
+-int id
+-Caracteristica caracteristica
+-Inmueble inmueble
+-int cantidad
++create()
+}
+class Localidad {
+-int id
+-String descripcion
+-int codigoPostal
++create()
+}
+class Provincia {
+-int id
+-String descripcion
++create()
+}
+class RedSocial {
+-int id
+-String descripcion
+-String url
++create()
+}
+class TipoOperacion {
+-int id
+-String descripcion
++create()
+}
+class TipoUnidad {
+-int id
+-String descripcion
++create()
+}
+class Usuario {
+-int id
+-String username
+-String apellido
+-String nombre
+-String telefono
+-String mail
+-String password
+-boolean esAdmin
++create()
+}
+
+Aviso -- AvisoContacto
+Aviso -- Inmueble
+Aviso -- TipoOperacion
+Aviso -- EstadoAviso
+
+AvisoContacto -- Usuario
+AvisoContacto -- EstadoContacto
+
+Cliente -- Direccion
+Cliente -- Inmueble
+
+Inmueble -- TipoUnidad
+
+InmuebleCaracteristica -- Caracteristica
+InmuebleCaracteristica -- Inmueble
+Imagen -- Inmueble
+
+Inmobiliaria -- Direccion
+
+Direccion -- Localidad
+Direccion -- Provincia
+
+
+
+@enduml

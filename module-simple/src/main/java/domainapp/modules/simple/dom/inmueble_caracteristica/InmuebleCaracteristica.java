@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.inmueble_caracteristica;
 
 import domainapp.modules.simple.dom.caracteristica.Caracteristica;
+import domainapp.modules.simple.dom.inmueble.Inmueble;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
@@ -39,11 +40,11 @@ public class InmuebleCaracteristica implements Comparable<InmuebleCaracteristica
     @PropertyLayout(fieldSetId = "caracteristica", sequence = "1")
     private Caracteristica caracteristica;
 
-    /*@Getter
+    @Getter
     @Setter
     @ToString.Include
     @PropertyLayout(fieldSetId = "caracteristica", sequence = "2")
-    private Inmueble inmueble;*/
+    private Inmueble inmueble;
 
     @Getter
     @Setter
@@ -51,9 +52,10 @@ public class InmuebleCaracteristica implements Comparable<InmuebleCaracteristica
     @PropertyLayout(fieldSetId = "cantidad", sequence = "3")
     private int cantidad;
 
-    public InmuebleCaracteristica(Caracteristica caracteristica, int cantidad) {
+    public InmuebleCaracteristica(Caracteristica caracteristica, Inmueble inmueble, int cantidad) {
         this.caracteristica = caracteristica;
         this.cantidad = cantidad;
+        this.inmueble = inmueble;
     }
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
