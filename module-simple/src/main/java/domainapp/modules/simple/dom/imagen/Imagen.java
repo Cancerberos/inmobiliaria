@@ -50,13 +50,14 @@ public class Imagen implements Comparable<Imagen>{
 
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "direccion", sequence = "3")
+    @PropertyLayout(fieldSetId = "inmueble", sequence = "3")
     private Inmueble inmueble;
 
 
-    public Imagen(String url, String descripcion) {
+    public Imagen(String url, String descripcion, Inmueble inmueble) {
         this.url = url;
         this.descripcion = descripcion;
+        this.inmueble = inmueble;
     }
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
