@@ -29,8 +29,8 @@ public class QDireccion extends PersistableExpressionImpl<Direccion> implements 
         return new QDireccion(Direccion.class, name, ExpressionType.VARIABLE);
     }
 
-    public final StringExpression provincia;
-    public final StringExpression localidad;
+    public final domainapp.modules.simple.dom.provincia.QProvincia provincia;
+    public final domainapp.modules.simple.dom.localidad.QLocalidad localidad;
     public final NumericExpression<Integer> cp;
     public final StringExpression calle;
     public final NumericExpression<Integer> numero;
@@ -46,8 +46,22 @@ public class QDireccion extends PersistableExpressionImpl<Direccion> implements 
     public QDireccion(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
-        this.provincia = new StringExpressionImpl(this, "provincia");
-        this.localidad = new StringExpressionImpl(this, "localidad");
+        if (depth > 0)
+        {
+            this.provincia = new domainapp.modules.simple.dom.provincia.QProvincia(this, "provincia", depth-1);
+        }
+        else
+        {
+            this.provincia = null;
+        }
+        if (depth > 0)
+        {
+            this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", depth-1);
+        }
+        else
+        {
+            this.localidad = null;
+        }
         this.cp = new NumericExpressionImpl<Integer>(this, "cp");
         this.calle = new StringExpressionImpl(this, "calle");
         this.numero = new NumericExpressionImpl<Integer>(this, "numero");
@@ -64,8 +78,8 @@ public class QDireccion extends PersistableExpressionImpl<Direccion> implements 
     public QDireccion(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
-        this.provincia = new StringExpressionImpl(this, "provincia");
-        this.localidad = new StringExpressionImpl(this, "localidad");
+        this.provincia = new domainapp.modules.simple.dom.provincia.QProvincia(this, "provincia", 5);
+        this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", 5);
         this.cp = new NumericExpressionImpl<Integer>(this, "cp");
         this.calle = new StringExpressionImpl(this, "calle");
         this.numero = new NumericExpressionImpl<Integer>(this, "numero");

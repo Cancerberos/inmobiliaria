@@ -5,6 +5,7 @@ import domainapp.modules.simple.dom.inmueble.Inmueble;
 import domainapp.modules.simple.dom.tipo_operacion.TipoOperacion;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.events.domain.ActionDomainEvent;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
@@ -32,7 +33,8 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
-public class Aviso implements Comparable<Aviso> {
+public class
+Aviso implements Comparable<Aviso> {
 
     @Title
     @Getter
@@ -81,6 +83,8 @@ public class Aviso implements Comparable<Aviso> {
         this.estadoAviso = estadoAviso;
     }
 
+
+    public static class DeleteDomainEvent extends ActionDomainEvent<Aviso>{}
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
     @ActionLayout(
             position = ActionLayout.Position.PANEL,

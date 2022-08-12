@@ -1,6 +1,8 @@
 package domainapp.modules.simple.dom.cliente;
 
 import domainapp.modules.simple.dom.direccion.Direccion;
+import domainapp.modules.simple.dom.localidad.Localidad;
+import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.types.EmailAddress;
 import domainapp.modules.simple.types.LastName;
 import domainapp.modules.simple.types.Name;
@@ -18,6 +20,8 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
@@ -39,6 +43,8 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 public class Cliente implements Comparable<Cliente>{
 
 
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE = null;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT = null;
     @Title
     @Name
     @Getter
@@ -69,7 +75,14 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "email", sequence = "5")
     private String email;
 
-    public Cliente(String nombre, String apellido, Direccion direccion, String telefono, String email) {
+
+
+    public Cliente(
+            String nombre,
+            String apellido,
+            Direccion direccion, String telefono, String email
+
+    ) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;

@@ -1,12 +1,16 @@
 package domainapp.modules.simple.dom.localidad;
 
+import domainapp.modules.simple.dom.direccion.Direccion;
+import domainapp.modules.simple.dom.direccion.QDireccion;
 import domainapp.modules.simple.dom.provincia.Provincia;
+import domainapp.modules.simple.types.Name;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
 import javax.inject.Inject;
+import javax.jdo.JDOQLTypedQuery;
 import java.util.List;
 
 @DomainService(
@@ -27,16 +31,16 @@ public class LocalidadRepositorio {
                         .withParameter("descripcion",descripcion));
     }
 
-    final RepositoryService repositoryService;
+     final RepositoryService repositoryService ;
     final JdoSupportService jdoSupportService;
 
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Localidad createLocalidad(
+    public Localidad createLocalidad(final Provincia provincia,
             final String descripcion,final int codigoPostal)
              {
-               return repositoryService.persist(new Localidad(descripcion,codigoPostal));
+               return repositoryService.persist(new Localidad(descripcion,provincia,codigoPostal));
     }
 
 
@@ -47,43 +51,43 @@ public class LocalidadRepositorio {
     }
 
 
-/*
+
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<SimpleObject> findByName(
+    public List<Localidad> findByName(
             @Name final String name
     ) {
         return repositoryService.allMatches(
-                Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_LIKE)
-                        .withParameter("name", name));
+                Query.named(Localidad.class, Localidad.NAMED_QUERY__FIND_BY_NAME_LIKE)
+                      );
     }
 
 
     @Programmatic
-    public SimpleObject findByNameExact(final String name) {
+    public Localidad findByNameExact(final String name) {
         return repositoryService.firstMatch(
-                        Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_EXACT)
+                        Query.named(Localidad.class, Localidad.NAMED_QUERY__FIND_BY_NAME_EXACT)
                                 .withParameter("name", name))
                 .orElse(null);
     }
 
 
 
-    @Action(semantics = SemanticsOf.SAFE)
+   @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    public List<SimpleObject> listAll() {
-        return repositoryService.allInstances(SimpleObject.class);
+    public List<Localidad> listAll() {
+        return repositoryService.allInstances(Localidad.class);
     }
-*/
 
-  //  @Programmatic
- //   public void ping() {
- //       JDOQLTypedQuery<Direccion> q = jdoSupportService.newTypesafeQuery(Direccion.class);
-       // final QDireccion candidate = QDireccion.candidate();
- //       q.range(0,2);
-      //  q.orderBy(candidate.calle.asc());
- //       q.executeList();
- //   }
+
+    @Programmatic
+      public void ping() {
+       JDOQLTypedQuery<Localidad> q = jdoSupportService.newTypesafeQuery(Localidad.class);
+        final QDireccion candidate = QDireccion.candidate();
+         q.range(0,2);
+         q.orderBy(candidate.calle.asc());
+        q.executeList();
+       }
 
 
 }

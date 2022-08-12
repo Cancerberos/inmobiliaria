@@ -9,7 +9,6 @@ import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
 import org.jetbrains.annotations.NotNull;
-
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -19,27 +18,25 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 @PersistenceCapable(
         schema = "Inmobiliaria",
         identityType=IdentityType.DATASTORE)
+
 @Queries({
         @Query(
-                name = "findAll", language = "JDOQL",
+                name = "findAllInactives", language = "JDOQL",
                 value = "SELECT "
-                        + " FROM domainapp.modules.simple.dom.provincia.Provincia "
-                        + "ORDER BY id ASC")
+                        + "FROM domainapp.modules.simple.dominio.provincia.Provincia "
+                        + ""),
 })
-//@Unique(
-    //    name = "descripcion_UNQ", members = {"descripcion"}
-//)
+@javax.jdo.annotations.Unique(name="Provincia_name_UNQ", members = {"descripcion"})
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
-@DomainObject(editing = Editing.DISABLED)
-//@DomainObject(logicalTypeName = "simple.Provincia", entityChangePublishing = Publishing.ENABLED)
-@DomainObjectLayout()
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
 public class Provincia implements Comparable<Provincia>{
 
 
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE = "findAllInactives" ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
     @Title
     @Name
     @Getter @Setter @ToString.Include
@@ -72,5 +69,6 @@ public class Provincia implements Comparable<Provincia>{
     TitleService titleService;
     @Inject
     MessageService messageService;
+
 
 }
