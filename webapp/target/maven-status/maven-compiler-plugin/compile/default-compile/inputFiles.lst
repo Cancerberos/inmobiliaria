@@ -1,10 +1,12 @@
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\ApplicationModule.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\quartz\QuartzModule.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\quartz\job\SampleJob.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\custom\restapi\CustomController.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\services\health\HealthCheckServiceImpl.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\services\homepage\HomePageViewModel.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\SimpleApp.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\fixture\scenarios\DomainAppDemo.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\AppManifest.java
-C:\Users\whitebox\Desktop\Proyecto Final\inmobiliaria\webapp\src\main\java\domainapp\webapp\custom\CustomModule.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\services\homepage\HomePageViewModel_Direccion.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\services\homepage\HomePageViewModel_Cliente.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\quartz\job\SampleJob.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\fixture\scenarios\DomainAppDemo.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\ApplicationModule.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\AppManifest.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\quartz\QuartzModule.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\custom\CustomModule.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\services\health\HealthCheckServiceImpl.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\application\services\homepage\HomePageViewModel.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\custom\restapi\CustomController.java
+C:\tesis\inmobiliaria\webapp\src\main\java\domainapp\webapp\SimpleApp.java

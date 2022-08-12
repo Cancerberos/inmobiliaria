@@ -1,6 +1,8 @@
 package domainapp.modules.simple.dom.direccion;
 
 
+import domainapp.modules.simple.dom.localidad.Localidad;
+import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.types.Name;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
@@ -12,7 +14,11 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDateTime;
+
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 @PersistenceCapable(
         schema = "Inmobiliaria",
@@ -39,16 +45,25 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 public class Direccion implements Comparable<Direccion>{
 
 
-    @Title
-    @Name
-    @Getter @Setter @ToString.Include
-    @PropertyLayout(fieldSetId = "provincia", sequence = "1")
-    private String provincia;
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE =null ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
 
-    @Getter @Setter
-    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "localidad", sequence = "2")
-    private String localidad;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "provincia_id")
+    @PropertyLayout(fieldSetId = "name", sequence = "1")
+    @javax.jdo.annotations.Persistent(mappedBy = "provincia",dependentElement = "false" )
+    @CollectionLayout(defaultView = "table")
+    @lombok.Getter @lombok.Setter
+    private Provincia provincia ;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "localidad_id")
+    @PropertyLayout(fieldSetId = "name", sequence = "1")
+    @javax.jdo.annotations.Persistent(mappedBy = "localidad",dependentElement = "false" )
+    @CollectionLayout(defaultView = "table")
+    @lombok.Getter @lombok.Setter
+    private Localidad localidad ;
 
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
@@ -91,7 +106,7 @@ public class Direccion implements Comparable<Direccion>{
     private String longitud;
 
 
-    public Direccion(String provincia, String localidad, int cp, int numero, String edificacion, String piso, String departamento, String latitud, String longitud) {
+    public Direccion(Provincia provincia, Localidad localidad, int cp, int numero, String edificacion, String piso, String departamento, String latitud, String longitud) {
         this.provincia = provincia;
         this.localidad = localidad;
         this.cp = cp;

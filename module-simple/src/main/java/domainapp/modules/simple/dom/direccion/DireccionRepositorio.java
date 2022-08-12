@@ -1,7 +1,11 @@
 package domainapp.modules.simple.dom.direccion;
+import javax.ejb.Local;
 import javax.inject.Inject;
 
 
+import domainapp.modules.simple.dom.localidad.Localidad;
+import domainapp.modules.simple.dom.provincia.Provincia;
+import domainapp.modules.simple.types.Name;
 import org.apache.isis.applib.annotation.*;
 
 import org.apache.isis.applib.query.Query;
@@ -35,8 +39,8 @@ public class DireccionRepositorio {
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public Direccion createDireccion(
-            final String provincia,
-            final String localidad,
+            final Provincia provincia,
+            final Localidad localidad,
             final int cp,
             final int numero,
             final String edificacion,
@@ -48,56 +52,35 @@ public class DireccionRepositorio {
                return repositoryService.persist(new Direccion(provincia,localidad,cp,numero,edificacion,piso,departamento,latitud,longitud));
     }
 
-
-   // @Action(semantics = SemanticsOf.SAFE)
-  //  @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-   // public List<Direccion> listarDirecciones() {
-  //      return repositoryService.allInstances(Direccion.class);
- //   }
+     @Action(semantics = SemanticsOf.SAFE)
+     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+      public List<Direccion> listarDirecciones() {
+       return repositoryService.allInstances(Direccion.class);
+    }
 
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    public List<Direccion> listAllDireccion() {
+    public List<Direccion> listAll() {
         return repositoryService.allInstances(Direccion.class);
     }
-/*
+
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<SimpleObject> findByName(
+    public List<Direccion> findByName(
             @Name final String name
     ) {
         return repositoryService.allMatches(
-                Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_LIKE)
+                Query.named(Direccion.class, Direccion.NAMED_QUERY__FIND_BY_NAME_LIKE)
                         .withParameter("name", name));
     }
 
-
     @Programmatic
-    public SimpleObject findByNameExact(final String name) {
+    public Direccion findByNameExact(final String name) {
         return repositoryService.firstMatch(
-                        Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_EXACT)
+                        Query.named(Direccion.class, Direccion.NAMED_QUERY__FIND_BY_NAME_EXACT)
                                 .withParameter("name", name))
                 .orElse(null);
     }
-
-
-
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    public List<SimpleObject> listAll() {
-        return repositoryService.allInstances(SimpleObject.class);
-    }
-*/
-
-  //  @Programmatic
- //   public void ping() {
- //       JDOQLTypedQuery<Direccion> q = jdoSupportService.newTypesafeQuery(Direccion.class);
-       // final QDireccion candidate = QDireccion.candidate();
- //       q.range(0,2);
-      //  q.orderBy(candidate.calle.asc());
- //       q.executeList();
- //   }
-
 
 }

@@ -60,6 +60,7 @@ domainapp\modules\simple\types\Notes.class
 domainapp\modules\simple\dom\so\QSimpleObject.class
 domainapp\modules\simple\dom\tipo_unidad\TipoUnidad.class
 domainapp\modules\simple\dom\aviso\AvisoRepositorio.class
+domainapp\modules\simple\dom\aviso\Aviso$DeleteDomainEvent.class
 domainapp\modules\simple\dom\aviso_contacto\QAvisoContacto.class
 domainapp\modules\simple\dom\inmueble\Inmueble.class
 domainapp\modules\simple\dom\tipo_operacion\QTipoOperacion.class

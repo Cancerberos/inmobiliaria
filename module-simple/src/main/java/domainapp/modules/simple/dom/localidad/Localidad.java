@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.localidad;
 
 
+import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.types.Name;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
@@ -12,7 +13,12 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 
@@ -40,18 +46,30 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 public class Localidad implements Comparable<Localidad>{
 
 
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE =null ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
     @Title
     @Name
     @Getter @Setter @ToString.Include
     @PropertyLayout(fieldSetId = "descripcion", sequence = "1")
     private String descripcion;
 
+
+   // @Getter @Setter
+    //private Provincia provincia;
+   @ManyToOne(optional = false)
+   @JoinColumn(name = "provincia_id")
+   @PropertyLayout(fieldSetId = "name", sequence = "1")
+    @javax.jdo.annotations.Persistent(mappedBy = "provincia",dependentElement = "false" )
+    @CollectionLayout(defaultView = "table")
+    @lombok.Getter @lombok.Setter
+    private Provincia provincias ;
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "codigoPostal", sequence = "2")
     private int codigoPostal;
 
-    public Localidad(String descripcion, int codigoPostal) {
+    public Localidad(String descripcion,Provincia provincia, int codigoPostal) {
         this.descripcion = descripcion;
         this.codigoPostal = codigoPostal;
     }

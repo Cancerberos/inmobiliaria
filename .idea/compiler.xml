@@ -8,7 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="simpleapp-jdo-webapp" />
+        <module name="simpleapp-jdo.simpleapp-jdo-webapp" />
         <module name="simpleapp-jdo-module-simple" />
+        <module name="simpleapp-jdo.simpleapp-jdo-module-simple" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +22,8 @@
       <module name="simpleapp-jdo-module-simple" options="-parameters" />
       <module name="simpleapp-jdo-webapp" options="-parameters" />
       <module name="simpleapp-jdo-webapp-tests" options="-parameters" />
+      <module name="simpleapp-jdo.simpleapp-jdo-module-simple" options="-parameters" />
+      <module name="simpleapp-jdo.simpleapp-jdo-webapp" options="-parameters" />
     </option>
   </component>
 </project>

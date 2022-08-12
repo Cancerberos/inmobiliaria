@@ -30,6 +30,7 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
     }
 
     public final StringExpression descripcion;
+    public final domainapp.modules.simple.dom.provincia.QProvincia provincias;
     public final NumericExpression<Integer> codigoPostal;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
@@ -39,6 +40,14 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
     {
         super(parent, name);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
+        if (depth > 0)
+        {
+            this.provincias = new domainapp.modules.simple.dom.provincia.QProvincia(this, "provincias", depth-1);
+        }
+        else
+        {
+            this.provincias = null;
+        }
         this.codigoPostal = new NumericExpressionImpl<Integer>(this, "codigoPostal");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
@@ -49,6 +58,7 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
     {
         super(type, name, exprType);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
+        this.provincias = new domainapp.modules.simple.dom.provincia.QProvincia(this, "provincias", 5);
         this.codigoPostal = new NumericExpressionImpl<Integer>(this, "codigoPostal");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
