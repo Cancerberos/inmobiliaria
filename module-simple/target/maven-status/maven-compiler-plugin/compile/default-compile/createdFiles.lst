@@ -19,6 +19,7 @@ domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristica.clas
 domainapp\modules\simple\dom\estado_contacto\QEstadoContacto.class
 domainapp\modules\simple\dom\cliente\QCliente.class
 domainapp\modules\simple\dom\so\SimpleObject.class
+domainapp\modules\simple\dom\localidad\LocalidadRepositorio$CreateDomainEvent.class
 domainapp\modules\simple\dom\imagen\QImagen.class
 domainapp\modules\simple\dom\so\SimpleObjects.class
 domainapp\modules\simple\fixture\SimpleObject_persona.class

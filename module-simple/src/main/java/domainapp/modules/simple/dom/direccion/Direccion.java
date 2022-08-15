@@ -35,13 +35,13 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 )
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
-@DomainObject(editing = Editing.DISABLED)
-//@DomainObject(logicalTypeName = "simple.Direccion", entityChangePublishing = Publishing.ENABLED)
-@HomePage
-@DomainObjectLayout()
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
-@XmlJavaTypeAdapter(PersistentEntityAdapter.class)
-@ToString(onlyExplicitlyIncluded = true)
+//@DomainObject(editing = Editing.DISABLED)
+@DomainObject(logicalTypeName = "simple.direccion", entityChangePublishing = Publishing.ENABLED)
+//@NoArgsConstructor(access = AccessLevel.PUBLIC)
+//@XmlJavaTypeAdapter(PersistentEntityAdapter.class)
+//@ToString(onlyExplicitlyIncluded = true)
+@lombok.RequiredArgsConstructor
+@DomainObjectLayout(cssClassFa = "file-text-o")
 public class Direccion implements Comparable<Direccion>{
 
 
@@ -50,17 +50,17 @@ public class Direccion implements Comparable<Direccion>{
 
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "provincia_id")
+    @JoinColumn(name = "id")
     @PropertyLayout(fieldSetId = "name", sequence = "1")
-    @javax.jdo.annotations.Persistent(mappedBy = "provincia",dependentElement = "false" )
+   // @javax.jdo.annotations.Persistent(mappedBy = "provincia",dependentElement = "false" )
     @CollectionLayout(defaultView = "table")
     @lombok.Getter @lombok.Setter
     private Provincia provincia ;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "localidad_id")
+    @JoinColumn(name = "id")
     @PropertyLayout(fieldSetId = "name", sequence = "1")
-    @javax.jdo.annotations.Persistent(mappedBy = "localidad",dependentElement = "false" )
+   // @Persistent(mappedBy = "localidad",dependentElement = "false" )
     @CollectionLayout(defaultView = "table")
     @lombok.Getter @lombok.Setter
     private Localidad localidad ;

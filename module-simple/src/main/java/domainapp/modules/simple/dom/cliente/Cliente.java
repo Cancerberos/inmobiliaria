@@ -16,9 +16,7 @@ import org.apache.isis.applib.services.title.TitleService;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.VersionStrategy;
+import javax.jdo.annotations.*;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,30 +24,26 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 
-@javax.jdo.annotations.PersistenceCapable(
-        schema = "Inmobiliaria",
-        identityType= IdentityType.DATASTORE)
-@javax.jdo.annotations.Unique(
-        name = "cliente_id_UNQ", members = {"id"}
-)
-@javax.jdo.annotations.DatastoreIdentity(strategy= IdGeneratorStrategy.IDENTITY, column="id")
+@PersistenceCapable(schema = "Inmobiliaria",identityType= IdentityType.DATASTORE)
+@Unique(name = "cliente_id_UNQ", members = {"id"})
+@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
-
 @DomainObject(logicalTypeName = "simple.Cliente", entityChangePublishing = Publishing.ENABLED)
-@DomainObjectLayout()
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
-@XmlJavaTypeAdapter(PersistentEntityAdapter.class)
-@ToString(onlyExplicitlyIncluded = true)
+@lombok.RequiredArgsConstructor
+@DomainObjectLayout(cssClassFa = "file-text-o")
+//@NoArgsConstructor(access = AccessLevel.PUBLIC)
+//@XmlJavaTypeAdapter(PersistentEntityAdapter.class)
+//@ToString(onlyExplicitlyIncluded = true)
 public class Cliente implements Comparable<Cliente>{
 
 
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE = null;
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT = null;
-    @Title
-    @Name
+
+    @PropertyLayout(fieldSetId = "id", sequence = "1")
+    private int id;
     @Getter
     @Setter
-    @ToString.Include
     @PropertyLayout(fieldSetId = "nombre", sequence = "1")
     private String nombre;
 
