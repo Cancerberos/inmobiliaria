@@ -12,12 +12,11 @@ import org.jetbrains.annotations.NotNull;
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Comparator;
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
-
-
-
 @PersistenceCapable(schema = "Inmobiliaria",identityType=IdentityType.DATASTORE)
 @Queries({
         @Query(
@@ -36,62 +35,46 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
                 + "FROM domainapp.modules.simple.dom.localidad.Localidad "
                 + "WHERE descripcion.indexOf(:descripcion) >= 0 "),
 })
-@Unique(
-        name = "codigoPostal_UNQ", members = {"codigoPostal"}
-)
-
-@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
+@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Localidadid")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(logicalTypeName = "simple.localidad",entityChangePublishing = Publishing.ENABLED,editing=Editing.DISABLED)
 @lombok.RequiredArgsConstructor
 @DomainObjectLayout(cssClassFa = "file-text-o")
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
+@javax.jdo.annotations.Unique(name="Localidad_descripcion_provincia_UNQ", members = {"descripcion","provincia"})
 public class Localidad implements Comparable<Localidad>{
-
-
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE ="findAllLocalidades" ;
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT ="findByDescriptionContains" ;
-
-
-    @Persistent(mappedBy = "localidad", dependentElement = "false")
-    @Getter @Setter
-    @javax.jdo.annotations.Column(allowsNull="true")
+    @javax.jdo.annotations.Column(allowsNull = "false", name = "Provinciaid")
+    @Property(editing = Editing.DISABLED)
+    @Getter
+    @Setter
     private Provincia provincia ;
-
-
-
-    @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
+    @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Getter
     @Setter
     @Title
     private String descripcion;
-
-
-
-    @javax.jdo.annotations.Column(allowsNull = "false", length = 40)
+    @javax.jdo.annotations.Column(allowsNull = "false")
     @lombok.NonNull
     @Getter
     @Setter
     @Title
-    private int codigoPostal;
+    private String codigoPostal;
 
-    public Localidad(Provincia provincia,String descripcion, int codigoPostal) {
+    public Localidad(Provincia provincia,String descripcion, String codigoPostal) {
         this.provincia=provincia;
         this.descripcion = descripcion;
         this.codigoPostal = codigoPostal;
     }
-
-
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
     public void delete() {
         final String title = titleService.titleOf(this);
         messageService.informUser(String.format("'%s' deleted", title));
         repositoryService.removeAndFlush(this);
     }
-
-
     @Override
     public int compareTo(@NotNull Localidad o) {
         return 0;

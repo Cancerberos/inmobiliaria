@@ -11,6 +11,7 @@ domainapp\modules\simple\dom\usuario\Usuario.class
 domainapp\modules\simple\types\LastName.class
 domainapp\modules\simple\dom\cliente\Cliente.class
 domainapp\modules\simple\types\LastName$Spec.class
+domainapp\modules\simple\dom\localidad\LocalidadAdd.class
 domainapp\modules\simple\dom\estado_aviso\QEstadoAviso.class
 domainapp\modules\simple\dom\provincia\Provincia.class
 domainapp\modules\simple\dom\provincia\QProvincia.class

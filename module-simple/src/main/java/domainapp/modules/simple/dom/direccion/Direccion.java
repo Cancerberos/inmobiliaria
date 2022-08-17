@@ -20,9 +20,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDateTime;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
-@PersistenceCapable(
-        schema = "Inmobiliaria",
-        identityType=IdentityType.DATASTORE)
+@PersistenceCapable(schema = "Inmobiliaria", identityType=IdentityType.DATASTORE)
 @Queries({
         @Query(
                 name = "findAll", language = "JDOQL",
@@ -30,45 +28,31 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
                         + " FROM domainapp.modules.simple.dom.direccion.Direccion "
                         + "ORDER BY calle ASC")
 })
-@Unique(
-        name = "calle_calle_UNQ", members = {"calle"}
-)
-@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
+@javax.jdo.annotations.Unique(name="Direccion_localidad_calle_UNQ", members = {"localidad","calle"})
+@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Direccionid")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
-//@DomainObject(editing = Editing.DISABLED)
 @DomainObject(logicalTypeName = "simple.direccion", entityChangePublishing = Publishing.ENABLED)
-//@NoArgsConstructor(access = AccessLevel.PUBLIC)
-//@XmlJavaTypeAdapter(PersistentEntityAdapter.class)
-//@ToString(onlyExplicitlyIncluded = true)
 @lombok.RequiredArgsConstructor
 @DomainObjectLayout(cssClassFa = "file-text-o")
 public class Direccion implements Comparable<Direccion>{
-
+    public Direccion( Localidad localidad, String calle, int numero, String edificacion, String piso, String departamento, String latitud, String longitud) {
+        this.localidad = localidad;
+        this.calle = calle;
+        this.numero = numero;
+        this.edificacion = edificacion;
+        this.piso = piso;
+        this.departamento = departamento;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
 
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE =null ;
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
-
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id")
-    @PropertyLayout(fieldSetId = "name", sequence = "1")
-   // @javax.jdo.annotations.Persistent(mappedBy = "provincia",dependentElement = "false" )
-    @CollectionLayout(defaultView = "table")
-    @lombok.Getter @lombok.Setter
-    private Provincia provincia ;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id")
-    @PropertyLayout(fieldSetId = "name", sequence = "1")
-   // @Persistent(mappedBy = "localidad",dependentElement = "false" )
-    @CollectionLayout(defaultView = "table")
-    @lombok.Getter @lombok.Setter
+    @javax.jdo.annotations.Column(allowsNull = "false", name = "Localidadid")
+    @Property(editing = Editing.DISABLED)
+    @Getter
+    @Setter
     private Localidad localidad ;
-
-    @Getter @Setter
-    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "cp", sequence = "3")
-    private int cp;
 
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
@@ -106,19 +90,7 @@ public class Direccion implements Comparable<Direccion>{
     private String longitud;
 
 
-    public Direccion(Provincia provincia, Localidad localidad, int cp, int numero, String edificacion, String piso, String departamento, String latitud, String longitud) {
-        this.provincia = provincia;
-        this.localidad = localidad;
-        this.cp = cp;
-        this.calle = calle;
-        this.numero = numero;
-        this.edificacion = edificacion;
-        this.piso = piso;
-        this.departamento = departamento;
-        this.latitud = latitud;
-        this.longitud = longitud;
 
-    }
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
     @ActionLayout(

@@ -18,8 +18,6 @@ import java.util.List;
         nature = NatureOfService.VIEW,
         logicalTypeName = "simple.DireccionRepositorio"
 )
-@javax.annotation.Priority(PriorityPrecedence.EARLY)
-@lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
 public class DireccionRepositorio {
 
     @Action(semantics = SemanticsOf.SAFE)
@@ -31,17 +29,11 @@ public class DireccionRepositorio {
                 Query.named(Direccion.class, "findAll")
                         .withParameter("calle",calle));
     }
-
-    final RepositoryService repositoryService;
-    final JdoSupportService jdoSupportService;
-
-
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public Direccion createDireccion(
-            final Provincia provincia,
             final Localidad localidad,
-            final int cp,
+            final String calle,
             final int numero,
             final String edificacion,
             final String piso,
@@ -49,7 +41,7 @@ public class DireccionRepositorio {
             final String latitud,
             final String longitud)
              {
-               return repositoryService.persist(new Direccion(provincia,localidad,cp,numero,edificacion,piso,departamento,latitud,longitud));
+               return repositoryService.persist(new Direccion(localidad,calle,numero,edificacion,piso,departamento,latitud,longitud));
     }
 
      @Action(semantics = SemanticsOf.SAFE)
@@ -82,5 +74,7 @@ public class DireccionRepositorio {
                                 .withParameter("name", name))
                 .orElse(null);
     }
-
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
 }

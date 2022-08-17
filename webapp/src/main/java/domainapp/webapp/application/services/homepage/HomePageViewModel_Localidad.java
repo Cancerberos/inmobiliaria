@@ -1,6 +1,7 @@
 package domainapp.webapp.application.services.homepage;
 
 import domainapp.modules.simple.dom.localidad.Localidad;
+import domainapp.modules.simple.dom.localidad.LocalidadAdd;
 import domainapp.modules.simple.dom.localidad.LocalidadRepositorio;
 import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.provincia.ProvinciaRepositorio;
@@ -18,8 +19,8 @@ public class HomePageViewModel_Localidad {
 
     final HomePageViewModel homePageViewModel;
 
-    public Object act(Provincia provincia, String descripcion , int cp,boolean showVisit) {
-        Localidad localidad = wrapperFactory.wrapMixin(LocalidadRepositorio.class,provincia).act(provincia,descripcion,cp);
+    public Object act(Provincia provincia, String descripcion , String cp,boolean showVisit) {
+        Localidad localidad = wrapperFactory.wrapMixin(LocalidadAdd.class,provincia).act(provincia,descripcion,cp);
         return  showVisit ? localidad :homePageViewModel;
     }
     public List<Provincia> autoComplete0Act(final String name) {

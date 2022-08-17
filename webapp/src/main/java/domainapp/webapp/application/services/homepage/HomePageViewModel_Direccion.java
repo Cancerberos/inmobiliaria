@@ -18,10 +18,10 @@ public class HomePageViewModel_Direccion {
 
     final HomePageViewModel homePageViewModel;
 
-    public Object act(Provincia provincia, Localidad localidad , int cp
+    public Object act( Localidad localidad , String calle
             , int numero,String edificacion,String piso,String departamento,String latitud,String longitud,boolean showVisit) {
         Direccion direccion = wrapperFactory.wrapMixin(DireccionRepositorio.class,localidad).createDireccion(
-                provincia,localidad,cp,numero,edificacion,piso,departamento,latitud,longitud);
+                localidad,calle,numero,edificacion,piso,departamento,latitud,longitud);
         return  showVisit ? direccion :homePageViewModel;
     }
     public List<Provincia> autoComplete0Act(final String name) {

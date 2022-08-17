@@ -1,14 +1,11 @@
 package domainapp.modules.simple.dom.provincia;
 
 import domainapp.modules.simple.dom.direccion.QDireccion;
-import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.types.Name;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
-
-import javax.inject.Inject;
 import javax.jdo.JDOQLTypedQuery;
 import java.util.List;
 
@@ -16,8 +13,7 @@ import java.util.List;
         nature = NatureOfService.VIEW,
         logicalTypeName = "simple.Provincia"
 )
-@javax.annotation.Priority(PriorityPrecedence.EARLY)
-@lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
+
 public class ProvinciaRepositorio {
 
     @Action(semantics = SemanticsOf.SAFE)
@@ -29,11 +25,6 @@ public class ProvinciaRepositorio {
                 Query.named(Provincia.class, "findAll")
                         .withParameter("descripcion",descripcion));
     }
-
-    final RepositoryService repositoryService;
-    final JdoSupportService jdoSupportService;
-
-
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public Provincia createProvincia(
@@ -86,6 +77,10 @@ public class ProvinciaRepositorio {
         q.orderBy(candidate.calle.asc());
         q.executeList();
       }
+
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
 
 
 }

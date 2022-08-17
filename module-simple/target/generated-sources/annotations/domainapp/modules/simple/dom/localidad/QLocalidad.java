@@ -31,7 +31,7 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
 
     public final domainapp.modules.simple.dom.provincia.QProvincia provincia;
     public final StringExpression descripcion;
-    public final NumericExpression<Integer> codigoPostal;
+    public final StringExpression codigoPostal;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
@@ -49,7 +49,7 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
             this.provincia = null;
         }
         this.descripcion = new StringExpressionImpl(this, "descripcion");
-        this.codigoPostal = new NumericExpressionImpl<Integer>(this, "codigoPostal");
+        this.codigoPostal = new StringExpressionImpl(this, "codigoPostal");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
@@ -61,7 +61,7 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
         super(type, name, exprType);
         this.provincia = new domainapp.modules.simple.dom.provincia.QProvincia(this, "provincia", 5);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
-        this.codigoPostal = new NumericExpressionImpl<Integer>(this, "codigoPostal");
+        this.codigoPostal = new StringExpressionImpl(this, "codigoPostal");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
