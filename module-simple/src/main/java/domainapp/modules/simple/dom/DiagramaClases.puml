@@ -36,9 +36,7 @@ class Cliente{
 }
 class Direccion{
 -int id
--Provincia provincia
 -Localidad localidad
--int cp
 -int numero
 -String edificacion
 -String piso
@@ -91,6 +89,7 @@ class InmuebleCaracteristica {
 }
 class Localidad {
 -int id
+-Provincia provincia
 -String descripcion
 -int codigoPostal
 +create()
@@ -148,7 +147,7 @@ Imagen -- Inmueble
 Inmobiliaria -- Direccion
 
 Direccion -- Localidad
-Direccion -- Provincia
+Localidad -- Provincia
 
 
 

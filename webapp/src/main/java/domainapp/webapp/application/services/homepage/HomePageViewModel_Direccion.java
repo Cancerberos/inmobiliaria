@@ -18,10 +18,10 @@ public class HomePageViewModel_Direccion {
 
     final HomePageViewModel homePageViewModel;
 
-    public Object act(Provincia provincia, Localidad localidad , int cp
+    public Object act( Localidad localidad , String calle
             , int numero,String edificacion,String piso,String departamento,String latitud,String longitud,boolean showVisit) {
         Direccion direccion = wrapperFactory.wrapMixin(DireccionRepositorio.class,localidad).createDireccion(
-                provincia,localidad,cp,numero,edificacion,piso,departamento,latitud,longitud);
+                localidad,calle,numero,edificacion,piso,departamento,latitud,longitud);
         return  showVisit ? direccion :homePageViewModel;
     }
     public List<Provincia> autoComplete0Act(final String name) {
@@ -31,7 +31,7 @@ public class HomePageViewModel_Direccion {
         return (List<Localidad>) localidadRepositorioy.findByNameExact(name);
     }
 
-    //*//
+
    // public LocalDateTime default2Act(PetOwner petOwner, Pet pet) {
   ///      if(pet == null) return null;
   //      return factoryService.mixin(Pet_bookVisit.class, pet).default0Act();

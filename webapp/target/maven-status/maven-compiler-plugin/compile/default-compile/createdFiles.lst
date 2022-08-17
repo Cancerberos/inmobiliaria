@@ -9,4 +9,5 @@ domainapp\webapp\application\fixture\scenarios\DomainAppDemo.class
 domainapp\webapp\custom\CustomModule.class
 domainapp\webapp\application\services\homepage\HomePageViewModel.class
 domainapp\webapp\application\services\homepage\HomePageViewModel_Cliente.class
+domainapp\webapp\application\services\homepage\HomePageViewModel_Localidad.class
 domainapp\webapp\quartz\QuartzModule.class

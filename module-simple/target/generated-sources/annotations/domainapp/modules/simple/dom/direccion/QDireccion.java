@@ -29,9 +29,7 @@ public class QDireccion extends PersistableExpressionImpl<Direccion> implements 
         return new QDireccion(Direccion.class, name, ExpressionType.VARIABLE);
     }
 
-    public final domainapp.modules.simple.dom.provincia.QProvincia provincia;
     public final domainapp.modules.simple.dom.localidad.QLocalidad localidad;
-    public final NumericExpression<Integer> cp;
     public final StringExpression calle;
     public final NumericExpression<Integer> numero;
     public final StringExpression edificacion;
@@ -48,21 +46,12 @@ public class QDireccion extends PersistableExpressionImpl<Direccion> implements 
         super(parent, name);
         if (depth > 0)
         {
-            this.provincia = new domainapp.modules.simple.dom.provincia.QProvincia(this, "provincia", depth-1);
-        }
-        else
-        {
-            this.provincia = null;
-        }
-        if (depth > 0)
-        {
             this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", depth-1);
         }
         else
         {
             this.localidad = null;
         }
-        this.cp = new NumericExpressionImpl<Integer>(this, "cp");
         this.calle = new StringExpressionImpl(this, "calle");
         this.numero = new NumericExpressionImpl<Integer>(this, "numero");
         this.edificacion = new StringExpressionImpl(this, "edificacion");
@@ -78,9 +67,7 @@ public class QDireccion extends PersistableExpressionImpl<Direccion> implements 
     public QDireccion(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
-        this.provincia = new domainapp.modules.simple.dom.provincia.QProvincia(this, "provincia", 5);
         this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", 5);
-        this.cp = new NumericExpressionImpl<Integer>(this, "cp");
         this.calle = new StringExpressionImpl(this, "calle");
         this.numero = new NumericExpressionImpl<Integer>(this, "numero");
         this.edificacion = new StringExpressionImpl(this, "edificacion");

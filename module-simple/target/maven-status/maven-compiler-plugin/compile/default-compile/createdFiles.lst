@@ -11,6 +11,7 @@ domainapp\modules\simple\dom\usuario\Usuario.class
 domainapp\modules\simple\types\LastName.class
 domainapp\modules\simple\dom\cliente\Cliente.class
 domainapp\modules\simple\types\LastName$Spec.class
+domainapp\modules\simple\dom\localidad\LocalidadAdd.class
 domainapp\modules\simple\dom\estado_aviso\QEstadoAviso.class
 domainapp\modules\simple\dom\provincia\Provincia.class
 domainapp\modules\simple\dom\provincia\QProvincia.class
@@ -19,6 +20,7 @@ domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristica.clas
 domainapp\modules\simple\dom\estado_contacto\QEstadoContacto.class
 domainapp\modules\simple\dom\cliente\QCliente.class
 domainapp\modules\simple\dom\so\SimpleObject.class
+domainapp\modules\simple\dom\localidad\LocalidadRepositorio$CreateDomainEvent.class
 domainapp\modules\simple\dom\imagen\QImagen.class
 domainapp\modules\simple\dom\so\SimpleObjects.class
 domainapp\modules\simple\fixture\SimpleObject_persona.class
