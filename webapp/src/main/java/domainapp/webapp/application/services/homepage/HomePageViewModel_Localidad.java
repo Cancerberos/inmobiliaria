@@ -21,7 +21,7 @@ public class HomePageViewModel_Localidad {
 
     public Object act(Provincia provincia, String descripcion , String cp,boolean showVisit) {
         Localidad localidad = wrapperFactory.wrapMixin(LocalidadAdd.class,provincia).act(provincia,descripcion,cp);
-        return  showVisit ? localidad :homePageViewModel;
+        return localidad; // showVisit ? localidad :homePageViewModel;
     }
     public List<Provincia> autoComplete0Act(final String name) {
         return (List<Provincia>) provinciaRepositorio.findByName(name);

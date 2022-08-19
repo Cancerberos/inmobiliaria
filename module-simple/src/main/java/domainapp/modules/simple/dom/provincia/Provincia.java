@@ -48,14 +48,14 @@ public class Provincia implements Comparable<Provincia>{
     @PropertyLayout(fieldSetId = "descripcion", sequence = "1")
     private String descripcion;
 
-      public Provincia(String descripcion) {
+    public Provincia(String descripcion) {
         this.descripcion = descripcion;
     }
     @Persistent(mappedBy = "provincia", dependentElement = "true")
     @Collection()
     @Getter @Setter
     @javax.jdo.annotations.Column(allowsNull="true")
-    private SortedSet<Localidad> localidadad = new TreeSet<Localidad>();
+    private SortedSet<Localidad> localidad = new TreeSet<Localidad>();
    // private Localidad localidad;
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)

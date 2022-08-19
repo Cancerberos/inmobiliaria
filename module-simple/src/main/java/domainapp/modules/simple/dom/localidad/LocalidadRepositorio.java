@@ -40,18 +40,6 @@ public class LocalidadRepositorio {
                       );
     }
 
-
-   // @Action(semantics = SemanticsOf.NON_IDEMPOTENT,domainEvent = CreateDomainEvent.class)
-    public Localidad findByNameExact(final String name) {
-        return repositoryService.firstMatch(
-                        Query.named(Localidad.class, Localidad.NAMED_QUERY__FIND_BY_NAME_EXACT)
-                                .withParameter("name", name))
-                .orElse(null);
-    }
-
-
-
-
     //@Action(semantics = SemanticsOf.NON_IDEMPOTENT,domainEvent = CreateDomainEvent.class)
     public List<Localidad> listAll() {
         return repositoryService.allInstances(Localidad.class);

@@ -27,12 +27,10 @@ public class HomePageViewModel {
     public String title() {
         return  "Del Sur";
     }
-       public List<Cliente> getCliente() {
+    public List<Cliente> getCliente() {
         return clienteRepositorio.listarCliente();
     }
-    public List<Direccion> getDireccion() {
-        return direccionRepositorio.listAll();
-    }
+    public List<Direccion> getDireccion() { return direccionRepositorio.listAll(); }
     public List<Provincia> getProvincia() {
         return provinciaRepositorio.listAll();
     }

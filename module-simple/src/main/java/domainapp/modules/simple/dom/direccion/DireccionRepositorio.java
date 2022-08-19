@@ -29,20 +29,7 @@ public class DireccionRepositorio {
                 Query.named(Direccion.class, "findAll")
                         .withParameter("calle",calle));
     }
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Direccion createDireccion(
-            final Localidad localidad,
-            final String calle,
-            final int numero,
-            final String edificacion,
-            final String piso,
-            final String departamento,
-            final String latitud,
-            final String longitud)
-             {
-               return repositoryService.persist(new Direccion(localidad,calle,numero,edificacion,piso,departamento,latitud,longitud));
-    }
+
 
      @Action(semantics = SemanticsOf.SAFE)
      @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
@@ -64,14 +51,14 @@ public class DireccionRepositorio {
     ) {
         return repositoryService.allMatches(
                 Query.named(Direccion.class, Direccion.NAMED_QUERY__FIND_BY_NAME_LIKE)
-                        .withParameter("name", name));
+                       );
     }
 
     @Programmatic
     public Direccion findByNameExact(final String name) {
         return repositoryService.firstMatch(
                         Query.named(Direccion.class, Direccion.NAMED_QUERY__FIND_BY_NAME_EXACT)
-                                .withParameter("name", name))
+                                )
                 .orElse(null);
     }
     @javax.inject.Inject

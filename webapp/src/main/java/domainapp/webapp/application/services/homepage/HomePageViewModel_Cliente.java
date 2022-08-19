@@ -1,11 +1,14 @@
 package domainapp.webapp.application.services.homepage;
 
+import domainapp.modules.simple.dom.cliente.Cliente;
+import domainapp.modules.simple.dom.cliente.ClienteAdd;
 import domainapp.modules.simple.dom.direccion.Direccion;
 import domainapp.modules.simple.dom.direccion.DireccionRepositorio;
 import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.dom.localidad.LocalidadRepositorio;
 import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.provincia.ProvinciaRepositorio;
+import domainapp.modules.simple.types.EmailAddress;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.services.factory.FactoryService;
@@ -20,18 +23,17 @@ public class HomePageViewModel_Cliente {
 
     final HomePageViewModel homePageViewModel;
 
-    public Object act(Localidad localidad ,String calle,
-             int numero,String edificacion,String piso,String departamento,String latitud,String longitud,boolean showVisit) {
-        Direccion direccion = wrapperFactory.wrapMixin(DireccionRepositorio.class,localidad).createDireccion(
-                localidad,calle,numero,edificacion,piso,departamento,latitud,longitud);
-        return  showVisit ? direccion :homePageViewModel;
+    public Object act( String nombre , String apellido,Direccion direccion,
+                      String telefono,String email, boolean showVisit) {
+        Cliente cliente = wrapperFactory.wrapMixin(ClienteAdd.class,direccion).act(nombre,apellido,
+                direccion,telefono,email
+               );
+        return  showVisit ? cliente :homePageViewModel;
     }
-    public List<Provincia> autoComplete0Act(final String name) {
-        return (List<Provincia>) provinciaRepositorio.findByName(name);
+    public List<Direccion> autoComplete2Act(final String name) {
+        return (List<Direccion>) direccionRepositorio.findByName(name);
     }
-    public List<Localidad> autoComplete1Act(final String name) {
-        return (List<Localidad>) localidadRepositorioy.findByNameExact(name);
-    }
+
 
     //*//
    // public LocalDateTime default2Act(PetOwner petOwner, Pet pet) {
@@ -46,6 +48,7 @@ public class HomePageViewModel_Cliente {
     ProvinciaRepositorio provinciaRepositorio;
     @Inject
     LocalidadRepositorio localidadRepositorioy;
+    DireccionRepositorio direccionRepositorio;
     @Inject WrapperFactory wrapperFactory;
     @Inject FactoryService factoryService;
 }
