@@ -17,6 +17,7 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\e
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\localidad\Localidad.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\Usuario.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\estado_aviso\EstadoAviso.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\direccion\DireccionAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\imagen\Imagen.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\imagen\ImagenRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_unidad\TipoUnidadRepositorio.java
@@ -24,6 +25,7 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\i
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\cliente\ClienteRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso\AvisoRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\caracteristica\CaracteristicaRepositorio.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\cliente\ClienteAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\direccion\DireccionRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristicaRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso_contacto\AvisoContactoRepositorio.java

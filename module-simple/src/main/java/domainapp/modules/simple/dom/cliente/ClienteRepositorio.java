@@ -17,23 +17,10 @@ import java.util.List;
         nature = NatureOfService.VIEW,
         logicalTypeName = "simple.ClienteRepositorio"
 )
-@javax.annotation.Priority(PriorityPrecedence.EARLY)
-@lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
+
 
 public class ClienteRepositorio {
-    final RepositoryService repositoryService;
-    final JdoSupportService jdoSupportService;
 
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Cliente createCliente(
-            final String nombre,
-            final String apellido,
-            final Direccion direccion,
-            final String telefono,
-            final String email) {
-        return repositoryService.persist(new Cliente(nombre, apellido, direccion, telefono, email));
-    }
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
@@ -78,5 +65,8 @@ public class ClienteRepositorio {
         q.executeList();
     }
 
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
 
 }

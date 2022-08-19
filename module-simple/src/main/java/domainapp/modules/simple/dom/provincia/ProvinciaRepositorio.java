@@ -6,12 +6,14 @@ import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
+import org.springframework.core.annotation.AliasFor;
+
 import javax.jdo.JDOQLTypedQuery;
 import java.util.List;
 
 @DomainService(
         nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.Provincia"
+        logicalTypeName = "simple.ProvinciaRepositorio"
 )
 
 public class ProvinciaRepositorio {

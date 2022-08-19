@@ -1,3 +1,4 @@
+domainapp\modules\simple\dom\cliente\ClienteAdd.class
 domainapp\modules\simple\dom\localidad\Localidad.class
 domainapp\modules\simple\types\PhoneNumber.class
 domainapp\modules\simple\types\EmailAddress.class
@@ -41,6 +42,7 @@ domainapp\modules\simple\dom\direccion\QDireccion.class
 domainapp\modules\simple\dom\imagen\Imagen.class
 domainapp\modules\simple\dom\direccion\Direccion.class
 domainapp\modules\simple\dom\inmobiliaria\QInmobiliaria.class
+domainapp\modules\simple\dom\direccion\DireccionAdd.class
 domainapp\modules\simple\dom\localidad\QLocalidad.class
 domainapp\modules\simple\dom\inmueble\InmuebleRepositorio.class
 domainapp\modules\simple\dom\red_social\QRedSocial.class

@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.direccion;
 
 
+import domainapp.modules.simple.dom.cliente.Cliente;
 import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.types.Name;
@@ -18,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDateTime;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 @PersistenceCapable(schema = "Inmobiliaria", identityType=IdentityType.DATASTORE)
@@ -46,7 +49,7 @@ public class Direccion implements Comparable<Direccion>{
         this.longitud = longitud;
     }
 
-    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE =null ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE ="findAll" ;
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
     @javax.jdo.annotations.Column(allowsNull = "false", name = "Localidadid")
     @Property(editing = Editing.DISABLED)
@@ -89,7 +92,10 @@ public class Direccion implements Comparable<Direccion>{
     @PropertyLayout(fieldSetId = "longitud", sequence = "10")
     private String longitud;
 
-
+    @Persistent(mappedBy = "direccion", dependentElement = "true")
+    @Collection()
+    @Getter @Setter
+    private SortedSet<Cliente> cliente = new TreeSet<Cliente>();
 
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)

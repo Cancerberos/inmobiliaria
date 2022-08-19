@@ -25,8 +25,15 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 
 @PersistenceCapable(schema = "Inmobiliaria",identityType= IdentityType.DATASTORE)
-@Unique(name = "cliente_id_UNQ", members = {"id"})
-@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
+@Queries({
+        @Query(
+                name = "findAll", language = "JDOQL",
+                value = "SELECT "
+                        + " FROM domainapp.modules.simple.dom.cliente.Cliente "
+                        + "ORDER BY nombre ASC")
+})
+//@javax.jdo.annotations.Unique(name="Cliente_direccion_calle_UNQ", members = {"direccion","calle"})
+@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="clienteid")
 @javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(logicalTypeName = "simple.Cliente", entityChangePublishing = Publishing.ENABLED)
 @lombok.RequiredArgsConstructor
@@ -38,10 +45,10 @@ public class Cliente implements Comparable<Cliente>{
 
 
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE = null;
-    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT = null;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT = "findAll";
 
-    @PropertyLayout(fieldSetId = "id", sequence = "1")
-    private int id;
+    //@PropertyLayout(fieldSetId = "id", sequence = "1")
+    //private int id;
     @Getter
     @Setter
     @PropertyLayout(fieldSetId = "nombre", sequence = "1")
@@ -53,10 +60,11 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "apellido", sequence = "2")
     private String apellido;
 
-    @Getter @Setter
-    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "direccion", sequence = "3")
-    private Direccion direccion;
+    @javax.jdo.annotations.Column(allowsNull = "false", name = "Direccionid")
+    @Property(editing = Editing.DISABLED)
+    @Getter
+    @Setter
+     private Direccion direccion;
 
     @Column(name = "telefono", length = PhoneNumber.MAX_LEN, nullable = true)
     @Getter @Setter
