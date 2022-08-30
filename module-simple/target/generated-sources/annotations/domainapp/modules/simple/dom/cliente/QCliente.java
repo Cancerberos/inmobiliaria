@@ -30,8 +30,8 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
     }
 
     public final StringExpression nombre;
-    public final StringExpression apellido;
     public final domainapp.modules.simple.dom.direccion.QDireccion direccion;
+    public final StringExpression apellido;
     public final StringExpression telefono;
     public final StringExpression email;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
@@ -42,7 +42,6 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
     {
         super(parent, name);
         this.nombre = new StringExpressionImpl(this, "nombre");
-        this.apellido = new StringExpressionImpl(this, "apellido");
         if (depth > 0)
         {
             this.direccion = new domainapp.modules.simple.dom.direccion.QDireccion(this, "direccion", depth-1);
@@ -51,6 +50,7 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
         {
             this.direccion = null;
         }
+        this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
         this.email = new StringExpressionImpl(this, "email");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
@@ -62,8 +62,8 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
     {
         super(type, name, exprType);
         this.nombre = new StringExpressionImpl(this, "nombre");
-        this.apellido = new StringExpressionImpl(this, "apellido");
         this.direccion = new domainapp.modules.simple.dom.direccion.QDireccion(this, "direccion", 5);
+        this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
         this.email = new StringExpressionImpl(this, "email");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");

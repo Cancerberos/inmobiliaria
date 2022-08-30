@@ -18,18 +18,14 @@ import java.util.List;
 public class HomePageViewModel_Direccion {
 
     final HomePageViewModel homePageViewModel;
-
-    public Object act( Localidad localidad , String calle
-            , int numero,String edificacion,String piso,String departamento,String latitud,String longitud,boolean showVisit) {
-        Direccion direccion = wrapperFactory.wrapMixin(DireccionAdd.class,localidad).act(
-                localidad,calle,numero,edificacion,piso,departamento,latitud,longitud);
-        return  showVisit ? direccion :homePageViewModel;
+    public Object act(  String calle,
+            int numero,String edificacion,String piso,String departamento,String latitud,String longitud,Localidad localidad ) {
+        Direccion direccion = wrapperFactory.wrapMixin(DireccionAdd.class,localidad).act(calle,numero,edificacion,piso,departamento,latitud,longitud);
+        return   direccion ;
     }
-    public List<Localidad> autoComplete0Act(final String name) {
-        return (List<Localidad>) localidadRepositorioy.findByName(name);
+    public List<Localidad> autoComplete7Act(final String name) {
+        return (List<Localidad>) localidadRepositorioy.listAll();
     }
-
-
     @Inject
     ProvinciaRepositorio provinciaRepositorio;
     @Inject

@@ -30,19 +30,20 @@ public class ClienteRepositorio {
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<Cliente> findByName(
+    public List<Direccion> findByName(
             @Name final String name
     ) {
         return repositoryService.allMatches(
-                Query.named(Cliente.class, Cliente.NAMED_QUERY__FIND_BY_NAME_LIKE)
-                        .withParameter("name", name));
+                Query.named(Direccion.class, Provincia.NAMED_QUERY__FIND_BY_NAME_LIKE)
+        );
     }
+
 
 
     @Programmatic
     public Cliente findByNameExact(final String name) {
         return repositoryService.firstMatch(
-                        Query.named(Cliente.class, Cliente.NAMED_QUERY__FIND_BY_NAME_EXACT)
+                        Query.named(Cliente.class, Cliente.NAMED_QUERY__FIND_BY_NAME_EXACT_CLIENTE)
                                 .withParameter("name", name))
                 .orElse(null);
     }

@@ -12,7 +12,7 @@ import javax.jdo.JDOQLTypedQuery;
 import java.util.List;
 
 @DomainService(
-        nature = NatureOfService.VIEW,
+        nature = NatureOfService.REST,
         logicalTypeName = "simple.ProvinciaRepositorio"
 )
 
@@ -27,8 +27,8 @@ public class ProvinciaRepositorio {
                 Query.named(Provincia.class, "findAll")
                         .withParameter("descripcion",descripcion));
     }
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR,named = "Agregar Provincia")
     public Provincia createProvincia(
             final String descripcion)
              {

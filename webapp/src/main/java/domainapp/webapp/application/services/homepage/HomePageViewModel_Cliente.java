@@ -15,6 +15,7 @@ import org.apache.isis.applib.services.factory.FactoryService;
 import org.apache.isis.applib.services.wrapper.WrapperFactory;
 
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.List;
 
 @Action
@@ -23,31 +24,16 @@ public class HomePageViewModel_Cliente {
 
     final HomePageViewModel homePageViewModel;
 
-    public Object act( String nombre , String apellido,Direccion direccion,
-                      String telefono,String email, boolean showVisit) {
-        Cliente cliente = wrapperFactory.wrapMixin(ClienteAdd.class,direccion).act(nombre,apellido,
-                direccion,telefono,email
-               );
-        return  showVisit ? cliente :homePageViewModel;
+    public Object act( Direccion direccion,String nombre , String apellido,String telefono,String email) {
+        Cliente cliente = wrapperFactory.wrapMixin(ClienteAdd.class,direccion).act(nombre,apellido,telefono,email);
+        return  cliente ;
     }
-    public List<Direccion> autoComplete2Act(final String name) {
-        return (List<Direccion>) direccionRepositorio.findByName(name);
+
+    public List<Direccion> autoComplete0Act( final String name) {
+        return (List<Direccion>) direccionRepositorio.findByCalle(name);
     }
 
 
-    //*//
-   // public LocalDateTime default2Act(PetOwner petOwner, Pet pet) {
-  ///      if(pet == null) return null;
-  //      return factoryService.mixin(Pet_bookVisit.class, pet).default0Act();
-  //  }
-   // public String validate2Act(PetOwner petOwner, Pet pet, LocalDateTime visitAt){
-    //     return factoryService.mixin(Pet_bookVisit.class, pet).validate0Act(visitAt);
-  //  }
-    ///
-    @Inject
-    ProvinciaRepositorio provinciaRepositorio;
-    @Inject
-    LocalidadRepositorio localidadRepositorioy;
     DireccionRepositorio direccionRepositorio;
     @Inject WrapperFactory wrapperFactory;
     @Inject FactoryService factoryService;
