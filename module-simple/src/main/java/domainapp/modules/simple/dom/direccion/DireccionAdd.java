@@ -14,16 +14,15 @@ import javax.inject.Inject;
         commandPublishing = Publishing.ENABLED,
         executionPublishing = Publishing.ENABLED
 )
-
+@ActionLayout(associateWith = "direccion", sequence = "1", named = "Agregar Direccion")
 @RequiredArgsConstructor
 public class DireccionAdd {
 
     private final Localidad localidad;
 
 
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
+
     public Direccion act(
-            final Localidad localidad,
             final String calle,
             final int numero,
             final String edificacion,
@@ -32,7 +31,7 @@ public class DireccionAdd {
             final String latitud,
             final String longitud)
     {
-        return repositoryService.persist(new Direccion(localidad,calle,numero,edificacion,piso,departamento,latitud,longitud));
+        return repositoryService.persist(new Direccion(calle,numero,edificacion,piso,departamento,latitud,longitud,localidad));
     }
 
     @Inject ClockService clockService;

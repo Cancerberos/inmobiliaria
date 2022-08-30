@@ -1,0 +1,3 @@
+codigoPostal
+provincia
+descripcion

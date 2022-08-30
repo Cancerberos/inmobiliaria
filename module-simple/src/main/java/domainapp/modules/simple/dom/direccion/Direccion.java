@@ -3,8 +3,6 @@ package domainapp.modules.simple.dom.direccion;
 
 import domainapp.modules.simple.dom.cliente.Cliente;
 import domainapp.modules.simple.dom.localidad.Localidad;
-import domainapp.modules.simple.dom.provincia.Provincia;
-import domainapp.modules.simple.types.Name;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
@@ -15,10 +13,9 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.time.LocalDateTime;
+
+import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -26,20 +23,21 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 @PersistenceCapable(schema = "Inmobiliaria", identityType=IdentityType.DATASTORE)
 @Queries({
         @Query(
-                name = "findAll", language = "JDOQL",
+                name = "findDireccion", language = "JDOQL",
                 value = "SELECT "
-                        + " FROM domainapp.modules.simple.dom.direccion.Direccion "
-                        + "ORDER BY calle ASC")
+                        + " FROM domainapp.modules.simple.dom.direccion.Direccion"
+                         + "ORDER BY calle ASC"),
 })
-@javax.jdo.annotations.Unique(name="Direccion_localidad_calle_UNQ", members = {"localidad","calle"})
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Direccionid")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(logicalTypeName = "simple.direccion", entityChangePublishing = Publishing.ENABLED)
 @lombok.RequiredArgsConstructor
 @DomainObjectLayout(cssClassFa = "file-text-o")
+@XmlJavaTypeAdapter(PersistentEntityAdapter.class)
+@ToString(onlyExplicitlyIncluded = true)
+@javax.jdo.annotations.Unique(name="Direccion_localidad_calle_UNQ", members = {"localidad","calle"})
 public class Direccion implements Comparable<Direccion>{
-    public Direccion( Localidad localidad, String calle, int numero, String edificacion, String piso, String departamento, String latitud, String longitud) {
-        this.localidad = localidad;
+    public Direccion( String calle, int numero, String edificacion, String piso, String departamento, String latitud, String longitud,Localidad localidad) {
         this.calle = calle;
         this.numero = numero;
         this.edificacion = edificacion;
@@ -47,56 +45,49 @@ public class Direccion implements Comparable<Direccion>{
         this.departamento = departamento;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.localidad = localidad;
     }
 
-    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE ="findAll" ;
-    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
-    @javax.jdo.annotations.Column(allowsNull = "false", name = "Localidadid")
-    @Property(editing = Editing.DISABLED)
-    @Getter
-    @Setter
-    private Localidad localidad ;
-
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_DIRECCION ="findDireccion" ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT_DIRECCION ="find" ;
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "calle", sequence = "4")
+    @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Calle")
     private String calle;
-
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "numero", sequence = "5")
+    @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Nro")
     private int numero;
-
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "edificacion", sequence = "6")
+    @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Edificio")
     private String edificacion;
-
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "piso", sequence = "7")
+    @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Piso")
     private String  piso;
-
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "departamento", sequence = "8")
+    @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Departamento")
     private String departamento;
 
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "latitud", sequence = "9")
+    @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Latitud")
     private String latitud;
-
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "longitud", sequence = "10")
+    @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Longitud")
     private String longitud;
-
-    @Persistent(mappedBy = "direccion", dependentElement = "true")
-    @Collection()
+        @javax.jdo.annotations.Column(allowsNull = "false", name = "Localidadid")
+    @Property(editing = Editing.DISABLED)
     @Getter @Setter
-    private SortedSet<Cliente> cliente = new TreeSet<Cliente>();
+    private Localidad localidad ;
+    public String title() {
+        return getCalle() ;
+    }
 
+    public String iconName() { return "Direccion";  }
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
     @ActionLayout(
@@ -112,6 +103,9 @@ public class Direccion implements Comparable<Direccion>{
     public int compareTo(@NotNull Direccion o) {
         return 0;
     }
+
+    private final static Comparator<Direccion> comparator =
+    Comparator.comparing(Direccion::getCalle).thenComparing(Direccion::getCalle);
 
     @Inject
     RepositoryService repositoryService;

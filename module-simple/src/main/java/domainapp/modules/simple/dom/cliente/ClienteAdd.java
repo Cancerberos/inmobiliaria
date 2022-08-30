@@ -15,21 +15,18 @@ import javax.inject.Inject;
         commandPublishing = Publishing.ENABLED,
         executionPublishing = Publishing.ENABLED
 )
-
+@ActionLayout(associateWith = "cliente", sequence = "1", named = "Agregar Cliente")
 @RequiredArgsConstructor
 public class ClienteAdd {
 
     private final Direccion direccion;
 
 
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-     public Cliente act(
-            final String nombre,
+     public Cliente act(  final String nombre,
             final String apellido,
-            final Direccion direccion,
             final String telefono,
             final String email) {
-        return repositoryService.persist(new Cliente(nombre, apellido, direccion, telefono, email));
+        return repositoryService.persist(new Cliente(direccion,nombre, apellido,  telefono, email));
     }
 
 

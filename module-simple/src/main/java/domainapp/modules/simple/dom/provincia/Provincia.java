@@ -1,6 +1,5 @@
 package domainapp.modules.simple.dom.provincia;
 
-
 import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.types.Name;
 import lombok.*;
@@ -17,6 +16,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 
 @PersistenceCapable(
@@ -25,9 +25,9 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 
 @Queries({
         @Query(
-                name = "findAllInactives", language = "JDOQL",
+                name = "findAll", language = "JDOQL",
                 value = "SELECT "
-                        + "FROM domainapp.modules.simple.dominio.provincia.Provincia "
+                        + "FROM domainapp.modules.simple.dom.provincia.Provincia "
                         + ""),
 })
 
@@ -40,7 +40,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 public class Provincia implements Comparable<Provincia>{
 
 
-    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE = "findAllInactives" ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE = "findAll" ;
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
     @Title
     @Name
@@ -56,21 +56,28 @@ public class Provincia implements Comparable<Provincia>{
     @Getter @Setter
     @javax.jdo.annotations.Column(allowsNull="true")
     private SortedSet<Localidad> localidad = new TreeSet<Localidad>();
-   // private Localidad localidad;
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
-    @ActionLayout(position = ActionLayout.Position.PANEL,describedAs = "Elimina este objeto del almacén de datos persistente")
+    @ActionLayout(position = ActionLayout.Position.PANEL,
+            describedAs = "Elimina este objeto del almacén de datos persistente",
+            named = "Eliminar Provincia"
+    )
     public void delete() {
         final String title = titleService.titleOf(this);
         messageService.informUser(String.format("'%s' deleted", title));
         repositoryService.removeAndFlush(this);
     }
-
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout(associateWith = "localidad", sequence = "1", named = "Modifica Provincia")
+    public Provincia updateName(final String descripcion)
+           {
+        setDescripcion(descripcion);
+         return this;
+    }
     @Override
     public int compareTo(@NotNull Provincia o) {
         return 0;
     }
-
     @Inject
     RepositoryService repositoryService;
     @Inject

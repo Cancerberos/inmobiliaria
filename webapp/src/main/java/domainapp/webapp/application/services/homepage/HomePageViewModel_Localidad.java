@@ -19,9 +19,9 @@ public class HomePageViewModel_Localidad {
 
     final HomePageViewModel homePageViewModel;
 
-    public Object act(Provincia provincia, String descripcion , String cp,boolean showVisit) {
-        Localidad localidad = wrapperFactory.wrapMixin(LocalidadAdd.class,provincia).act(provincia,descripcion,cp);
-        return localidad; // showVisit ? localidad :homePageViewModel;
+    public Object act(Provincia provincia, String descripcion , String cp) {
+        Localidad localidad = wrapperFactory.wrapMixin(LocalidadAdd.class,provincia).act(descripcion,cp);
+        return localidad;
     }
     public List<Provincia> autoComplete0Act(final String name) {
         return (List<Provincia>) provinciaRepositorio.findByName(name);

@@ -1,5 +1,6 @@
 domainapp\modules\simple\dom\cliente\ClienteAdd.class
 domainapp\modules\simple\dom\localidad\Localidad.class
+domainapp\modules\simple\dom\localidad\LocalidadRemove.class
 domainapp\modules\simple\types\PhoneNumber.class
 domainapp\modules\simple\types\EmailAddress.class
 domainapp\modules\simple\dom\aviso\QAviso.class
@@ -7,6 +8,7 @@ domainapp\modules\simple\fixture\SimpleObjectBuilder.class
 domainapp\modules\simple\dom\tipo_unidad\QTipoUnidad.class
 domainapp\modules\simple\dom\inmueble_caracteristica\QInmuebleCaracteristica.class
 domainapp\modules\simple\dom\caracteristica\QCaracteristica.class
+domainapp\modules\simple\dom\direccion\DireccionRepositorio$CreateDomainEvent.class
 domainapp\modules\simple\dom\red_social\RedSocial.class
 domainapp\modules\simple\dom\usuario\Usuario.class
 domainapp\modules\simple\types\LastName.class
@@ -55,6 +57,7 @@ domainapp\modules\simple\dom\usuario\QUsuario.class
 domainapp\modules\simple\types\Name.class
 domainapp\modules\simple\dom\tipo_operacion\TipoOperacion.class
 domainapp\modules\simple\dom\provincia\ProvinciaRepositorio.class
+domainapp\modules\simple\dom\direccion\DireccionRemove.class
 domainapp\modules\simple\dom\cliente\ClienteRepositorio.class
 domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristicaRepositorio.class
 domainapp\modules\simple\dom\inmobiliaria\InmobiliariaRepositorio.class
