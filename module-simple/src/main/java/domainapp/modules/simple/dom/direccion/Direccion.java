@@ -16,17 +16,17 @@ import javax.jdo.annotations.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import java.util.Comparator;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.List;
 
-import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
+
 @PersistenceCapable(schema = "Inmobiliaria", identityType=IdentityType.DATASTORE)
 @Queries({
         @Query(
                 name = "findDireccion", language = "JDOQL",
-                value = "SELECT "
+                value = "SELECT"
                         + " FROM domainapp.modules.simple.dom.direccion.Direccion"
-                         + "ORDER BY calle ASC"),
+                         + " ORDER BY calle ASC"),
 })
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Direccionid")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
@@ -35,7 +35,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 @DomainObjectLayout(cssClassFa = "file-text-o")
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
-@javax.jdo.annotations.Unique(name="Direccion_localidad_calle_UNQ", members = {"localidad","calle"})
+@javax.jdo.annotations.Unique(name="Direccion_localidad_calle_UNQ", members = {"calle","localidad"})
 public class Direccion implements Comparable<Direccion>{
     public Direccion( String calle, int numero, String edificacion, String piso, String departamento, String latitud, String longitud,Localidad localidad) {
         this.calle = calle;
@@ -79,25 +79,19 @@ public class Direccion implements Comparable<Direccion>{
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Datos Direccion", sequence = "1",named = "Longitud")
     private String longitud;
-        @javax.jdo.annotations.Column(allowsNull = "false", name = "Localidadid")
+    @javax.jdo.annotations.Column(allowsNull = "false", name = "Localidadid")
     @Property(editing = Editing.DISABLED)
     @Getter @Setter
     private Localidad localidad ;
+   // @Persistent(mappedBy="direccion")
+   // Cliente cliente;
     public String title() {
         return getCalle() ;
     }
 
     public String iconName() { return "Direccion";  }
 
-    @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
-    @ActionLayout(
-            position = ActionLayout.Position.PANEL,
-            describedAs = "Elimina este objeto del almacén de datos persistente")
-    public void delete() {
-        final String title = titleService.titleOf(this);
-        messageService.informUser(String.format("'%s' deleted", title));
-        repositoryService.removeAndFlush(this);
-    }
+
 
     @Override
     public int compareTo(@NotNull Direccion o) {
@@ -107,6 +101,48 @@ public class Direccion implements Comparable<Direccion>{
     private final static Comparator<Direccion> comparator =
     Comparator.comparing(Direccion::getCalle).thenComparing(Direccion::getCalle);
 
+
+
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Direccion", sequence = "1", named = "Modifica Direccion")
+    public Object UpdateDireccion(String calle, int numero, String edificacion, String piso, String departamento, String latitud, String longitud,Localidad localidad) {
+        setCalle(calle);
+        setNumero(numero);
+        setEdificacion(edificacion);
+        setPiso(piso);
+        setDepartamento(departamento);
+        setLatitud(latitud);
+        setLongitud(longitud);
+        setLocalidad(localidad);
+        return this;
+    }
+    public @NonNull String default0UpdateDireccion() {
+        return getCalle();
+    }
+    public @NonNull int default1UpdateDireccion() {
+        return getNumero();
+    }
+    public @NonNull String default2UpdateDireccion() {
+        return getEdificacion();
+    }
+    public @NonNull String default3UpdateDireccion() {
+        return getPiso();
+    }
+    public @NonNull String default4UpdateDireccion() {
+        return  getDepartamento();
+    }
+    public @NonNull String default5UpdateDireccion() {
+        return getLatitud();
+    }
+    public @NonNull String default6UpdateDireccion() {
+        return  getLongitud();
+    }
+    public Localidad default7UpdateDireccion() {
+        return getLocalidad();
+    }
+    public List<Localidad> autoComplete7UpdateDireccion(String name) {
+        return repositoryService.allInstances(Localidad.class);
+    }
     @Inject
     RepositoryService repositoryService;
     @Inject

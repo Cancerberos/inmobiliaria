@@ -24,7 +24,7 @@ public class DireccionRepositorio {
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_MODAL)
     public List<Direccion> findByCalle(
-           final String calle
+          @Name final String name
     ) {
         return repositoryService.allMatches(
                 Query.named(Direccion.class, Direccion.NAMED_QUERY__FIND_BY_NAME_LIKE_DIRECCION)
@@ -33,15 +33,6 @@ public class DireccionRepositorio {
     @PropertyLayout(named ="Listado de  Direccion por codigo postal",  cssClass="x-key")
     public List<Direccion> listAll() {
         return repositoryService.allInstances(Direccion.class);
-    }
-
-
-    public void ping() {
-        JDOQLTypedQuery<Direccion> q = jdoSupportService.newTypesafeQuery(Direccion.class);
-        final QDireccion candidate = QDireccion.candidate();
-        q.range(0,2);
-        q.orderBy(candidate.calle.asc());
-        q.executeList();
     }
     public static class CreateDomainEvent extends ActionDomainEvent<DireccionRepositorio> {}
     @javax.inject.Inject

@@ -9,10 +9,7 @@ import javax.inject.Inject;
 
 import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.provincia.ProvinciaRepositorio;
-import org.apache.isis.applib.annotation.Action;
-import org.apache.isis.applib.annotation.ActionLayout;
-import org.apache.isis.applib.annotation.Publishing;
-import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.clock.ClockService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import lombok.RequiredArgsConstructor;
@@ -22,15 +19,14 @@ import lombok.RequiredArgsConstructor;
         commandPublishing = Publishing.ENABLED,
         executionPublishing = Publishing.ENABLED
 )
-@ActionLayout(associateWith = "localidad", sequence = "1", named = "Agregar Localidad")
+@ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Localidad", sequence = "1", named = "Agrega Localidad")//
 @RequiredArgsConstructor
 public class LocalidadAdd {
 
     private final Provincia provincia;
-
-    public Localidad act( final String descripcion, final String codigoPostal)
+      public Localidad act( final String descripcion, final String codigoPostal)
     {
-        return repositoryService.persist(new Localidad(provincia,descripcion,codigoPostal));
+        return repositoryService.persist(new Localidad(descripcion,codigoPostal,provincia));
     }
 
     @Inject ClockService clockService;

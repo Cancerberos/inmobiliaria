@@ -14,15 +14,13 @@ import javax.inject.Inject;
         commandPublishing = Publishing.ENABLED,
         executionPublishing = Publishing.ENABLED
 )
-@ActionLayout(associateWith = "direccion", sequence = "1", named = "Agregar Direccion")
+@ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Direccion", sequence = "1", named = "Agrega Direccion")//
 @RequiredArgsConstructor
 public class DireccionAdd {
 
     private final Localidad localidad;
 
-
-
-    public Direccion act(
+     public Direccion act(
             final String calle,
             final int numero,
             final String edificacion,

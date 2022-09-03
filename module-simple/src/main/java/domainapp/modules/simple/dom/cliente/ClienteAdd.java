@@ -15,14 +15,14 @@ import javax.inject.Inject;
         commandPublishing = Publishing.ENABLED,
         executionPublishing = Publishing.ENABLED
 )
-@ActionLayout(associateWith = "cliente", sequence = "1", named = "Agregar Cliente")
+@ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Cliente", sequence = "1", named = "Agrega Cliente")//
 @RequiredArgsConstructor
 public class ClienteAdd {
 
     private final Direccion direccion;
-
-
-     public Cliente act(  final String nombre,
+   
+     public Cliente act(
+             final String nombre,
             final String apellido,
             final String telefono,
             final String email) {

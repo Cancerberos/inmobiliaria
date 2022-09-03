@@ -8,6 +8,8 @@ import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.provincia.ProvinciaRepositorio;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.PromptStyle;
 import org.apache.isis.applib.services.factory.FactoryService;
 import org.apache.isis.applib.services.wrapper.WrapperFactory;
 import javax.inject.Inject;
@@ -18,11 +20,13 @@ import java.util.List;
 public class HomePageViewModel_Direccion {
 
     final HomePageViewModel homePageViewModel;
-    public Object act(  String calle,
+    @ActionLayout( promptStyle = PromptStyle.DIALOG_MODAL,named = "Alta de Direccion")
+    public Object act( String calle,
             int numero,String edificacion,String piso,String departamento,String latitud,String longitud,Localidad localidad ) {
         Direccion direccion = wrapperFactory.wrapMixin(DireccionAdd.class,localidad).act(calle,numero,edificacion,piso,departamento,latitud,longitud);
         return   direccion ;
     }
+
     public List<Localidad> autoComplete7Act(final String name) {
         return (List<Localidad>) localidadRepositorioy.listAll();
     }
