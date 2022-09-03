@@ -10,6 +10,8 @@ import javax.jdo.JDOQLTypedQuery;
 import java.util.List;
 import java.util.Optional;
 
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
+
 @DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.LocalidadRepositorio")
 public class LocalidadRepositorio {
 
@@ -20,18 +22,11 @@ public class LocalidadRepositorio {
                 Query.named(Localidad.class, Localidad.NAMED_QUERY__FIND_BY_NAME_LIKE)
                       );
     }
-    @PropertyLayout(named ="Listado de  Localidades por codigo postal",  cssClass="x-key")
+
     public List<Localidad> listAll() {
         return repositoryService.allInstances(Localidad.class);
     }
 
-      public void ping() {
-       JDOQLTypedQuery<Localidad> q = jdoSupportService.newTypesafeQuery(Localidad.class);
-        final QDireccion candidate = QDireccion.candidate();
-         q.range(0,2);
-         q.orderBy(candidate.calle.asc());
-        q.executeList();
-       }
 
     public static class CreateDomainEvent extends ActionDomainEvent<LocalidadRepositorio> {}
 

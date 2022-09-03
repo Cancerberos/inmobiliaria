@@ -37,10 +37,12 @@ domainapp\modules\simple\dom\imagen\ImagenRepositorio.class
 domainapp\modules\simple\dom\aviso\Aviso.class
 domainapp\modules\simple\dom\red_social\RedSocialRepositorio.class
 domainapp\modules\simple\dom\caracteristica\Caracteristica.class
+domainapp\modules\simple\dom\cliente\ClienteRemove.class
 domainapp\modules\simple\dom\inmobiliaria\Inmobiliaria.class
 domainapp\modules\simple\dom\inmueble\QInmueble.class
 domainapp\modules\simple\dom\aviso_contacto\AvisoContactoRepositorio.class
 domainapp\modules\simple\dom\direccion\QDireccion.class
+domainapp\modules\simple\dom\direccion\DireccionRemove$ActionEvent.class
 domainapp\modules\simple\dom\imagen\Imagen.class
 domainapp\modules\simple\dom\direccion\Direccion.class
 domainapp\modules\simple\dom\inmobiliaria\QInmobiliaria.class
@@ -64,6 +66,7 @@ domainapp\modules\simple\dom\inmobiliaria\InmobiliariaRepositorio.class
 domainapp\modules\simple\dom\aviso_contacto\AvisoContacto.class
 domainapp\modules\simple\dom\localidad\LocalidadRepositorio.class
 domainapp\modules\simple\types\Notes.class
+domainapp\modules\simple\dom\cliente\ClienteRemove$ActionEvent.class
 domainapp\modules\simple\dom\so\QSimpleObject.class
 domainapp\modules\simple\dom\tipo_unidad\TipoUnidad.class
 domainapp\modules\simple\dom\aviso\AvisoRepositorio.class

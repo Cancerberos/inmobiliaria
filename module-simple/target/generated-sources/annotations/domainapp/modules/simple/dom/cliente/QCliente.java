@@ -29,8 +29,8 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
         return new QCliente(Cliente.class, name, ExpressionType.VARIABLE);
     }
 
-    public final StringExpression nombre;
     public final domainapp.modules.simple.dom.direccion.QDireccion direccion;
+    public final StringExpression nombre;
     public final StringExpression apellido;
     public final StringExpression telefono;
     public final StringExpression email;
@@ -41,7 +41,6 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
     public QCliente(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
-        this.nombre = new StringExpressionImpl(this, "nombre");
         if (depth > 0)
         {
             this.direccion = new domainapp.modules.simple.dom.direccion.QDireccion(this, "direccion", depth-1);
@@ -50,6 +49,7 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
         {
             this.direccion = null;
         }
+        this.nombre = new StringExpressionImpl(this, "nombre");
         this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
         this.email = new StringExpressionImpl(this, "email");
@@ -61,8 +61,8 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
     public QCliente(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
-        this.nombre = new StringExpressionImpl(this, "nombre");
         this.direccion = new domainapp.modules.simple.dom.direccion.QDireccion(this, "direccion", 5);
+        this.nombre = new StringExpressionImpl(this, "nombre");
         this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
         this.email = new StringExpressionImpl(this, "email");

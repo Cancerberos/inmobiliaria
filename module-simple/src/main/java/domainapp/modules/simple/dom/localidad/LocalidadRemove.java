@@ -19,18 +19,18 @@ import javax.inject.Inject;
         commandPublishing = Publishing.ENABLED,
         executionPublishing = Publishing.ENABLED
 )
-@ActionLayout(associateWith = "localidad", sequence = "1", named = "Borrar Localidad")
+@ActionLayout(position = ActionLayout.Position.PANEL,
+        associateWith = "localidad",
+        sequence = "1", named = "Borrar Localidad",
+        describedAs = "Elimina este objeto del almacén de datos persistente")
 @RequiredArgsConstructor
 public class LocalidadRemove {
-
     private final Localidad localidad;
-
     public void delete() {
-        final String title = titleService.titleOf(this.localidad);
-        messageService.informUser(String.format("'%s' deleted", title));
-        repositoryService.removeAndFlush(this.localidad);
+        final String title = titleService.titleOf(" Mensaje del Sistema ");
+        messageService.informUser(String.format("- '%s' - Se Borro el Registro => "+ localidad.getDescripcion() , title));
+        repositoryService.remove(localidad);
     }
-
     @Inject ClockService clockService;
     @Inject RepositoryService repositoryService;
     @Inject

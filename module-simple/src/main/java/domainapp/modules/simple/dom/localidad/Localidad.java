@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.localidad;
 
 
+import domainapp.modules.simple.dom.direccion.Direccion;
 import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.provincia.ProvinciaRepositorio;
 import lombok.*;
@@ -9,13 +10,17 @@ import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
+import org.apache.isis.applib.services.wrapper.WrapperFactory;
 import org.jetbrains.annotations.NotNull;
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
+import javax.persistence.Entity;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
+
+@Entity
 @PersistenceCapable(schema = "Inmobiliaria",identityType=IdentityType.DATASTORE)
 @Queries({
         @Query(
@@ -33,13 +38,13 @@ import java.util.List;
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
 @javax.jdo.annotations.Unique(name="Localidad_descripcion_provincia_UNQ", members = {"descripcion","provincia"})
+
 public class Localidad implements Comparable<Localidad>{
-    public Localidad(Provincia provincia,String descripcion, String codigoPostal) {
+    public Localidad(String descripcion, String codigoPostal,Provincia provincia) {
         this.provincia=provincia;
         this.descripcion = descripcion;
         this.codigoPostal = codigoPostal;
     }
-
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE ="findAllLocalidades" ;
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT ="findByDescription" ;
     @javax.jdo.annotations.Column(allowsNull = "false", name = "Provinciaid")
@@ -47,10 +52,9 @@ public class Localidad implements Comparable<Localidad>{
     @Getter
     @Setter
     private Provincia provincia ;
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    @lombok.NonNull
-    @Getter
-    @Setter
+
+    @Column(allowsNull = "false")
+    @NonNull @Getter  @Setter @ToString.Include
     @PropertyLayout(fieldSetId = "Datos Localidad", sequence = "1",named = "Descripcion")
     @Property(editing = Editing.DISABLED)
     private String descripcion;
@@ -58,14 +62,16 @@ public class Localidad implements Comparable<Localidad>{
     @lombok.NonNull
     @Getter
     @Setter
+    @ToString.Include
     @PropertyLayout(fieldSetId = "Datos Localidad", sequence = "1",named ="Codigo Postal")
+    @Property(editing = Editing.DISABLED)
     private String codigoPostal;
 
 
     public String title() {
         return getDescripcion() ;
     }
-    public String iconName() { return "Localidad.png";  }
+
     @Override
     public int compareTo(@NotNull Localidad o) {
         return 0;
@@ -73,17 +79,31 @@ public class Localidad implements Comparable<Localidad>{
 
     private final static Comparator<Localidad> comparator =
             Comparator.comparing(Localidad::getDescripcion).thenComparing(Localidad::getDescripcion);
-    //@Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "localidad", sequence = "1", named = "Modifica Localidad")
-    public Localidad act(
-            final String descripcion,
-            final String codigoPostal) {
-        setProvincia(provincia);
-        setDescripcion(descripcion);
-        setCodigoPostal(codigoPostal);
-        return this;
+
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Listar Localidades")
+    public List<Localidad> listAll() {
+        return repositoryService.allInstances(Localidad.class);
     }
 
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Localidad", sequence = "1", named = "Modifica Localidad")
+    public Object UpdateLocalidad(Provincia  provincia, String descripcion , String cp) {
+        setProvincia((Provincia) provincia);
+        setDescripcion(descripcion);
+        setCodigoPostal(cp);
+        return this;
+    }
+    public Provincia default0UpdateLocalidad() {
+        return getProvincia();
+    }
+    public List<Provincia> autoComplete0UpdateLocalidad(String name) {return repositoryService.allInstances(Provincia.class); }
+    public @NonNull String default1UpdateLocalidad() {
+        return getDescripcion();
+    }
+    public @NonNull String default2UpdateLocalidad() {
+        return getCodigoPostal();
+    }
     @Inject
     RepositoryService repositoryService;
     @Inject
@@ -93,5 +113,6 @@ public class Localidad implements Comparable<Localidad>{
     @Inject
     LocalidadRepositorio localidadRepositorio;
     ProvinciaRepositorio provinciaRepositorio;
-
+    @Inject
+    WrapperFactory wrapperFactory;
 }

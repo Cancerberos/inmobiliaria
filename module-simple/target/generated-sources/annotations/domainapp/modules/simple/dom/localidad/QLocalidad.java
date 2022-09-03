@@ -37,6 +37,7 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
     public final ObjectExpression<domainapp.modules.simple.dom.localidad.LocalidadRepositorio> localidadRepositorio;
     public final ObjectExpression<domainapp.modules.simple.dom.provincia.ProvinciaRepositorio> provinciaRepositorio;
+    public final ObjectExpression<org.apache.isis.applib.services.wrapper.WrapperFactory> wrapperFactory;
 
     public QLocalidad(PersistableExpression parent, String name, int depth)
     {
@@ -56,6 +57,7 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
         this.localidadRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.localidad.LocalidadRepositorio>(this, "localidadRepositorio");
         this.provinciaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.provincia.ProvinciaRepositorio>(this, "provinciaRepositorio");
+        this.wrapperFactory = new ObjectExpressionImpl<org.apache.isis.applib.services.wrapper.WrapperFactory>(this, "wrapperFactory");
     }
 
     public QLocalidad(Class type, String name, ExpressionType exprType)
@@ -69,5 +71,6 @@ public class QLocalidad extends PersistableExpressionImpl<Localidad> implements 
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
         this.localidadRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.localidad.LocalidadRepositorio>(this, "localidadRepositorio");
         this.provinciaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.provincia.ProvinciaRepositorio>(this, "provinciaRepositorio");
+        this.wrapperFactory = new ObjectExpressionImpl<org.apache.isis.applib.services.wrapper.WrapperFactory>(this, "wrapperFactory");
     }
 }
