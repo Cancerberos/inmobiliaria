@@ -1,35 +1,38 @@
 package domainapp.modules.simple.dom.localidad;
 
+import domainapp.modules.simple.dom.cliente.Cliente;
+import domainapp.modules.simple.dom.direccion.Direccion;
+import domainapp.modules.simple.dom.direccion.DireccionRepositorio;
+import domainapp.modules.simple.dom.provincia.Provincia;
+import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
-import javax.inject.Inject;
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
-import domainapp.modules.simple.dom.provincia.Provincia;
-import domainapp.modules.simple.dom.provincia.ProvinciaRepositorio;
-import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.services.clock.ClockService;
-import org.apache.isis.applib.services.repository.RepositoryService;
-import lombok.RequiredArgsConstructor;
-
-@Action(
-        semantics = SemanticsOf.IDEMPOTENT,
-        commandPublishing = Publishing.ENABLED,
-        executionPublishing = Publishing.ENABLED
+@DomainService(
+        nature = NatureOfService.REST,
+        logicalTypeName = "simple.LocalidadAdd"
 )
-@ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Localidad", sequence = "1", named = "Agrega Localidad")//
-@RequiredArgsConstructor
+
 public class LocalidadAdd {
 
-    private final Provincia provincia;
-      public Localidad act( final String descripcion, final String codigoPostal)
+
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,
+            named = "Agregar Localidad" )
+    public Localidad AddLocalidad( String descripcion, final String codigoPostal,Provincia provincia)
     {
         return repositoryService.persist(new Localidad(descripcion,codigoPostal,provincia));
     }
+    public List<Provincia> autoComplete2AddLocalidad(String name) {return repositoryService.allInstances(Provincia.class); }
 
-    @Inject ClockService clockService;
-    @Inject RepositoryService repositoryService;
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
+    DireccionRepositorio direccionRepositorio;
+
 
 }

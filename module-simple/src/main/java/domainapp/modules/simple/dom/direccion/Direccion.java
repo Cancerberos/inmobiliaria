@@ -35,7 +35,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 @DomainObjectLayout(cssClassFa = "file-text-o")
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
-@javax.jdo.annotations.Unique(name="Direccion_localidad_calle_UNQ", members = {"calle","localidad"})
+//@javax.jdo.annotations.Unique(name="Direccion_localidad_calle_UNQ", members = {"calle","localidad"})
 public class Direccion implements Comparable<Direccion>{
     public Direccion( String calle, int numero, String edificacion, String piso, String departamento, String latitud, String longitud,Localidad localidad) {
         this.calle = calle;
@@ -83,8 +83,14 @@ public class Direccion implements Comparable<Direccion>{
     @Property(editing = Editing.DISABLED)
     @Getter @Setter
     private Localidad localidad ;
-   // @Persistent(mappedBy="direccion")
-   // Cliente cliente;
+
+   // @javax.jdo.annotations.Column(allowsNull = "true", name = "clienteid")
+   // @Property(editing = Editing.DISABLED)
+  //  @Getter @Setter
+  //  Cliente cliente;
+
+
+
     public String title() {
         return getCalle() ;
     }
@@ -100,6 +106,11 @@ public class Direccion implements Comparable<Direccion>{
 
     private final static Comparator<Direccion> comparator =
     Comparator.comparing(Direccion::getCalle).thenComparing(Direccion::getCalle);
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Listar Direcciones")
+    public List<Direccion> listAll() {
+        return repositoryService.allInstances(Direccion.class);
+    }
 
 
 

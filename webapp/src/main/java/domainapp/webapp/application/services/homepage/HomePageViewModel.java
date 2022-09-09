@@ -30,7 +30,7 @@ public class HomePageViewModel {
     public List<Cliente> getCliente() {
         return clienteRepositorio.listarCliente();
     }
-    public List<Direccion> getDireccion() { return direccionRepositorio.listAll(); }
+
     public List<Provincia> getProvincia() {
         return provinciaRepositorio.listAll();
     }

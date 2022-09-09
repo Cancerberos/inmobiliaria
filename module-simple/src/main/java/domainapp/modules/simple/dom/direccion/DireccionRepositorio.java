@@ -22,7 +22,7 @@ import java.util.List;
 public class DireccionRepositorio {
 
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_MODAL)
+    @ActionLayout(named = "Buscar Direccion por calle")
     public List<Direccion> findByCalle(
           @Name final String name
     ) {
@@ -30,7 +30,8 @@ public class DireccionRepositorio {
                 Query.named(Direccion.class, Direccion.NAMED_QUERY__FIND_BY_NAME_LIKE_DIRECCION)
         );
     }
-    @PropertyLayout(named ="Listado de  Direccion por codigo postal",  cssClass="x-key")
+
+    @ActionLayout(named = "Listar Direcciones")
     public List<Direccion> listAll() {
         return repositoryService.allInstances(Direccion.class);
     }

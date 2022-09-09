@@ -47,13 +47,13 @@ public class Localidad implements Comparable<Localidad>{
     }
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE ="findAllLocalidades" ;
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT ="findByDescription" ;
-    @javax.jdo.annotations.Column(allowsNull = "false", name = "Provinciaid")
+    @javax.jdo.annotations.Column(allowsNull = "true", name = "Provinciaid")
     @Property(editing = Editing.DISABLED)
     @Getter
     @Setter
     private Provincia provincia ;
 
-    @Column(allowsNull = "false")
+    @Column(allowsNull = "true")
     @NonNull @Getter  @Setter @ToString.Include
     @PropertyLayout(fieldSetId = "Datos Localidad", sequence = "1",named = "Descripcion")
     @Property(editing = Editing.DISABLED)
@@ -104,6 +104,7 @@ public class Localidad implements Comparable<Localidad>{
     public @NonNull String default2UpdateLocalidad() {
         return getCodigoPostal();
     }
+
     @Inject
     RepositoryService repositoryService;
     @Inject

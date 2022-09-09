@@ -14,7 +14,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
 @DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.LocalidadRepositorio")
 public class LocalidadRepositorio {
-
+    @ActionLayout(named = "Buscar Localidad por Nombre")
        public List<Localidad> findByName(
             final String name
     ) {
@@ -22,7 +22,7 @@ public class LocalidadRepositorio {
                 Query.named(Localidad.class, Localidad.NAMED_QUERY__FIND_BY_NAME_LIKE)
                       );
     }
-
+    @ActionLayout(named = "Listar Localidades")
     public List<Localidad> listAll() {
         return repositoryService.allInstances(Localidad.class);
     }

@@ -9,30 +9,36 @@
         <bs3:col span="6">
             <bs3:row>
                 <bs3:col span="12">
-                    <bs3:tabGroup collapseIfOne="false">
-                        <bs3:tab name="Datos Cliente">
-                            <bs3:row>
-                                <bs3:col span="20">
+                    <bs3:tabGroup collapseIfOne="true"  >
+                        <bs3:tab name="Datos del Cliente"  >
+                            <bs3:row >
+                                <bs3:col span="15" size="XS" >
                                     <cpt:fieldSet id="direccion"/>
                                     <cpt:fieldSet id="nombre"/>
                                     <cpt:fieldSet id="apellido"/>
                                     <cpt:fieldSet id="telefono"/>
                                     <cpt:fieldSet id="email"/>
-                                    <cpt:fieldSet name="Detalle" id="other" unreferencedProperties="true"/>
+                                    <cpt:fieldSet id="+++++++++++++++++++"/>
+                                    <cpt:fieldSet id="calle"/>
+                                    <cpt:fieldSet id="altura"/>
+                                    <cpt:fieldSet id="barrio"/>
+                                    <cpt:fieldSet id="provincia"/>
+                                    <cpt:fieldSet id="localidad"/>
+                                    <cpt:fieldSet name="Detalle" id="other" unreferencedProperties="true" />
                                 </bs3:col>
                             </bs3:row>
                         </bs3:tab>
-                        <bs3:tab name="Metadata" >
+                         <bs3:tab name="Metadata" >
                             <bs3:row>
-                                <bs3:col span="12">
-                                    <cpt:fieldSet name="Metadata" id="metadata" unreferencedActions="false"/>
+                                <bs3:col span="0">
+                                    <cpt:fieldSet name="" id="metadata" unreferencedActions="false"/>
                                 </bs3:col>
                             </bs3:row>
                         </bs3:tab>
+
                         <bs3:tab name="Detalles">
                             <bs3:row>
-                                <bs3:col span="12">
-
+                                <bs3:col span="22">
                                 </bs3:col>
                             </bs3:row>
                         </bs3:tab>
@@ -41,12 +47,13 @@
                 </bs3:col>
             </bs3:row>
             <bs3:row>
-                <bs3:col span="12">
+                <bs3:col span="22">
                 </bs3:col>
             </bs3:row>
         </bs3:col>
-        <bs3:col span="6">
+        <bs3:col span="0">
             <bs3:tabGroup unreferencedCollections="true"/>
         </bs3:col>
     </bs3:row>
 </bs3:grid>
+

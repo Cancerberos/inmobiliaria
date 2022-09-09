@@ -23,13 +23,13 @@ public class ClienteRepositorio {
 
 
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+    @ActionLayout(named = "Listar Clientes")
     public List<Cliente> listarCliente() {
         return repositoryService.allInstances(Cliente.class);
     }
 
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_SIDEBAR)
+    @ActionLayout(named = "Buscar Cliente por Nombre")
     public List<Direccion> findByName(
             @Name final String name
     ) {

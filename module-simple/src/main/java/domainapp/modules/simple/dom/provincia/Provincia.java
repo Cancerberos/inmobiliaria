@@ -49,8 +49,9 @@ public class Provincia implements Comparable<Provincia>{
     @Persistent(mappedBy = "provincia", dependentElement = "true")
     @Collection()
     @Getter @Setter
+
     @javax.jdo.annotations.Column(allowsNull="true")
-    private SortedSet<Localidad> localidad = new TreeSet<Localidad>();
+    private TreeSet<Localidad> localidad = new TreeSet<Localidad>();
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
     @ActionLayout(position = ActionLayout.Position.PANEL,describedAs = "Elimina este objeto del almacén de datos persistente",named = "Eliminar Provincia" )
@@ -60,13 +61,16 @@ public class Provincia implements Comparable<Provincia>{
         repositoryService.removeAndFlush(this);
     }
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Listar Provincia")
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,
+            named = "Listar Provincia" )
     public List<Provincia> listarProvincia() {
         return repositoryService.allInstances(Provincia.class);
     }
 
     @Action(semantics =IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout(promptStyle =PromptStyle.DIALOG_MODAL,associateWith = "provincia", sequence = "1", named = "Modifica Provincia")
+    @ActionLayout(promptStyle =PromptStyle.DIALOG_MODAL,
+            associateWith = "provincia",
+            sequence = "1", named = "Modifica Provincia" )
     public Provincia updateProvincia(final String descripcion)
            {
         setDescripcion(descripcion);
