@@ -91,6 +91,7 @@ class Inmueble {
 -String imgUrl1
 -String imgUrl2
 -String imgUrl3
+
 +create()
 }
 

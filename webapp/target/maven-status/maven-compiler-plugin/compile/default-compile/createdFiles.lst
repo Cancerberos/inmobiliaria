@@ -1,6 +1,5 @@
 domainapp\webapp\SimpleApp.class
 domainapp\webapp\quartz\job\SampleJob.class
-domainapp\webapp\application\services\homepage\HomePageViewModel_Direccion.class
 domainapp\webapp\custom\restapi\CustomController.class
 domainapp\webapp\application\services\health\HealthCheckServiceImpl.class
 domainapp\webapp\AppManifest.class
@@ -8,6 +7,4 @@ domainapp\webapp\application\ApplicationModule.class
 domainapp\webapp\application\fixture\scenarios\DomainAppDemo.class
 domainapp\webapp\custom\CustomModule.class
 domainapp\webapp\application\services\homepage\HomePageViewModel.class
-domainapp\webapp\application\services\homepage\HomePageViewModel_Cliente.class
-domainapp\webapp\application\services\homepage\HomePageViewModel_Localidad.class
 domainapp\webapp\quartz\QuartzModule.class

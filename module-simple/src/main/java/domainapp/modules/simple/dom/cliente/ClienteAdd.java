@@ -1,35 +1,50 @@
 package domainapp.modules.simple.dom.cliente;
 
-
 import domainapp.modules.simple.dom.direccion.Direccion;
+import domainapp.modules.simple.dom.direccion.DireccionRepositorio;
 import domainapp.modules.simple.dom.localidad.Localidad;
-import lombok.RequiredArgsConstructor;
+import domainapp.modules.simple.dom.provincia.Provincia;
+import jdk.jfr.TransitionFrom;
 import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.services.clock.ClockService;
 import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
-import javax.inject.Inject;
+import java.util.List;
 
-@Action(
-        semantics = SemanticsOf.IDEMPOTENT,
-        commandPublishing = Publishing.ENABLED,
-        executionPublishing = Publishing.ENABLED
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
+
+@DomainService(
+        nature = NatureOfService.REST,
+        logicalTypeName = "simple.ClienteAdd"
 )
-@ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Cliente", sequence = "1", named = "Agrega Cliente")//
-@RequiredArgsConstructor
+
 public class ClienteAdd {
 
-    private final Direccion direccion;
-   
-     public Cliente act(
-             final String nombre,
-            final String apellido,
-            final String telefono,
-            final String email) {
-        return repositoryService.persist(new Cliente(direccion,nombre, apellido,  telefono, email));
+
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,
+            named = "Agregar Cliente")
+    public Cliente AddCliente( String nombre,
+                               String apellido,
+                               String email,
+                               String telefono,
+                               String calle,
+                               String altura,
+                               String edificacion,
+                               String piso,
+                               String departamento,
+                               String latitud,
+                               String longitud,
+                               Localidad localidad
+                               ) {
+        return repositoryService.persist(new Cliente(nombre,apellido,email,telefono,calle,altura,edificacion,piso,departamento,latitud,longitud,localidad ));
     }
 
+   public List<Localidad> autoComplete11AddCliente(String name) {return repositoryService.allInstances(Localidad.class); }
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
+    DireccionRepositorio direccionRepositorio;
 
-    @Inject ClockService clockService;
-    @Inject RepositoryService repositoryService;
+
 }

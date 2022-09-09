@@ -7,22 +7,30 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <mb3:primary>
         <mb3:menu >
-            <mb3:named>Provincia</mb3:named>
+            <mb3:named>Menu Principal</mb3:named>
             <mb3:section>
+                <mb3:named>Provincia</mb3:named>
                 <mb3:serviceAction objectType="simple.ProvinciaRepositorio" id="createProvincia"/>
+                <mb3:serviceAction objectType="simple.ProvinciaRepositorio" id="findByName"/>
                 <mb3:serviceAction objectType="simple.ProvinciaRepositorio" id="listAll"/>
+            </mb3:section>
+            <mb3:section>
+                <mb3:named>Localidad</mb3:named>
+                <mb3:serviceAction objectType="simple.LocalidadAdd" id="AddLocalidad"/>
+                <mb3:serviceAction objectType="simple.LocalidadRepositorio" id="findByName"/>
                 <mb3:serviceAction objectType="simple.LocalidadRepositorio" id="listAll"/>
             </mb3:section>
-        </mb3:menu>
-        <mb3:menu >
-            <mb3:named>Direccion</mb3:named>
-            <mb3:section>
-              <mb3:serviceAction objectType="simple.DireccionRepositorio" id="listAll"/>
 
+            <mb3:section>
+                <mb3:named>Cliente</mb3:named>
+                <mb3:serviceAction objectType="simple.ClienteAdd" id="AddCliente"/>
+                <mb3:serviceAction objectType="simple.ClienteRepositorio" id="findByName"/>
+                <mb3:serviceAction objectType="simple.ClienteRepositorio" id="listarCliente"/>
             </mb3:section>
         </mb3:menu>
+
         <mb3:menu unreferencedActions="true">
-            <mb3:named>Other1</mb3:named>
+            <mb3:named>...</mb3:named>
         </mb3:menu>
     </mb3:primary>
     <mb3:secondary>
