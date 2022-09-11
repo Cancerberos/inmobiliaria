@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.aviso;
 
 import domainapp.modules.simple.dom.estado_aviso.EstadoAviso;
-import domainapp.modules.simple.dom.inmueble.Inmueble;
 import domainapp.modules.simple.dom.tipo_operacion.TipoOperacion;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
