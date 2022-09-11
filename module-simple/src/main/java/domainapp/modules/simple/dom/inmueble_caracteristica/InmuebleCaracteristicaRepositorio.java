@@ -1,9 +1,6 @@
 package domainapp.modules.simple.dom.inmueble_caracteristica;
 
 import domainapp.modules.simple.dom.caracteristica.Caracteristica;
-import domainapp.modules.simple.dom.inmobiliaria.Inmobiliaria;
-import domainapp.modules.simple.dom.inmobiliaria.QInmobiliaria;
-import domainapp.modules.simple.dom.inmueble.Inmueble;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;

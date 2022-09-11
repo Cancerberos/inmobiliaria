@@ -19,6 +19,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
 public class LocalidadAdd {
 
+    public Provincia provincia;
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,

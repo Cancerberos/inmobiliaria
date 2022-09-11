@@ -1,6 +1,5 @@
 package domainapp.modules.simple.dom.imagen;
 
-import domainapp.modules.simple.dom.inmueble.Inmueble;
 import domainapp.modules.simple.types.Name;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;

@@ -30,28 +30,41 @@ public class QProvincia extends PersistableExpressionImpl<Provincia> implements 
     }
 
     public final StringExpression descripcion;
-    public final CollectionExpression localidad;
+    public final domainapp.modules.simple.dom.localidad.QLocalidad localidad;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
+    public final ObjectExpression<domainapp.modules.simple.dom.localidad.LocalidadRepositorio> localidadRepositorio;
+    public final ObjectExpression<domainapp.modules.simple.dom.provincia.ProvinciaRepositorio> provinciaRepositorio;
 
     public QProvincia(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
-        this.localidad = new CollectionExpressionImpl(this, "localidad");
+        if (depth > 0)
+        {
+            this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", depth-1);
+        }
+        else
+        {
+            this.localidad = null;
+        }
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.localidadRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.localidad.LocalidadRepositorio>(this, "localidadRepositorio");
+        this.provinciaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.provincia.ProvinciaRepositorio>(this, "provinciaRepositorio");
     }
 
     public QProvincia(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
-        this.localidad = new CollectionExpressionImpl(this, "localidad");
+        this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", 5);
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.localidadRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.localidad.LocalidadRepositorio>(this, "localidadRepositorio");
+        this.provinciaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.provincia.ProvinciaRepositorio>(this, "provinciaRepositorio");
     }
 }

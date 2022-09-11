@@ -44,6 +44,7 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
+    public final ObjectExpression<domainapp.modules.simple.dom.cliente.ClienteRepositorio> clienteRepositorio;
 
     public QCliente(PersistableExpression parent, String name, int depth)
     {
@@ -70,6 +71,7 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.clienteRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.cliente.ClienteRepositorio>(this, "clienteRepositorio");
     }
 
     public QCliente(Class type, String name, ExpressionType exprType)
@@ -90,5 +92,6 @@ public class QCliente extends PersistableExpressionImpl<Cliente> implements Pers
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.clienteRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.cliente.ClienteRepositorio>(this, "clienteRepositorio");
     }
 }

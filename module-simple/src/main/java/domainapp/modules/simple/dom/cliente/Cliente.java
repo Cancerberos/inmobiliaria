@@ -140,8 +140,6 @@ public class Cliente implements Comparable<Cliente>{
    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "11",named = "Provincia")
     public String getdescProv() {  return  localidad.getProvincia().getDescripcion(); }
 
-    // private   Localidad descCp;
-//    private   Localidad descProv;
 
     public String title() {
         return getNombre() ;
@@ -158,7 +156,7 @@ public class Cliente implements Comparable<Cliente>{
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Listar Clientes")
     public List<Cliente> listAll() {
-        return repositoryService.allInstances(Cliente.class);
+        return clienteRepositorio.listarCliente();
     }
 
 
@@ -202,5 +200,7 @@ public class Cliente implements Comparable<Cliente>{
         TitleService titleService;
         @Inject
         MessageService messageService;
+        ClienteRepositorio clienteRepositorio;
+
 
 }

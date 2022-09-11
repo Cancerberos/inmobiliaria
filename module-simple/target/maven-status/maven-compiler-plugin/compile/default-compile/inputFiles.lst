@@ -23,6 +23,7 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\l
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso_contacto\AvisoContacto.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\types\Notes.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\caracteristica\Caracteristica.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\provincia\ProvinciaaddLoc.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\red_social\RedSocialRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\estado_contacto\EstadoContacto.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\Usuario.java
@@ -36,6 +37,7 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\c
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso\AvisoRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\cliente\ClienteAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\direccion\DireccionRepositorio.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\provincia\Provincia_Localidades.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso_contacto\AvisoContactoRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\so\SimpleObject.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\provincia\Provincia.java

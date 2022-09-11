@@ -10,7 +10,7 @@
             <bs3:row>
                 <bs3:col span="12">
                     <bs3:tabGroup collapseIfOne="false">
-                        <bs3:tab name="Datos Provincia">
+                        <bs3:tab name="descripcion">
                             <bs3:row>
                                 <bs3:col span="12">
                                     <cpt:fieldSet id="descripcion"/>

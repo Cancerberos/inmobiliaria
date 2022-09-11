@@ -28,6 +28,12 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                 value = "SELECT "
                         + " FROM domainapp.modules.simple.dom.localidad.Localidad "
                         + "ORDER BY descripcion ASC"),
+        @Query(
+                name = "findLocalidad_Provincia", language = "JDOQL",
+                value = "SELECT "
+                        + " FROM domainapp.modules.simple.dom.localidad.Localidad "
+                        + " WHERE provincia == :provincia"
+                        + " ORDER BY descripcion ASC"),
 
 })
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Localidadid")
@@ -46,7 +52,7 @@ public class Localidad implements Comparable<Localidad>{
         this.codigoPostal = codigoPostal;
     }
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE ="findAllLocalidades" ;
-    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT ="findByDescription" ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT ="findLocalidad_Provincia" ;
     @javax.jdo.annotations.Column(allowsNull = "true", name = "Provinciaid")
     @Property(editing = Editing.DISABLED)
     @Getter
