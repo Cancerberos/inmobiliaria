@@ -1,6 +1,5 @@
 @startuml
 'https://plantuml.com/class-diagram
-
 class Aviso {
 - int id
 - String descripcion
@@ -20,21 +19,29 @@ class AvisoContacto {
 -EstadoContacto estadoContacto
 +create()
 }
-
+class Caracteristica{
+-int id
+-String descripcion
++create()
+}
 class Cliente{
 -int id
+-Direccion direccion
 -String nombre
 -String apellido
 -String email
 -String telefono
--String calle
--String altura
++create()
+}
+class Direccion{
+-int id
+-Localidad localidad
+-int numero
 -String edificacion
 -String piso
 -String departamento
 -String latitud
 -String longitud
--Localidad localidad
 +create()
 }
 class EstadoAviso{
@@ -47,20 +54,20 @@ class EstadoContacto{
 -String descripcion
 +create()
 }
+class Imagen{
+-int id
+-String url
+-String descripcion
+-Inmueble inmueble
++create()
+}
 class Inmobiliaria {
 -int id
 -String razonSocial
 -String cuit
+-Direccion direccion
 -String telefono
 -String logo
--String calle
--String altura
--String edificacion
--String piso
--String departamento
--String latitud
--String longitud
--Localidad localidad
 +create()
 }
 class Inmueble {
@@ -69,32 +76,24 @@ class Inmueble {
 -String descripcion
 -Date fechaExclusividad
 -TipoUnidad tipoUnidad
--String calle
--String altura
--String edificacion
--String piso
--String departamento
--String latitud
--String longitud
--Localidad localidad
--String superficie
--int cantHambientes
--int cantHabitaciones
--int cantBanios
--int cantCocheras
--int canPlantas
--boolean patio
--boolean parrilla
--boolean piscina
--enum tipoCalefaccion
--boolean petFriendly
--String imgUrl1
--String imgUrl2
--String imgUrl3
+ -String calle
+ -String altura
+ -String edificacion
+ -String piso
+ -String departamento
+ -String latitud
+ -String longitud
+ -Localidad localidad
 
 +create()
 }
-
+class InmuebleCaracteristica {
+-int id
+-Caracteristica caracteristica
+-Inmueble inmueble
+-int cantidad
++create()
+}
 class Localidad {
 -int id
 -Provincia provincia
@@ -143,14 +142,18 @@ Aviso -- EstadoAviso
 AvisoContacto -- Usuario
 AvisoContacto -- EstadoContacto
 
-
+Cliente -- Direccion
 Cliente -- Inmueble
 
 Inmueble -- TipoUnidad
-Inmueble -- Localidad
-Inmobiliaria -- Localidad
 
-Cliente -- Localidad
+InmuebleCaracteristica -- Caracteristica
+InmuebleCaracteristica -- Inmueble
+Imagen -- Inmueble
+
+Inmobiliaria -- Direccion
+
+Direccion -- Localidad
 Localidad -- Provincia
 
 

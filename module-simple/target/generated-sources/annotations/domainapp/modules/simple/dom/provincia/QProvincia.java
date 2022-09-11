@@ -30,7 +30,6 @@ public class QProvincia extends PersistableExpressionImpl<Provincia> implements 
     }
 
     public final StringExpression descripcion;
-    public final domainapp.modules.simple.dom.localidad.QLocalidad localidad;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
@@ -41,14 +40,6 @@ public class QProvincia extends PersistableExpressionImpl<Provincia> implements 
     {
         super(parent, name);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
-        if (depth > 0)
-        {
-            this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", depth-1);
-        }
-        else
-        {
-            this.localidad = null;
-        }
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
@@ -60,7 +51,6 @@ public class QProvincia extends PersistableExpressionImpl<Provincia> implements 
     {
         super(type, name, exprType);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
-        this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", 5);
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
