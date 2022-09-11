@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.imagen;
 
+import domainapp.modules.simple.dom.inmueble.Inmueble;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;

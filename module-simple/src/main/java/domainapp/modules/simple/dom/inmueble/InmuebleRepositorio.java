@@ -25,16 +25,6 @@ public class InmuebleRepositorio {
     final JdoSupportService jdoSupportService;
 
 
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Inmueble createInmueble(
-            final Cliente cliente,
-            final String descripcion,
-            final Date fechaExclusividad,
-            final TipoUnidad tipoUnidad,
-            final Direccion direccion) {
-        return repositoryService.persist(new Inmueble(cliente, descripcion, fechaExclusividad, tipoUnidad, direccion));
-    }
 
     @Programmatic
     public void ping() {

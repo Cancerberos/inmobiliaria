@@ -61,7 +61,7 @@ public class Localidad implements Comparable<Localidad>{
 
     @Column(allowsNull = "true")
     @NonNull @Getter  @Setter @ToString.Include
-    @PropertyLayout(fieldSetId = "Datos Localidad", sequence = "1",named = "Descripcion")
+    @PropertyLayout(fieldSetId = "Datos Localidad", sequence = "1",named = "Localidad")
     @Property(editing = Editing.DISABLED)
     private String descripcion;
     @javax.jdo.annotations.Column(allowsNull = "false")

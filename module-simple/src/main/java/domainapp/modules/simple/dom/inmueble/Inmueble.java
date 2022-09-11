@@ -32,12 +32,12 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Clienteid")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
-@DomainObject(logicalTypeName = "simple.cliente",entityChangePublishing = Publishing.ENABLED,editing=Editing.DISABLED)
+@DomainObject(logicalTypeName = "simple.inmueble",entityChangePublishing = Publishing.ENABLED,editing=Editing.DISABLED)
 @RequiredArgsConstructor
 @DomainObjectLayout(cssClassFa = "file-text-o")
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
-@ToString(onlyExplicitlyIncluded = true)
-@Unique(name="Cliente_UNQ", members = {"nombre"})
+//@ToString(onlyExplicitlyIncluded = true)
+@Unique(name="Inmueble_UNQ", members = {"nombre"})
 public class Inmueble implements Comparable<Inmueble>{
 
   // @NotPersistent
@@ -48,7 +48,7 @@ public class Inmueble implements Comparable<Inmueble>{
     public Inmueble(String descripcion, Date fechaExclusividad, TipoUnidad tipoUnidad,String calle , String altura,
                     String edificacion, String piso, String departamento, String latitud, String longitud,
                     String superficie,int cantHabientes,int cantHabitaciones,int cantBanios,int cantCocheras,
-                    Boolean patio,Boolean parrilla,boolean piscina,tipoCalefaccion tipoCalefaccion,
+                    Boolean patio,Boolean parrilla,boolean piscina,
                     Boolean petFriendly,String imgUrl1,String imgUrl2,String imgUrl3,Localidad localidad) {
 
         this.calle=calle;
@@ -131,39 +131,49 @@ public class Inmueble implements Comparable<Inmueble>{
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
-    @Column(allowsNull = "true")
+    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7")
     private int cantHabientes;
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
-    @Column(allowsNull = "true")
+    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7")
     private int cantHabitaciones;
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
-    @Column(allowsNull = "true")
+    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7")
     private int cantBanios;
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
-    @Column(allowsNull = "true")
     private int cantCocheras;
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
-    @Column(allowsNull = "true")
-    private Boolean patio;
+    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7")
+     private Boolean patio;
+
+    @Getter@Setter
+    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @PropertyLayout(fieldSetId = "Datos del Cliente")
+    private Boolean parrilla;
+
+    @Getter@Setter
+    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7")
+    private Boolean piscina;
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
     @Column(allowsNull = "true")
-    private Boolean parrilla;
+    private Boolean cochera;
+
+    @Getter@Setter
+    @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7")
+     private int tipoCalefaccion;
 
 
    // String superficie,int cantHabientes,int cantHabitaciones,int cantBanios,int cantCocheras,
@@ -195,46 +205,6 @@ public class Inmueble implements Comparable<Inmueble>{
    // private final static Comparator<Inmueble> comparator =
     //        Comparator.comparing(Inmueble::getNombre).thenComparing(Inmueble:: getNombre);
 
- //   @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-//    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Listar Clientes")
-  //  public List<Inmueble> listAll() {
-//        return clienteRepositorio.listarCliente();
-//    }
-
-
-    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Localidad", sequence = "1", named = "Modifica Cliente")
-    public Object UpdateCliente( String nombre, String apellido,String email,
-                                 String telefono, String calle , String altura,String edificacion,String piso, String departamento,
-                                 String latitud,String longitud ,Localidad localidad
-    ) {
-       // setNombre(nombre);
-       // setApellido(apellido);
-        //setEmail(email);
-       // setTelefono(telefono);
-        setCalle(calle);
-        setAltura(altura);
-        setEdificacion(edificacion);
-        setPiso(piso);
-        setDepartamento(departamento);
-        setLatitud(latitud);
-        setLongitud(longitud);
-        setLocalidad(localidad);
-        return this;
-    }
-     //    public @NonNull String default0UpdateCliente() {return getNombre(); }
-       //  public @NonNull String default1UpdateCliente() {return getApellido(); }
-      //   public @NonNull String default2UpdateCliente() { return getEmail();  }
-    //     public @NonNull String default3UpdateCliente() { return getTelefono(); }
-         public @NonNull String default4UpdateCliente() { return getCalle(); }
-         public @NonNull String default5UpdateCliente() { return getAltura(); }
-         public @NonNull String default6UpdateCliente() { return getEdificacion(); }
-         public @NonNull String default7UpdateCliente() { return getPiso(); }
-         public @NonNull String default8UpdateCliente() { return getDepartamento();}
-         public @NonNull String default9UpdateCliente() { return getLatitud();}
-         public @NonNull String default10UpdateCliente() { return getLongitud();}
-         public Localidad default11UpdateCliente() { return getLocalidad();}
-         public List<Localidad> autoComplete11UpdateCliente (String name){return repositoryService.allInstances(Localidad.class); }
 
         @Inject
         RepositoryService repositoryService;

@@ -1,7 +1,7 @@
 package domainapp.modules.simple.dom.provincia;
 import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.dom.localidad.LocalidadRepositorio;
-import domainapp.modules.simple.dom.localidad.QLocalidad;
+
 import domainapp.modules.simple.types.Name;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
@@ -55,20 +55,13 @@ public class Provincia implements Comparable<Provincia>{
     private String descripcion;
 
 
-
-    @Persistent(mappedBy = "provincia", dependentElement = "false")
-    @javax.jdo.annotations.Column(allowsNull="true")
-    @Transient
-    private Localidad localidad;
-
     public Provincia(String descripcion) {
         this.descripcion = descripcion;
     }
 
     @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
     @ActionLayout(position = ActionLayout.Position.PANEL,describedAs = "Elimina este objeto del almacén de datos persistente",named = "Eliminar Provincia" )
-    public void deleteProvincia() {
-        final String title = titleService.titleOf(" Mensaje del Sistema ");
+    public void deleteProvincia() {        final String title = titleService.titleOf(" Mensaje del Sistema ");
         messageService.informUser(String.format("- '%s' - Se Borro el Registro => "+ getDescripcion(), title));
         repositoryService.removeAndFlush(this);
     }
