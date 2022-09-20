@@ -1,39 +1,46 @@
 package domainapp.modules.simple.dom.inmueble;
 
-import domainapp.modules.simple.dom.cliente.Cliente;
-import domainapp.modules.simple.dom.direccion.Direccion;
-import domainapp.modules.simple.dom.inmobiliaria.Inmobiliaria;
-import domainapp.modules.simple.dom.inmobiliaria.QInmobiliaria;
-import domainapp.modules.simple.dom.tipo_unidad.TipoUnidad;
+import domainapp.modules.simple.dom.localidad.Localidad;
+import domainapp.modules.simple.dom.provincia.Provincia;
 import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.events.domain.ActionDomainEvent;
+import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
-import javax.inject.Inject;
-import javax.jdo.JDOQLTypedQuery;
-import java.util.Date;
+import java.util.List;
 
-@DomainService(
-        nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.InmuebleRepositorio"
-)
-@javax.annotation.Priority(PriorityPrecedence.EARLY)
-@lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
+@DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.InmuebleRepositorio")
 public class InmuebleRepositorio {
-
-    final RepositoryService repositoryService;
-    final JdoSupportService jdoSupportService;
-
-
-
-    @Programmatic
-    public void ping() {
-        JDOQLTypedQuery<Inmueble> q = jdoSupportService.newTypesafeQuery(Inmueble.class);
-        final QInmueble candidate = QInmueble.candidate();
-        q.range(0,2);
-        q.orderBy(candidate.descripcion.asc());
-        q.executeList();
+    @ActionLayout(named = "Buscar Inmueble por Nombre")
+       public List<Inmueble> BuscarPorNombreInmueble(
+            final String name
+    ) {
+        return repositoryService.allMatches(
+                Query.named(Inmueble.class, Inmueble.NAMED_QUERY__FIND_BY_NAME_LIKE_INMUEBLE)
+                      );
     }
+    @ActionLayout(named = "Listar Inmueble")
+    public List<Inmueble> listAll() {
+        return repositoryService.allInstances(Inmueble.class);
+    }
+
+    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+    public List<Inmueble> findByProvincia_Localidad(
+             final Inmueble inmueble
+    ) {
+        return repositoryService.allMatches(
+                Query.named(Inmueble.class, Inmueble.NAMED_QUERY__FIND_BY_NAME_LIKE_INMUEBLE)
+                        .withParameter("inmueble", inmueble)
+
+        );
+    }
+    public static class CreateDomainEvent extends ActionDomainEvent<InmuebleRepositorio> {}
+
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
+
 
 
 }

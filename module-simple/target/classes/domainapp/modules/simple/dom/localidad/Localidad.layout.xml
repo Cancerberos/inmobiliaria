@@ -13,6 +13,8 @@
                         <bs3:tab name="Datos Localidad">
                             <bs3:row>
                                 <bs3:col span="12">
+                                    <cpt:action id="duplicate" position="PANEL_DROPDOWN"/>
+                                    <cpt:action id="delete"/>
                                     <cpt:fieldSet id="descripcion"/>
                                     <cpt:fieldSet id="codigoPostal"/>
                                     <cpt:fieldSet name="Detalle" id="other" unreferencedProperties="true"/>

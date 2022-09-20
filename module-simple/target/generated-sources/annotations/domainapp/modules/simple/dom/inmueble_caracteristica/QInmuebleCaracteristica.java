@@ -29,23 +29,25 @@ public class QInmuebleCaracteristica extends PersistableExpressionImpl<InmuebleC
         return new QInmuebleCaracteristica(InmuebleCaracteristica.class, name, ExpressionType.VARIABLE);
     }
 
-    public final domainapp.modules.simple.dom.caracteristica.QCaracteristica caracteristica;
+    public final NumericExpression<Integer> cant;
+    public final domainapp.modules.simple.dom.tipocaracteristica.QTipoCaracteristica tipoCaracteristica;
     public final domainapp.modules.simple.dom.inmueble.QInmueble inmueble;
-    public final NumericExpression<Integer> cantidad;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
-    public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
+    public final ObjectExpression<domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio> tipoCaracteristicaRepositorio;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
+    public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
 
     public QInmuebleCaracteristica(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
+        this.cant = new NumericExpressionImpl<Integer>(this, "cant");
         if (depth > 0)
         {
-            this.caracteristica = new domainapp.modules.simple.dom.caracteristica.QCaracteristica(this, "caracteristica", depth-1);
+            this.tipoCaracteristica = new domainapp.modules.simple.dom.tipocaracteristica.QTipoCaracteristica(this, "tipoCaracteristica", depth-1);
         }
         else
         {
-            this.caracteristica = null;
+            this.tipoCaracteristica = null;
         }
         if (depth > 0)
         {
@@ -55,20 +57,21 @@ public class QInmuebleCaracteristica extends PersistableExpressionImpl<InmuebleC
         {
             this.inmueble = null;
         }
-        this.cantidad = new NumericExpressionImpl<Integer>(this, "cantidad");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
+        this.tipoCaracteristicaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio>(this, "tipoCaracteristicaRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }
 
     public QInmuebleCaracteristica(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
-        this.caracteristica = new domainapp.modules.simple.dom.caracteristica.QCaracteristica(this, "caracteristica", 5);
+        this.cant = new NumericExpressionImpl<Integer>(this, "cant");
+        this.tipoCaracteristica = new domainapp.modules.simple.dom.tipocaracteristica.QTipoCaracteristica(this, "tipoCaracteristica", 5);
         this.inmueble = new domainapp.modules.simple.dom.inmueble.QInmueble(this, "inmueble", 5);
-        this.cantidad = new NumericExpressionImpl<Integer>(this, "cantidad");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
+        this.tipoCaracteristicaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio>(this, "tipoCaracteristicaRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }
 }

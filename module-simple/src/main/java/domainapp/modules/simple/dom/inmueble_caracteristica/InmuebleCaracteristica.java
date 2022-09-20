@@ -1,7 +1,10 @@
 package domainapp.modules.simple.dom.inmueble_caracteristica;
 
-import domainapp.modules.simple.dom.caracteristica.Caracteristica;
 import domainapp.modules.simple.dom.inmueble.Inmueble;
+import domainapp.modules.simple.dom.provincia.Provincia;
+import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
+import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio;
+import domainapp.modules.simple.types.Name;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
@@ -11,72 +14,67 @@ import org.apache.isis.applib.services.title.TitleService;
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.VersionStrategy;
+import javax.jdo.annotations.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.List;
 
-import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
-@javax.jdo.annotations.PersistenceCapable(
+@PersistenceCapable(
         schema = "Inmobiliaria",
-        identityType= IdentityType.DATASTORE)
-@javax.jdo.annotations.Unique(
-        //name = "caracteristica_descripcion_UNQ", members = {"descripcion"}
-)
-@javax.jdo.annotations.DatastoreIdentity(strategy= IdGeneratorStrategy.IDENTITY, column="id")
-@javax.jdo.annotations.Version(strategy= VersionStrategy.DATE_TIME, column="version")
+        identityType=IdentityType.DATASTORE)
 
-@DomainObject(logicalTypeName = "simple.InmuebleCaracteristica", entityChangePublishing = Publishing.ENABLED)
-@DomainObjectLayout()
+@Queries({
+        @Query(
+                name = "findCaracteristicas", language = "JDOQL",
+                value = "SELECT "
+                        + " FROM domainapp.modules.simple.dom.inmueble_Caracteristica.InmuebleCaracteristica "
+                        + " WHERE inmueble == :inmueble"
+                        + " ORDER BY tipoCaracteristica ASC"),
+
+})
+@DatastoreIdentity(strategy= IdGeneratorStrategy.IDENTITY, column="ImCaracteristicasId")
+@Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
+//@Unique(name="Tipo_Caracteristica_UNQ", members = {"descripcion"})
 public class InmuebleCaracteristica implements Comparable<InmuebleCaracteristica>{
 
-    @Getter
-    @Setter
-    @ToString.Include
-    @PropertyLayout(fieldSetId = "caracteristica", sequence = "1")
-    private Caracteristica caracteristica;
-
-    @Getter
-    @Setter
-    @ToString.Include
-    @PropertyLayout(fieldSetId = "caracteristica", sequence = "2")
-    private Inmueble inmueble;
-
-    @Getter
-    @Setter
-    @ToString.Include
-    @PropertyLayout(fieldSetId = "cantidad", sequence = "3")
-    private int cantidad;
-
-    public InmuebleCaracteristica(Caracteristica caracteristica, Inmueble inmueble, int cantidad) {
-        this.caracteristica = caracteristica;
-        this.cantidad = cantidad;
-        this.inmueble = inmueble;
+    public static final String NAMED_QUERY__FIND_BY_NAME_LIKE = "findCaracteristicas" ;
+    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT =null ;
+    public InmuebleCaracteristica(TipoCaracteristica tipoCaracteristica ,int cant,Inmueble inmueble) {
+        this.cant=cant;
+        this.inmueble=inmueble;
+        this.tipoCaracteristica=tipoCaracteristica;
     }
 
-    @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
-    @ActionLayout(
-            position = ActionLayout.Position.PANEL,
-            describedAs = "Deletes this object from the persistent datastore")
-    public void delete() {
-        final String title = titleService.titleOf(this);
-        messageService.informUser(String.format("'%s' deleted", title));
-        repositoryService.removeAndFlush(this);
-    }
 
-    @Override
+    @Getter @Setter
+    @PropertyLayout(fieldSetId = "Cant", sequence = "1")
+    private int cant;
+
+    @javax.jdo.annotations.Column(allowsNull = "true", name = "TipoCaracteristicaId")
+    @Property(editing = Editing.DISABLED)
+    @Getter
+    @Setter
+    private TipoCaracteristica tipoCaracteristica;
+
+    @Column(name="INMUEBLE_ID")
+     private Inmueble inmueble;
+
+
+      @Override
     public int compareTo(@NotNull InmuebleCaracteristica o) {
         return 0;
     }
-
     @Inject
     RepositoryService repositoryService;
+    TipoCaracteristicaRepositorio tipoCaracteristicaRepositorio;
     @Inject
-    TitleService titleService;
-    @Inject
+
     MessageService messageService;
+    TitleService titleService;
 }
+
+

@@ -12,18 +12,14 @@ import java.util.List;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
-@DomainService(
-        nature = NatureOfService.REST,
-        logicalTypeName = "simple.LocalidadAdd"
-)
+@DomainService( nature = NatureOfService.REST,     logicalTypeName = "simple.LocalidadAdd")
 
 public class LocalidadAdd {
 
     public Provincia provincia;
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,
-            named = "Agregar Localidad" )
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL, named = "Agregar Localidad" )
     public Localidad AddLocalidad( String descripcion, final String codigoPostal,Provincia provincia)
     {
         return repositoryService.persist(new Localidad(descripcion,codigoPostal,provincia));
