@@ -19,7 +19,7 @@ class AvisoContacto {
 -EstadoContacto estadoContacto
 +create()
 }
-class Caracteristica{
+class TipoCaracteristica{
 -int id
 -String descripcion
 +create()
@@ -87,9 +87,9 @@ class Inmueble {
 
 +create()
 }
-class InmuebleCaracteristica {
+class InmuebleTipoCaracteristica {
 -int id
--Caracteristica caracteristica
+-TipoCaracteristica tipoCaracteristica
 -Inmueble inmueble
 -int cantidad
 +create()
@@ -146,9 +146,9 @@ Cliente -- Direccion
 Cliente -- Inmueble
 
 Inmueble -- TipoUnidad
-
-InmuebleCaracteristica -- Caracteristica
-InmuebleCaracteristica -- Inmueble
+Inmueble -- Localidad
+InmuebleTipoCaracteristica -- TipoCaracteristica
+InmuebleTipoCaracteristica -- Inmueble
 Imagen -- Inmueble
 
 Inmobiliaria -- Direccion

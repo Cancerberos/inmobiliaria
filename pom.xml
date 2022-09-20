@@ -27,10 +27,10 @@
     <dependencyManagement>
         <dependencies>
      	     <dependency>
-    		<groupId>org.postgresql</groupId>
-    		<artifactId>postgresql</artifactId>
-    		<version>42.3.5</version>
-	    </dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.3.5</version>
+	        </dependency>
 
             <!-- this project's own modules -->
             <dependency>

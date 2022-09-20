@@ -91,7 +91,9 @@ public class Localidad implements Comparable<Localidad>{
     public List<Localidad> listAll() {
         return repositoryService.allInstances(Localidad.class);
     }
-
+    public Object Delete(){
+        return  null;
+    }
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "Datos Localidad", sequence = "1", named = "Modifica Localidad")
     public Object UpdateLocalidad(Provincia  provincia, String descripcion , String cp) {
