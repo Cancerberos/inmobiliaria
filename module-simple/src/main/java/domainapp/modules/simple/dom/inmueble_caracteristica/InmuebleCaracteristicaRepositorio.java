@@ -23,7 +23,7 @@ public class InmuebleCaracteristicaRepositorio {
         );
     }
     @ActionLayout(named = "Listar todas las Caracteristicas")
-    public List<InmuebleCaracteristica> listAll() {
+    public List<InmuebleCaracteristica> listAllInmuebles() {
         return repositoryService.allInstances(InmuebleCaracteristica.class);
     }
     public static class CreateDomainEvent extends ActionDomainEvent<InmuebleCaracteristicaRepositorio> {}

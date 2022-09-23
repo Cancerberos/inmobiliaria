@@ -33,13 +33,13 @@ public class HomePageViewModel {
         return  "Del Sur";
     }
 
-    public List<TipoUnidad> getTipoUnidad() { return tipoUnidadRepositorio.listAll()  ; }
-    public List<TipoCaracteristica> getTipoCaracteristica() { return tipoCaracteristicaRepositorio.listAll()  ; }
+    public List<TipoUnidad> getTipoUnidad() { return tipoUnidadRepositorio.listAllTipoUnidad()  ; }
+    public List<TipoCaracteristica> getTipoCaracteristica() { return tipoCaracteristicaRepositorio.listAll(); }
     public List<Cliente> getCliente() {
         return clienteRepositorio.listarCliente();
     }
 
-    public List<Inmueble> getInmueble() { return inmuebleRepositorio.listAll()  ; }
+    public List<Inmueble> getInmueble() { return inmuebleRepositorio.listAllInmuebles()  ; }
     public List<Provincia> getProvincia() {
         return provinciaRepositorio.listAll();
     }

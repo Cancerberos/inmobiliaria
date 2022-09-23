@@ -1,42 +1,38 @@
 package domainapp.modules.simple.dom.imagen;
 
 import domainapp.modules.simple.dom.inmueble.Inmueble;
+import domainapp.modules.simple.dom.inmueble_caracteristica.InmuebleCaracteristica;
 import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.events.domain.ActionDomainEvent;
+import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
-import javax.inject.Inject;
-import javax.jdo.JDOQLTypedQuery;
+import java.util.List;
 
-@DomainService(
-        nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.ImagenRepositorio"
-)
-@javax.annotation.Priority(PriorityPrecedence.EARLY)
-@lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
+@DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.ImagenRepositorio")
 public class ImagenRepositorio {
 
-    final RepositoryService repositoryService;
-    final JdoSupportService jdoSupportService;
-
-
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Imagen createImagen(
-            final String url,
-            final String descripcion,
-            final Inmueble inmueble) {
-        return repositoryService.persist(new Imagen(url, descripcion, inmueble));
-    }
+    public List<Imagen> BuscarPorImagen(
+            final Inmueble inmueble
+            ) {
+        return repositoryService.allMatches(
+                Query.named(Imagen.class, Imagen.NAMED_QUERY__FIND_BY_NAME_LIKE)
+                        .withParameter("inmueble", inmueble)
 
-    @Programmatic
-    public void ping() {
-        JDOQLTypedQuery<Imagen> q = jdoSupportService.newTypesafeQuery(Imagen.class);
-        final QImagen candidate = QImagen.candidate();
-        q.range(0,2);
-        q.orderBy(candidate.descripcion.asc());
-        q.executeList();
+        );
     }
+    @ActionLayout(named = "Listar todas las Imagenes")
+    public List<Imagen> listAll() {
+        return repositoryService.allInstances(Imagen.class);
+    }
+    public static class CreateDomainEvent extends ActionDomainEvent<ImagenRepositorio> {}
+
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
+
 
 
 }

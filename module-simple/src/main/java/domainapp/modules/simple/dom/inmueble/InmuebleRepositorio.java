@@ -21,12 +21,16 @@ public class InmuebleRepositorio {
                       );
     }
     @ActionLayout(named = "Listar Inmueble")
-    public List<Inmueble> listAll() {
+    public List<Inmueble> listAllInmuebles() {
         return repositoryService.allInstances(Inmueble.class);
     }
 
+    @ActionLayout(named = "Listar  Inmuebles")
+    public List<Inmueble> listAll() {
+        return repositoryService.allInstances(Inmueble.class);
+    }
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    public List<Inmueble> findByProvincia_Localidad(
+    public List<Inmueble> BuscarPorInmueble(
              final Inmueble inmueble
     ) {
         return repositoryService.allMatches(

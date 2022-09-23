@@ -8,6 +8,7 @@ domainapp\modules\simple\dom\tipo_unidad\TipoUnidadList.class
 domainapp\modules\simple\dom\caracteristica\QCaracteristica.class
 domainapp\modules\simple\dom\direccion\DireccionRepositorio$CreateDomainEvent.class
 domainapp\modules\simple\dom\red_social\RedSocial.class
+domainapp\modules\simple\dom\imagen\ImagenAdd.class
 domainapp\modules\simple\types\LastName.class
 domainapp\modules\simple\dom\cliente\Cliente.class
 domainapp\modules\simple\dom\localidad\LocalidadAdd.class
@@ -34,6 +35,7 @@ domainapp\modules\simple\dom\imagen\Imagen.class
 domainapp\modules\simple\dom\direccion\Direccion.class
 domainapp\modules\simple\dom\inmobiliaria\QInmobiliaria.class
 domainapp\modules\simple\dom\direccion\DireccionAdd.class
+domainapp\modules\simple\dom\imagen\ImagenRemove.class
 domainapp\modules\simple\dom\provincia\Provincia_Localidades.class
 domainapp\modules\simple\dom\inmueble\InmuebleRepositorio.class
 domainapp\modules\simple\SimpleModule$1.class
@@ -41,7 +43,6 @@ domainapp\modules\simple\dom\provincia\ProvinciaaddLoc.class
 domainapp\modules\simple\SimpleModule.class
 domainapp\modules\simple\dom\tipo_operacion\TipoOperacionRepositorio.class
 domainapp\modules\simple\types\Name.class
-domainapp\modules\simple\dom\inmueble\Caracteristica_Inmueble.class
 domainapp\modules\simple\dom\tipo_operacion\TipoOperacion.class
 domainapp\modules\simple\dom\provincia\ProvinciaRepositorio.class
 domainapp\modules\simple\dom\aviso_contacto\AvisoContacto.class
@@ -61,6 +62,7 @@ domainapp\modules\simple\fixture\SimpleObjectBuilder.class
 domainapp\modules\simple\dom\usuario\Usuario.class
 domainapp\modules\simple\types\LastName$Spec.class
 domainapp\modules\simple\dom\estado_aviso\QEstadoAviso.class
+domainapp\modules\simple\dom\imagen\ImagenRepositorio$CreateDomainEvent.class
 domainapp\modules\simple\dom\provincia\QProvincia.class
 domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristica.class
 domainapp\modules\simple\dom\cliente\QCliente.class
@@ -74,9 +76,10 @@ domainapp\modules\simple\dom\usuario\UsuarioRepositorio.class
 domainapp\modules\simple\dom\aviso\Aviso.class
 domainapp\modules\simple\dom\tipo_unidad\TipoUnidadAdd.class
 domainapp\modules\simple\dom\caracteristica\Caracteristica.class
-domainapp\modules\simple\dom\inmueble\InmuebleList.class
+domainapp\modules\simple\dom\imagen\Caracteristicas_Imagen.class
 domainapp\modules\simple\dom\direccion\QDireccion.class
 domainapp\modules\simple\dom\direccion\DireccionRemove$ActionEvent.class
+domainapp\modules\simple\dom\inmueble_caracteristica\Caracteristica_Inmueble.class
 domainapp\modules\simple\dom\inmueble\InmuebleRepositorio$CreateDomainEvent.class
 domainapp\modules\simple\dom\localidad\QLocalidad.class
 domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristicaRemove.class

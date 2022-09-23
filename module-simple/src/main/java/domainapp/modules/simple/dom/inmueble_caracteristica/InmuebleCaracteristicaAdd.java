@@ -23,16 +23,8 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 @RequiredArgsConstructor
 public class InmuebleCaracteristicaAdd {
 
-
     private final Inmueble inmueble;
 
-
-  //  @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-   // @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Agrega Caracteristicas" )
- //   public InmuebleCaracteristica AddCaracteristicas(TipoCaracteristica tipoCaracteristica, int cant)
- //   {
- //       return repositoryService.persist(new InmuebleCaracteristica(tipoCaracteristica, cant, inmueble));
-//    }
        public Inmueble AddCaracteristicas(TipoCaracteristica tipoCaracteristica, int cant)
        {
             repositoryService.persist(new InmuebleCaracteristica(tipoCaracteristica, cant, inmueble));

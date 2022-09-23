@@ -38,19 +38,11 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
     public final StringExpression departamento;
     public final StringExpression latitud;
     public final StringExpression longitud;
-    public final domainapp.modules.simple.dom.tipo_unidad.QTipoUnidad tipoUnidad;
     public final domainapp.modules.simple.dom.localidad.QLocalidad localidad;
-    public final StringExpression superficie;
-    public final BooleanExpression patio;
-    public final BooleanExpression parrilla;
-    public final BooleanExpression piscina;
-    public final BooleanExpression cochera;
-    public final BooleanExpression petFriendly;
-    public final EnumExpression tipoCalefaccion;
-    public final StringExpression imgUrl1;
-    public final StringExpression imgUrl2;
-    public final StringExpression imgUrl3;
+    public final domainapp.modules.simple.dom.tipo_unidad.QTipoUnidad tipoUnidad;
+    public final domainapp.modules.simple.dom.cliente.QCliente cliente;
     public final domainapp.modules.simple.dom.inmueble_caracteristica.QInmuebleCaracteristica inmueblecaracteristica;
+    public final domainapp.modules.simple.dom.imagen.QImagen imagen;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
@@ -72,6 +64,14 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
         this.longitud = new StringExpressionImpl(this, "longitud");
         if (depth > 0)
         {
+            this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", depth-1);
+        }
+        else
+        {
+            this.localidad = null;
+        }
+        if (depth > 0)
+        {
             this.tipoUnidad = new domainapp.modules.simple.dom.tipo_unidad.QTipoUnidad(this, "tipoUnidad", depth-1);
         }
         else
@@ -80,22 +80,12 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
         }
         if (depth > 0)
         {
-            this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", depth-1);
+            this.cliente = new domainapp.modules.simple.dom.cliente.QCliente(this, "cliente", depth-1);
         }
         else
         {
-            this.localidad = null;
+            this.cliente = null;
         }
-        this.superficie = new StringExpressionImpl(this, "superficie");
-        this.patio = new BooleanExpressionImpl(this, "patio");
-        this.parrilla = new BooleanExpressionImpl(this, "parrilla");
-        this.piscina = new BooleanExpressionImpl(this, "piscina");
-        this.cochera = new BooleanExpressionImpl(this, "cochera");
-        this.petFriendly = new BooleanExpressionImpl(this, "petFriendly");
-        this.tipoCalefaccion = new EnumExpressionImpl(this, "tipoCalefaccion");
-        this.imgUrl1 = new StringExpressionImpl(this, "imgUrl1");
-        this.imgUrl2 = new StringExpressionImpl(this, "imgUrl2");
-        this.imgUrl3 = new StringExpressionImpl(this, "imgUrl3");
         if (depth > 0)
         {
             this.inmueblecaracteristica = new domainapp.modules.simple.dom.inmueble_caracteristica.QInmuebleCaracteristica(this, "inmueblecaracteristica", depth-1);
@@ -103,6 +93,14 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
         else
         {
             this.inmueblecaracteristica = null;
+        }
+        if (depth > 0)
+        {
+            this.imagen = new domainapp.modules.simple.dom.imagen.QImagen(this, "imagen", depth-1);
+        }
+        else
+        {
+            this.imagen = null;
         }
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
@@ -124,19 +122,11 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
         this.departamento = new StringExpressionImpl(this, "departamento");
         this.latitud = new StringExpressionImpl(this, "latitud");
         this.longitud = new StringExpressionImpl(this, "longitud");
-        this.tipoUnidad = new domainapp.modules.simple.dom.tipo_unidad.QTipoUnidad(this, "tipoUnidad", 5);
         this.localidad = new domainapp.modules.simple.dom.localidad.QLocalidad(this, "localidad", 5);
-        this.superficie = new StringExpressionImpl(this, "superficie");
-        this.patio = new BooleanExpressionImpl(this, "patio");
-        this.parrilla = new BooleanExpressionImpl(this, "parrilla");
-        this.piscina = new BooleanExpressionImpl(this, "piscina");
-        this.cochera = new BooleanExpressionImpl(this, "cochera");
-        this.petFriendly = new BooleanExpressionImpl(this, "petFriendly");
-        this.tipoCalefaccion = new EnumExpressionImpl(this, "tipoCalefaccion");
-        this.imgUrl1 = new StringExpressionImpl(this, "imgUrl1");
-        this.imgUrl2 = new StringExpressionImpl(this, "imgUrl2");
-        this.imgUrl3 = new StringExpressionImpl(this, "imgUrl3");
+        this.tipoUnidad = new domainapp.modules.simple.dom.tipo_unidad.QTipoUnidad(this, "tipoUnidad", 5);
+        this.cliente = new domainapp.modules.simple.dom.cliente.QCliente(this, "cliente", 5);
         this.inmueblecaracteristica = new domainapp.modules.simple.dom.inmueble_caracteristica.QInmuebleCaracteristica(this, "inmueblecaracteristica", 5);
+        this.imagen = new domainapp.modules.simple.dom.imagen.QImagen(this, "imagen", 5);
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
