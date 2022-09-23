@@ -19,7 +19,7 @@ public class TipoUnidadList {
     private final TipoUnidad tipoUnidad;
 
     @ActionLayout( named = "Lista de Tipos de Unidad")
-    public List<TipoUnidad> coll() {return tipoUnidadRepositorio.listAll(); }
+    public List<TipoUnidad> coll() {return tipoUnidadRepositorio.listAllTipoUnidad(); }
 
     @Inject
     TipoUnidadRepositorio tipoUnidadRepositorio;

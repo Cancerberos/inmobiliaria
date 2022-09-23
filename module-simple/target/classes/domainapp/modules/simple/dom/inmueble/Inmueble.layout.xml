@@ -36,8 +36,7 @@
                         </bs3:tab>
                     </bs3:tabGroup>
                     <cpt:fieldSet  id="metadata" name="Datos de Creacion"/>
-                    <cpt:fieldSet  id="list" name="Datos de Creacion11111"/>
-                </bs3:col>
+                    </bs3:col>
             </bs3:row>
             <bs3:row>
                 <bs3:col span="12">

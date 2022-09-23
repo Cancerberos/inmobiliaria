@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.inmueble_caracteristica;
 
 
+import domainapp.modules.simple.dom.inmueble.Inmueble;
 import domainapp.modules.simple.dom.localidad.Localidad;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.Action;
@@ -25,10 +26,13 @@ import javax.inject.Inject;
 @RequiredArgsConstructor
 public class InmuebleCaracteristicaRemove {
    final  private InmuebleCaracteristica  inmuebleCaracteristica;
+
+
     public void delete() {
         final String title = titleService.titleOf(" Mensaje del Sistema ");
         messageService.informUser(String.format("- '%s' - Se Borro el Registro => "+ inmuebleCaracteristica.getTipoCaracteristica().getDescripcion() , title));
         repositoryService.remove(inmuebleCaracteristica);
+        return ;
     }
     @Inject ClockService clockService;
     @Inject RepositoryService repositoryService;

@@ -3,17 +3,18 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\p
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\direccion\Direccion.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_unidad\TipoUnidadList.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\types\Name.java
-C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble\Caracteristica_Inmueble.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\types\LastName.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\SimpleModule.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\localidad\LocalidadRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso\Aviso.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\localidad\Localidad.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\imagen\Caracteristicas_Imagen.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\imagen\Imagen.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristicaRemove.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\caracteristica\CaracteristicaRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristicaRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_unidad\TipoUnidad.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\imagen\ImagenRemove.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\fixture\SimpleObject_persona.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_operacion\TipoOperacionRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_unidad\TipoUnidadAd.java
@@ -25,6 +26,7 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\t
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble\InmuebleAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristicaAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmobiliaria\Inmobiliaria.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble_caracteristica\Caracteristica_Inmueble.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble\InmuebleRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\cliente\Cliente.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipocaracteristica\TipoCaracteristicaAd.java
@@ -37,6 +39,7 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\p
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\red_social\RedSocialRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\estado_contacto\EstadoContacto.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\Usuario.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\imagen\ImagenAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\estado_aviso\EstadoAviso.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_unidad\TipoUnidadAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\cliente\ClienteRemove.java
@@ -61,7 +64,6 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\s
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\fixture\SimpleObjectBuilder.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_unidad\TipoUnidadRemove.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\direccion\DireccionRemove.java
-C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble\InmuebleList.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipocaracteristica\TipoCaracteristica.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_operacion\TipoOperacion.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\UsuarioRepositorio.java

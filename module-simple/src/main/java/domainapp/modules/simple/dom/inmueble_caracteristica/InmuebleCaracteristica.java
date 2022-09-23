@@ -11,10 +11,11 @@ import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
 import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.List;
 
@@ -49,7 +50,9 @@ public class InmuebleCaracteristica implements Comparable<InmuebleCaracteristica
         this.tipoCaracteristica=tipoCaracteristica;
     }
 
-
+    public String title() {
+        return titleService.titleOf( getTipoCaracteristica());
+    }
     @Getter @Setter
     @PropertyLayout(fieldSetId = "Cant", sequence = "1")
     private int cant;
@@ -63,7 +66,11 @@ public class InmuebleCaracteristica implements Comparable<InmuebleCaracteristica
     @Column(name="INMUEBLE_ID")
      private Inmueble inmueble;
 
-
+    @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Volver a Inmueble")
+    public List<Inmueble> listAll() {
+        return repositoryService.allInstances(Inmueble.class);
+    }
       @Override
     public int compareTo(@NotNull InmuebleCaracteristica o) {
         return 0;

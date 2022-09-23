@@ -26,6 +26,15 @@
                 <mb3:serviceAction objectType="simple.ClienteRepositorio" id="findByName"/>
                 <mb3:serviceAction objectType="simple.ClienteRepositorio" id="listarCliente"/>
             </mb3:section>
+
+            <mb3:section>
+                <mb3:named>Inmueble</mb3:named>
+                <mb3:serviceAction objectType="simple.InmuebleAdd" id="AddInmueble"/>
+                <mb3:serviceAction objectType="simple.InmuebleRepositorio" id="listAll"/>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu unreferencedActions="true">
+            <mb3:named>Menu Auxiliar</mb3:named>
             <mb3:section>
                 <mb3:named>Tipo de Caracteristicas</mb3:named>
                 <mb3:serviceAction objectType="simple.TipoCaracteristicaAdd" id="AddCaracteristica"/>
@@ -33,12 +42,11 @@
                 <mb3:serviceAction objectType="simple.TipoCaracteristicaRepositorio" id="listAll"/>
             </mb3:section>S
             <mb3:section>
-                <mb3:named>Inmueble</mb3:named>
-                <mb3:serviceAction objectType="simple.InmuebleAdd" id="AddInmueble"/>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu unreferencedActions="true">
-            <mb3:named>...</mb3:named>
+                <mb3:named>Tipo de Unidad</mb3:named>
+                <mb3:serviceAction objectType="simple.TipoUnidadAdd" id="AddTipo"/>
+                <mb3:serviceAction objectType="simple.TipoCaracteristicaRepositorio" id="buscarPorCaracteristicasExacta"/>
+                <mb3:serviceAction objectType="simple.TipoUnidadRepositorio" id="listAllTipoUnidad"/>
+            </mb3:section>S
         </mb3:menu>
     </mb3:primary>
     <mb3:secondary>

@@ -45,7 +45,7 @@ public class TipoUnidadRepositorio {
     }
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(named = "Listar  Tipo de Unidad")
-    public List<TipoUnidad> listAll() {
+    public List<TipoUnidad> listAllTipoUnidad() {
         return repositoryService.allInstances(TipoUnidad.class);
     }
 
