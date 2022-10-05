@@ -14,7 +14,9 @@ import javax.inject.Inject;
 import javax.jdo.annotations.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
+import java.util.List;
+
+import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
 @PersistenceCapable(
         schema = "Inmobiliaria",
@@ -23,13 +25,13 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
         @Query(
                 name = "findAll", language = "JDOQL",
                 value = "SELECT "
-                        + " FROM domainapp.modules.simple.dom.provincia.Estado_Aviso "
+                        + " FROM domainapp.modules.simple.dom.estado_aviso "
                         + "ORDER BY descripcion ASC")
 })
 @Unique(
         name = "descripcion_EstadoAviso_UNQ", members = {"descripcion"}
 )
-@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")
+@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="EstadoAvisoId")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(editing = Editing.DISABLED)
 //@DomainObject(logicalTypeName = "simple.direccion", entityChangePublishing = Publishing.ENABLED)
@@ -38,7 +40,6 @@ import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_Y
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
 public class EstadoAviso implements Comparable<EstadoAviso>{
-
 
     @Title
     @Name
@@ -50,15 +51,20 @@ public class EstadoAviso implements Comparable<EstadoAviso>{
         this.descripcion = descripcion;
     }
 
+    @ActionLayout( named = "Listar  Estados de  Avisos" )
+    public List<EstadoAviso> listAll() {
+        return repositoryService.allInstances(EstadoAviso.class);
+    }
 
-    @Action(semantics = NON_IDEMPOTENT_ARE_YOU_SURE)
-    @ActionLayout(
-            position = ActionLayout.Position.PANEL,
-            describedAs = "Elimina este objeto del almacén de datos persistente")
-    public void delete() {
-        final String title = titleService.titleOf(this);
-        messageService.informUser(String.format("'%s' deleted", title));
-        repositoryService.removeAndFlush(this);
+    @Action(semantics =IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
+    @ActionLayout(promptStyle =PromptStyle.DIALOG_MODAL,associateWith = "EstadoAviso",
+            sequence = "1", named = "Modifica Estado de Aviso" )
+    public EstadoAviso UpdateTipo(final String descripcion)
+    {
+        setDescripcion(descripcion);
+        return this;
+    }
+    public @NonNull String default0UpdateTipo() {return getDescripcion();
     }
 
     @Override

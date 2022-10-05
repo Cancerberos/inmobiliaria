@@ -10,7 +10,7 @@ import java.util.List;
 
 @DomainService(
         nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.Estado_AvisoRepositorio"
+        logicalTypeName = "simple.EstadoAvisoRepositorio"
 )
 @javax.annotation.Priority(PriorityPrecedence.EARLY)
 @lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
@@ -44,43 +44,5 @@ public class EstadoAvisoRepositorio {
     public List<EstadoAviso> listarEstadoAviso() {
         return repositoryService.allInstances(EstadoAviso.class);
     }
-/*
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<SimpleObject> findByName(
-            @Name final String name
-    ) {
-        return repositoryService.allMatches(
-                Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_LIKE)
-                        .withParameter("name", name));
-    }
-
-
-    @Programmatic
-    public SimpleObject findByNameExact(final String name) {
-        return repositoryService.firstMatch(
-                        Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_EXACT)
-                                .withParameter("name", name))
-                .orElse(null);
-    }
-
-
-
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    public List<SimpleObject> listAll() {
-        return repositoryService.allInstances(SimpleObject.class);
-    }
-*/
-
-  //  @Programmatic
- //   public void ping() {
- //       JDOQLTypedQuery<Direccion> q = jdoSupportService.newTypesafeQuery(Direccion.class);
-       // final QDireccion candidate = QDireccion.candidate();
- //       q.range(0,2);
-      //  q.orderBy(candidate.calle.asc());
- //       q.executeList();
- //   }
-
 
 }

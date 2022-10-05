@@ -31,16 +31,18 @@ public class QTipoOperacion extends PersistableExpressionImpl<TipoOperacion> imp
 
     public final StringExpression descripcion;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
-    public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
+    public final ObjectExpression<domainapp.modules.simple.dom.tipo_operacion.TipoOperacionRepositorio> tipoOperacionRepositorio;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
+    public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
 
     public QTipoOperacion(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
+        this.tipoOperacionRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipo_operacion.TipoOperacionRepositorio>(this, "tipoOperacionRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }
 
     public QTipoOperacion(Class type, String name, ExpressionType exprType)
@@ -48,7 +50,8 @@ public class QTipoOperacion extends PersistableExpressionImpl<TipoOperacion> imp
         super(type, name, exprType);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
+        this.tipoOperacionRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipo_operacion.TipoOperacionRepositorio>(this, "tipoOperacionRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }
 }
