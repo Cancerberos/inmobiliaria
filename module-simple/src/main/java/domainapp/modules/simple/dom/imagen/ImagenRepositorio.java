@@ -23,6 +23,16 @@ public class ImagenRepositorio {
 
         );
     }
+    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+    public Imagen BuscarImagen(
+            final Inmueble inmueble
+    ) {
+        return (Imagen) repositoryService.allMatches(
+                Query.named(Imagen.class, Imagen.NAMED_QUERY__FIND_BY_NAME_LIKE)
+                        .withParameter("inmueble", inmueble)
+
+        );
+    }
     @ActionLayout(named = "Listar todas las Imagenes")
     public List<Imagen> listAll() {
         return repositoryService.allInstances(Imagen.class);

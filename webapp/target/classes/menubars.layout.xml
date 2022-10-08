@@ -19,9 +19,13 @@
                 <mb3:serviceAction objectType="simple.InmuebleAdd" id="AddInmueble"/>
                 <mb3:serviceAction objectType="simple.InmuebleRepositorio" id="listAll"/>
             </mb3:section>
+            <mb3:section>
+                <mb3:named>Avisos</mb3:named>
+               <mb3:serviceAction objectType="simple.AvisoRepositorio" id="listarAvisos"/>
+            </mb3:section>
         </mb3:menu>
         <mb3:menu unreferencedActions="true">
-            <mb3:named>Menu Auxiliar</mb3:named>
+            <mb3:named>Menu de Configuracion</mb3:named>
             <mb3:section>
                 <mb3:named>Provincia</mb3:named>
                 <mb3:serviceAction objectType="simple.ProvinciaRepositorio" id="createProvincia"/>

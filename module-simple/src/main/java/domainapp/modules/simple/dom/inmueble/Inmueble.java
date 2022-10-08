@@ -158,7 +158,7 @@ public class Inmueble implements Comparable<Inmueble>{
 
 
     @Action( semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "name", sequence = "1", named = "Modifica Datos Proncipales")
+    @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "name", sequence = "1", named = "Modifica Datos Principales")
     public Object UpdateDatosProncipales(String descripcion, LocalDateTime fechaExclusividad, String calle , String altura,
                                          String edificacion, String piso, String departamento, String latitud, String longitud,
                                          Localidad  localidad,TipoUnidad tipoUnidad, Cliente cliente) {
