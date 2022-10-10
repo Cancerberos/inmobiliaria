@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.localidad;
 
 
-import domainapp.modules.simple.dom.direccion.Direccion;
 import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.provincia.ProvinciaRepositorio;
 import lombok.*;

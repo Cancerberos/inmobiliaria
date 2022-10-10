@@ -1,11 +1,8 @@
 package domainapp.modules.simple.dom.inmueble;
 
 import domainapp.modules.simple.dom.cliente.Cliente;
-import domainapp.modules.simple.dom.direccion.DireccionRepositorio;
-import domainapp.modules.simple.dom.inmueble_caracteristica.InmuebleCaracteristica;
 import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.dom.localidad.LocalidadRepositorio;
-import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.tipo_unidad.TipoUnidad;
 import domainapp.modules.simple.dom.tipo_unidad.TipoUnidadRepositorio;
 import org.apache.isis.applib.annotation.*;
@@ -14,11 +11,8 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
 import javax.inject.Inject;
-import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;

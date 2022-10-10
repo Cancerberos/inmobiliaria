@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.cliente;
 
 
-import domainapp.modules.simple.dom.direccion.Direccion;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
@@ -14,8 +13,6 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
 
 import javax.inject.Inject;
-
-import static org.apache.isis.applib.annotation.SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE;
 
 @Action(
         semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE,

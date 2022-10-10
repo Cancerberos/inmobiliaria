@@ -1,8 +1,6 @@
 package domainapp.modules.simple.dom.localidad;
 
-import domainapp.modules.simple.dom.cliente.Cliente;
-import domainapp.modules.simple.dom.direccion.Direccion;
-import domainapp.modules.simple.dom.direccion.DireccionRepositorio;
+
 import domainapp.modules.simple.dom.provincia.Provincia;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
@@ -29,7 +27,7 @@ public class LocalidadAdd {
     @javax.inject.Inject
     RepositoryService repositoryService;
     JdoSupportService jdoSupportService;
-    DireccionRepositorio direccionRepositorio;
+
 
 
 }

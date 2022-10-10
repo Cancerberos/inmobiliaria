@@ -1,9 +1,6 @@
 package domainapp.modules.simple.dom.inmueble_caracteristica;
 
-import domainapp.modules.simple.dom.direccion.DireccionRepositorio;
 import domainapp.modules.simple.dom.inmueble.Inmueble;
-import domainapp.modules.simple.dom.inmueble_caracteristica.InmuebleCaracteristica;
-import domainapp.modules.simple.dom.provincia.Provincia;
 import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.*;
@@ -11,8 +8,6 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
 import java.util.List;
-
-import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
 @Action(
         semantics = SemanticsOf.IDEMPOTENT,
