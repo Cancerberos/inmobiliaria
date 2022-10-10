@@ -29,44 +29,47 @@ public class QUsuario extends PersistableExpressionImpl<Usuario> implements Pers
         return new QUsuario(Usuario.class, name, ExpressionType.VARIABLE);
     }
 
-    public final StringExpression username;
-    public final StringExpression apellido;
+    public final StringExpression userName;
     public final StringExpression nombre;
+    public final StringExpression apellido;
     public final StringExpression telefono;
-    public final StringExpression mail;
+    public final StringExpression email;
     public final StringExpression password;
     public final BooleanExpression esAdmin;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
+    public final ObjectExpression<domainapp.modules.simple.dom.usuario.UsuarioRepositorio> usuarioRepositorio;
 
     public QUsuario(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
-        this.username = new StringExpressionImpl(this, "username");
-        this.apellido = new StringExpressionImpl(this, "apellido");
+        this.userName = new StringExpressionImpl(this, "userName");
         this.nombre = new StringExpressionImpl(this, "nombre");
+        this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
-        this.mail = new StringExpressionImpl(this, "mail");
+        this.email = new StringExpressionImpl(this, "email");
         this.password = new StringExpressionImpl(this, "password");
         this.esAdmin = new BooleanExpressionImpl(this, "esAdmin");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.usuarioRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.usuario.UsuarioRepositorio>(this, "usuarioRepositorio");
     }
 
     public QUsuario(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
-        this.username = new StringExpressionImpl(this, "username");
-        this.apellido = new StringExpressionImpl(this, "apellido");
+        this.userName = new StringExpressionImpl(this, "userName");
         this.nombre = new StringExpressionImpl(this, "nombre");
+        this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
-        this.mail = new StringExpressionImpl(this, "mail");
+        this.email = new StringExpressionImpl(this, "email");
         this.password = new StringExpressionImpl(this, "password");
         this.esAdmin = new BooleanExpressionImpl(this, "esAdmin");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.usuarioRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.usuario.UsuarioRepositorio>(this, "usuarioRepositorio");
     }
 }

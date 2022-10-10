@@ -31,16 +31,18 @@ public class QEstadoContacto extends PersistableExpressionImpl<EstadoContacto> i
 
     public final StringExpression descripcion;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
-    public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
+    public final ObjectExpression<domainapp.modules.simple.dom.estado_contacto.EstadoContactoRepositorio> estadoContactoRepositorio;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
+    public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
 
     public QEstadoContacto(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
+        this.estadoContactoRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.estado_contacto.EstadoContactoRepositorio>(this, "estadoContactoRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }
 
     public QEstadoContacto(Class type, String name, ExpressionType exprType)
@@ -48,7 +50,8 @@ public class QEstadoContacto extends PersistableExpressionImpl<EstadoContacto> i
         super(type, name, exprType);
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
+        this.estadoContactoRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.estado_contacto.EstadoContactoRepositorio>(this, "estadoContactoRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
+        this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }
 }

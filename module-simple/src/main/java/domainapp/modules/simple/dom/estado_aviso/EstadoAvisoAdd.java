@@ -16,7 +16,7 @@ public class EstadoAvisoAdd {
     private EstadoAviso estadoAviso;
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL, named = "Agregar Estado Avisos" )
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL, named = "Agregar Estados Aviso" )
     public EstadoAviso AddEstadoAviso(final String descripcion) {
        return repositoryService.persist(new EstadoAviso( descripcion));
 

@@ -1,76 +1,60 @@
 package domainapp.modules.simple.dom.usuario;
 
-import domainapp.modules.simple.dom.usuario.QUsuario;
-//import domainapp.modules.simple.dom.so.QUsuario;
+
 import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
-import javax.inject.Inject;
 import javax.jdo.JDOQLTypedQuery;
+import java.util.List;
 
 @DomainService(
         nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.Usuarios"
+        logicalTypeName = "simple.UsuarioRepositorio"
 )
-@javax.annotation.Priority(PriorityPrecedence.EARLY)
-@lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
+
+
 public class UsuarioRepositorio {
 
-    final RepositoryService repositoryService;
-    final JdoSupportService jdoSupportService;
 
-
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Usuario createUsuario(
-            final String username,
-            final String apellido,
-            final String nombre,
-            final String telefono,
-            final String mail,
-            final String password,
-            final boolean esAdmin) {
-        return repositoryService.persist(new Usuario(username, apellido, nombre, telefono, mail, password, esAdmin));
-    }
-
-/*
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<SimpleObject> findByName(
-            @Name final String name
-    ) {
-        return repositoryService.allMatches(
-                Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_LIKE)
-                        .withParameter("name", name));
+    @ActionLayout(named = "Listar Usuarios Registrados")
+    public List<Usuario> listarUsuario() {
+        return repositoryService.allInstances(Usuario.class);
     }
-
+    @ActionLayout(named = "Listar Usuarios ")
+    public List<Usuario> listarUsuarioPorNombre() {
+        return repositoryService.allMatches(Query.named(Usuario.class,Usuario.NAMED_QUERY__FIND_BY_NAME_LIKE_USUARIO));
+    }
 
     @Programmatic
-    public SimpleObject findByNameExact(final String name) {
+    public Usuario buscarPorUsuarioExacto(final String name) {
         return repositoryService.firstMatch(
-                        Query.named(SimpleObject.class, SimpleObject.NAMED_QUERY__FIND_BY_NAME_EXACT)
-                                .withParameter("name", name))
+                        Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_NAME_LIKE_USUARIO)
+                                .withParameter("nombre", name))
+                .orElse(null);
+    }
+    @Programmatic
+    public Usuario buscarPorUserNameExacto(final String userName) {
+        return repositoryService.firstMatch(
+                        Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_NAME_LIKE_USER_NAME)
+                                .withParameter("userName", userName))
                 .orElse(null);
     }
 
-
-
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-    public List<SimpleObject> listAll() {
-        return repositoryService.allInstances(SimpleObject.class);
-    }
-*/
 
     @Programmatic
     public void ping() {
         JDOQLTypedQuery<Usuario> q = jdoSupportService.newTypesafeQuery(Usuario.class);
         final QUsuario candidate = QUsuario.candidate();
         q.range(0,2);
-        q.orderBy(candidate.username.asc());
+        q.orderBy(candidate.nombre.asc());
         q.executeList();
     }
 
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
 
 }

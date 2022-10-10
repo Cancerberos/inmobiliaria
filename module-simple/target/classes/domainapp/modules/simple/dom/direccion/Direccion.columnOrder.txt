@@ -1,4 +1,0 @@
-calle
-numero
-departamento
-localidad

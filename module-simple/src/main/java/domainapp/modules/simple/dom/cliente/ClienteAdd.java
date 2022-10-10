@@ -1,10 +1,7 @@
 package domainapp.modules.simple.dom.cliente;
 
-import domainapp.modules.simple.dom.direccion.Direccion;
-import domainapp.modules.simple.dom.direccion.DireccionRepositorio;
+
 import domainapp.modules.simple.dom.localidad.Localidad;
-import domainapp.modules.simple.dom.provincia.Provincia;
-import jdk.jfr.TransitionFrom;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
@@ -44,7 +41,7 @@ public class ClienteAdd {
     @javax.inject.Inject
     RepositoryService repositoryService;
     JdoSupportService jdoSupportService;
-    DireccionRepositorio direccionRepositorio;
+
 
 
 }

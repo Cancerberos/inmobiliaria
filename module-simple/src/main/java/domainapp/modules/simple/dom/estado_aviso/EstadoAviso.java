@@ -25,7 +25,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
         @Query(
                 name = "findAll", language = "JDOQL",
                 value = "SELECT "
-                        + " FROM domainapp.modules.simple.dom.estado_aviso "
+                        + " FROM domainapp.modules.simple.dom.estado_aviso.EstadoAviso "
                         + "ORDER BY descripcion ASC")
 })
 @Unique(

@@ -1,35 +1,41 @@
 package domainapp.modules.simple.dom.estado_contacto;
 
 import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
-import javax.inject.Inject;
-import javax.jdo.JDOQLTypedQuery;
+import java.util.List;
 
 @DomainService(
-        nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.EstadoContacto"
+        nature = NatureOfService.REST,
+        logicalTypeName = "simple.EstadoContactoRepositorio"
 )
-@javax.annotation.Priority(PriorityPrecedence.EARLY)
-@lombok.RequiredArgsConstructor(onConstructor_ = {@Inject} )
 public class EstadoContactoRepositorio {
-    final RepositoryService repositoryService;
-    final JdoSupportService jdoSupportService;
 
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public EstadoContacto createEstadoContacto(
-            final String descripcion) {
-        return repositoryService.persist(new EstadoContacto(descripcion));
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_MODAL)
+    public List<EstadoContacto> ListarEstadoContactoFiltraPorDescripcion(String descripcion) {
+        return repositoryService.allMatches(
+                Query.named(EstadoContacto.class, "buscarPorDescripcion")
+                        .withParameter("descripcion",descripcion));
+    }
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(named = "Listado de Estados Contacto por Descripcion")
+    public List<EstadoContacto> ListarEstadoContactoOrdenaPorDescripcion() {
+        return repositoryService.allMatches(
+                Query.named(EstadoContacto.class, EstadoContacto.NAMED_QUERY__FIND_BY_NAME_LIKE_CONTACTO)
+                          );
+    }
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(named = "Listar Todos los Estados")
+    public List<EstadoContacto> listarEstadoCotacto() {
+        return repositoryService.allInstances(EstadoContacto.class);
     }
 
-    @Programmatic
-    public void ping() {
-        JDOQLTypedQuery<EstadoContacto> q = jdoSupportService.newTypesafeQuery(EstadoContacto.class);
-        final QEstadoContacto candidate = QEstadoContacto.candidate();
-        q.range(0,2);
-        q.orderBy(candidate.descripcion.asc());
-        q.executeList();
-    }
+    @javax.inject.Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
+
+
 }
