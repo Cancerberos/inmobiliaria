@@ -10,11 +10,7 @@ import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
 
-import javax.jdo.JDOQLTypedQuery;
 import java.util.List;
-import java.util.Optional;
-
-import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
 @DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.AvisoRepositorio")
 public class AvisoRepositorio {
@@ -24,7 +20,12 @@ public class AvisoRepositorio {
                 Query.named(Aviso.class, Aviso.NAMED_QUERY__FIND_BY_NAME_EXACT_AVISO)
         );
     }
-
+    @ActionLayout(named = "Consulta Cliente-Localidad-Provincia")
+    public List<Cliente> prueba() {
+        return repositoryService.allMatches(
+                Query.named(Cliente.class, "prueba")
+        );
+    }
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(named = "Listar Avisos Cargados")
     public List<Aviso> listarAvisos() {

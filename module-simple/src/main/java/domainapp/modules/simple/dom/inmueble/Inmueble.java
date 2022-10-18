@@ -32,6 +32,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                 value = "SELECT "
                         + " FROM domainapp.modules.simple.dom.cliente.Cliente "
                         + "ORDER BY nombre ASC"),
+
 })
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Inmuebleid")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")

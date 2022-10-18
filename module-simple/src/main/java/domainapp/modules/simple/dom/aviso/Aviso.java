@@ -38,6 +38,8 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                         + " FROM domainapp.modules.simple.dom.aviso.Aviso "
                         + " WHERE cliente == :cliente"
                         + " ORDER BY descripcion ASC"),
+
+
 })
 
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="AvisoId")
@@ -65,7 +67,7 @@ public class Aviso  implements Comparable<Aviso> {
 
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_AVISO_DES = "buscarAviso";
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT_AVISO = "listAll";
-
+    public static final String PRUEBA = "prueba";
     @Getter@Setter
     @Column(allowsNull = "false")
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
