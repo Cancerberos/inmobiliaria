@@ -29,6 +29,16 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                 value = "SELECT "
                         + " FROM domainapp.modules.simple.dom.cliente.Cliente "
                         + "ORDER BY nombre ASC"),
+        @Query(
+                name = "prueba", language = "JDOQL",
+                value = "SELECT "
+                        + " FROM domainapp.modules.simple.dom.cliente.Cliente c INNER JOIN "
+                        + " domainapp.modules.simple.dom.localidad.Localidad l "
+                        + " ON l.Localidad = c.Localidad"
+                        + " INNER JOIN  domainapp.modules.simple.dom.provincia.Provincia p "
+                        + " p.ProvinciaId = l.Provinciaid"
+        ),
+
 })
 
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="id")

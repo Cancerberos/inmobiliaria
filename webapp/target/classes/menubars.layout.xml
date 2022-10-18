@@ -80,6 +80,7 @@
             <mb3:section>
                 <mb3:named>Avisos</mb3:named>
                 <mb3:serviceAction objectType="simple.AvisoRepositorio" id="listarAvisos"/>
+                <mb3:serviceAction objectType="simple.AvisoRepositorio" id="prueba"/>
             </mb3:section>
         </mb3:menu>
     </mb3:primary>
