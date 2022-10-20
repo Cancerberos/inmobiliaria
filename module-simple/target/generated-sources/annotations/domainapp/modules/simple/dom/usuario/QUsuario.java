@@ -29,7 +29,7 @@ public class QUsuario extends PersistableExpressionImpl<Usuario> implements Pers
         return new QUsuario(Usuario.class, name, ExpressionType.VARIABLE);
     }
 
-    public final StringExpression userName;
+    public final StringExpression username;
     public final StringExpression nombre;
     public final StringExpression apellido;
     public final StringExpression telefono;
@@ -44,7 +44,7 @@ public class QUsuario extends PersistableExpressionImpl<Usuario> implements Pers
     public QUsuario(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
-        this.userName = new StringExpressionImpl(this, "userName");
+        this.username = new StringExpressionImpl(this, "username");
         this.nombre = new StringExpressionImpl(this, "nombre");
         this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
@@ -60,7 +60,7 @@ public class QUsuario extends PersistableExpressionImpl<Usuario> implements Pers
     public QUsuario(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
-        this.userName = new StringExpressionImpl(this, "userName");
+        this.username = new StringExpressionImpl(this, "username");
         this.nombre = new StringExpressionImpl(this, "nombre");
         this.apellido = new StringExpressionImpl(this, "apellido");
         this.telefono = new StringExpressionImpl(this, "telefono");
