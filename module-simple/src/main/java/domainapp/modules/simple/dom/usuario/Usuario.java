@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
+import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Comparator;
 import java.util.List;
@@ -29,21 +30,30 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                 value = "SELECT "
                         + " FROM domainapp.modules.simple.dom.usuario.Usuario "
                         + "ORDER BY username ASC"),
+        @Query(
+                name = "getByUsernamePassword", language = "JDOQL",
+                value = "SELECT "
+                        + "FROM domainapp.modules.simple.dom.usuario.Usuario "
+                        + "WHERE username == :username "
+                        + "&& password == :password "
+                        + "ORDER BY username ASC"),
+
 })
 
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="UsuarioId")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(logicalTypeName = "simple.Usuario",entityChangePublishing = Publishing.ENABLED,editing=Editing.DISABLED)
+@Unique(name="Usuario_username_UNQ", members = {"username"})
 @RequiredArgsConstructor
-@DomainObjectLayout(cssClassFa = "file-text-o")
+@DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 @ToString(onlyExplicitlyIncluded = true)
-@Unique(name="usuario_UNQ", members = {"nombre"})
+
 public class Usuario implements Comparable<Usuario>{
 
     public Usuario(String userName, String nombre, String apellido, String telefono,
                    String email, String password, Boolean esAdmin ) {
-        this.userName=userName;
+        this.username=userName;
         this.nombre=nombre;
         this.apellido=apellido;
         this.email=email;
@@ -55,12 +65,12 @@ public class Usuario implements Comparable<Usuario>{
 
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_USUARIO = "OrdenarUsuarioPorNombre";
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_USER_NAME = "OrdenarUsuarioPorUserName";
-
+    public static final String NAMED_QUERY__FIND_BY_USER_NAME_PASSWORD ="getByUsernamePassword";
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Usuario", sequence = "1")
-    private String userName;
+    private String username;
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Usuario", sequence = "1")
@@ -120,7 +130,7 @@ public class Usuario implements Comparable<Usuario>{
     public Object UpdateUsuario(String userName, String nombre, String apellido, String telefono,
                                 String email, String password, Boolean esAdmin
     ) {
-        setUserName(userName);
+        setUsername(userName);
         setNombre(nombre);
         setApellido(apellido);
         setEmail(email);
@@ -129,7 +139,7 @@ public class Usuario implements Comparable<Usuario>{
         setEsAdmin(esAdmin);
         return this;
     }
-    public @NonNull String default0UpdateUsuario() {return getUserName(); }
+    public @NonNull String default0UpdateUsuario() {return getUsername(); }
     public @NonNull String default1UpdateUsuario() {return getNombre(); }
     public @NonNull String default2UpdateUsuario() {return getApellido(); }
     public @NonNull String default3UpdateUsuario() { return getEmail();  }
