@@ -30,11 +30,11 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                         + " FROM domainapp.modules.simple.dom.cliente.Cliente "
                         + "ORDER BY nombre ASC"),
         @Query(
-                name = "prueba", language = "JDOQL",
+                name = "getAllClientes", language = "JDOQL",
                 value = "SELECT "
-                        + " FROM domainapp.modules.simple.dom.cliente.Cliente c INNER JOIN "
-                        + " domainapp.modules.simple.dom.localidad.Localidad l "
-                        + " ON l.Localidad = c.Localidad"
+                        + " FROM domainapp.modules.simple.dom.cliente.Cliente c "
+                        + " INNER JOIN domainapp.modules.simple.dom.localidad.Localidad l "
+                        + " ON l.Localidadid = c.Localidadid"
                         + " INNER JOIN  domainapp.modules.simple.dom.provincia.Provincia p "
                         + " p.ProvinciaId = l.Provinciaid"
         ),
@@ -75,10 +75,11 @@ public class Cliente implements Comparable<Cliente>{
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_CLIENTE = "findClientes";
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT_CLIENTE = null;
 
-      @Getter@Setter
+    @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "1")
     private String nombre;
+
     @Column(allowsNull = "false")
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
@@ -109,11 +110,13 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "6", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
     @Column(allowsNull = "true")
     private String altura;
+
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "6", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
     @Column(allowsNull = "true")
     private String edificacion;
+
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
@@ -137,19 +140,20 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "7", labelPosition=LabelPosition.LEFT, typicalLength=80,cssClass="x-key")
     @Column(allowsNull = "true")
     private String longitud;
+
     @Getter @Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "9", labelPosition=LabelPosition.RIGHT, typicalLength=180,cssClass="x-key")
     @javax.jdo.annotations.Column(allowsNull = "true", name = "Localidadid")
     private Localidad localidad;
-    @Transient
+
+    /*@Transient
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "10",named = "Codigo Postal")
     public String getdescCp() {  return    localidad.getCodigoPostal(); }
 
     @Transient
-   @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "11",named = "Provincia")
-    public String getdescProv() {  return  localidad.getProvincia().getDescripcion(); }
-
+    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "11",named = "Provincia")
+    public String getdescProv() {  return  localidad.getProvincia().getDescripcion(); }*/
 
     public String title() {
         return getNombre() ;

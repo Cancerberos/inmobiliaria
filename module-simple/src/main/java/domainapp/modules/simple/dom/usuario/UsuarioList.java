@@ -17,8 +17,8 @@ public class UsuarioList {
 
     private final Usuario usuario;
 
-    @ActionLayout( named = "Lista de Usuarios Registrados")
-    public List<Usuario> coll() {return usuarioRepositorio.listarUsuario(); }
+    /* @ActionLayout( named = "Lista de Usuarios Registrados")
+    public List<Usuario> coll() {return usuarioRepositorio.listarUsuario(); }*/
 
     @Inject
     UsuarioRepositorio usuarioRepositorio;

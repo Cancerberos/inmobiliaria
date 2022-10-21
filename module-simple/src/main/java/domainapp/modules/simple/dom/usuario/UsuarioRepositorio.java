@@ -16,60 +16,57 @@ import java.util.Optional;
         logicalTypeName = "simple.UsuarioRepositorio"
 )
 
-
 public class UsuarioRepositorio {
-
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(named = "Listar Usuarios Registrados")
     public List<Usuario> listarUsuario() {
         return repositoryService.allInstances(Usuario.class);
     }
-    @ActionLayout(named = "Listar ")
+
+    @ActionLayout(named = "Listar")
     public List<Usuario> listarUsuarioPorNombre() {
         return repositoryService.allMatches(Query.named(Usuario.class,Usuario.NAMED_QUERY__FIND_BY_NAME_LIKE_USUARIO));
     }
 
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(named = "Listar Usuarios  ")
-    public Optional<Usuario> getByUsernamePassword1(final String username, final String password) {
+    @ActionLayout(named = "Listar Usuario por Id")
+    public Optional<Usuario> getByUserById(final int id) {
         return repositoryService.uniqueMatch(
-                        Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_USER_NAME_PASSWORD)
-                                .withParameter("username",username )
-
+                        Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_USER_BY_ID)
+                                .withParameter("UsuarioId", id)
                 );
 
     }
 
+    @Programmatic
+    public Usuario buscarPorUserNameExacto ( final String userName){
+        return repositoryService.uniqueMatch(
+                        Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_NAME_LIKE_USER_NAME)
+                                .withParameter("userName", userName))
+                .orElse(null);
+    }
 
-
-        @Programmatic
-        public Usuario buscarPorUserNameExacto ( final String userName){
-            return repositoryService.uniqueMatch(
-                            Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_NAME_LIKE_USER_NAME)
-                                    .withParameter("userName", userName))
-                    .orElse(null);
-        }
-
+    @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(named = "Validar Usuario")
-    public Usuario getByUsernamePassword(final String username, final String password) {
-        return repositoryService.firstMatch(
+    public Usuario userValidation(final String username, final String password) {
+        return repositoryService.uniqueMatch(
                         Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_USER_NAME_PASSWORD)
                                 .withParameter("username", username)
                                 .withParameter("password", password))
                 .orElse(null);
     }
 
-        @Programmatic
-        public void ping ( final String username){
-            JDOQLTypedQuery<Usuario> q = jdoSupportService.newTypesafeQuery(Usuario.class);
-            final QUsuario candidate = QUsuario.candidate();
-            q.orderBy(candidate.username.asc());
-            q.executeList();
-
-        }
-    @Inject
-    RepositoryService repositoryService;
-        JdoSupportService jdoSupportService;
+    @Programmatic
+    public void ping ( final String username){
+        JDOQLTypedQuery<Usuario> q = jdoSupportService.newTypesafeQuery(Usuario.class);
+        final QUsuario candidate = QUsuario.candidate();
+        q.orderBy(candidate.username.asc());
+        q.executeList();
 
     }
+
+    @Inject
+    RepositoryService repositoryService;
+    JdoSupportService jdoSupportService;
+}

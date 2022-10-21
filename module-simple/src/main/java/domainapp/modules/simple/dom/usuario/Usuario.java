@@ -38,6 +38,13 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                         + "&& password == :password "
                         + "ORDER BY username ASC"),
 
+        @Query(
+                name = "getByUserById", language = "JDOQL",
+                value = "SELECT "
+                        + "FROM domainapp.modules.simple.dom.usuario.Usuario"
+                        + "WHERE UsuarioId == :UsuarioId"
+                        + "ORDER BY username ASC"),
+
 })
 
 @DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="UsuarioId")
@@ -66,11 +73,13 @@ public class Usuario implements Comparable<Usuario>{
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_USUARIO = "OrdenarUsuarioPorNombre";
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_USER_NAME = "OrdenarUsuarioPorUserName";
     public static final String NAMED_QUERY__FIND_BY_USER_NAME_PASSWORD ="getByUsernamePassword";
+    public static final String NAMED_QUERY__FIND_BY_USER_BY_ID ="getByUserById";
 
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Usuario", sequence = "1")
     private String username;
+
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Usuario", sequence = "1")
@@ -81,6 +90,7 @@ public class Usuario implements Comparable<Usuario>{
     @PropertyLayout(fieldSetId = "Usuario", sequence = "1")
     @Column(allowsNull = "false")
     private String apellido;
+
     @Getter@Setter
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @PropertyLayout(fieldSetId = "Usuario", sequence = "1" )
@@ -118,12 +128,10 @@ public class Usuario implements Comparable<Usuario>{
             Comparator.comparing(Usuario::getNombre).thenComparing(Usuario:: getNombre);
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Listar Usuarios")
+    @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL, named = "Listar Usuarios")
     public List<Usuario> ListarTodosLosUsuario() {
         return repositoryService.allInstances(Usuario.class);
     }
-
-
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "name", sequence = "1", named = "Modifica Usuario")
@@ -139,6 +147,7 @@ public class Usuario implements Comparable<Usuario>{
         setEsAdmin(esAdmin);
         return this;
     }
+
     public @NonNull String default0UpdateUsuario() {return getUsername(); }
     public @NonNull String default1UpdateUsuario() {return getNombre(); }
     public @NonNull String default2UpdateUsuario() {return getApellido(); }
@@ -147,13 +156,13 @@ public class Usuario implements Comparable<Usuario>{
     public String default5UpdateUsuario() { return getPassword(); }
     public Boolean default6UpdateUsuario() { return getEsAdmin(); }
 
-        @Inject
-        RepositoryService repositoryService;
-        @Inject
-        TitleService titleService;
-        @Inject
-        MessageService messageService;
-       UsuarioRepositorio usuarioRepositorio;
+    @Inject
+    RepositoryService repositoryService;
 
+    @Inject
+    TitleService titleService;
 
+    @Inject
+    MessageService messageService;
+    UsuarioRepositorio usuarioRepositorio;
 }
