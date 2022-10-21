@@ -20,12 +20,15 @@ public class AvisoRepositorio {
                 Query.named(Aviso.class, Aviso.NAMED_QUERY__FIND_BY_NAME_EXACT_AVISO)
         );
     }
+
+    @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(named = "Consulta Cliente-Localidad-Provincia")
-    public List<Cliente> prueba() {
+    public List<Cliente> getAllClientes() {
         return repositoryService.allMatches(
-                Query.named(Cliente.class, "prueba")
+                Query.named(Cliente.class, "getAllClientes")
         );
     }
+
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(named = "Listar Avisos Cargados")
     public List<Aviso> listarAvisos() {
