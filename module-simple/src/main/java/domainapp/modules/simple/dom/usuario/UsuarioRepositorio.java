@@ -3,8 +3,10 @@ package domainapp.modules.simple.dom.usuario;
 
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;
+import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
+import org.hibernate.validator.internal.engine.messageinterpolation.parser.MessageDescriptorFormatException;
 
 import javax.inject.Inject;
 import javax.jdo.JDOQLTypedQuery;
@@ -49,24 +51,21 @@ public class UsuarioRepositorio {
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(named = "Validar Usuario")
-    public Usuario userValidation(final String username, final String password) {
+    public Usuario userValidation(final String username, final String password) throws Exception {
         return repositoryService.uniqueMatch(
                         Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_USER_NAME_PASSWORD)
                                 .withParameter("username", username)
                                 .withParameter("password", password))
-                .orElse(null);
-    }
-
-    @Programmatic
-    public void ping ( final String username){
-        JDOQLTypedQuery<Usuario> q = jdoSupportService.newTypesafeQuery(Usuario.class);
-        final QUsuario candidate = QUsuario.candidate();
-        q.orderBy(candidate.username.asc());
-        q.executeList();
+                .orElseThrow(() ->
+                        new Exception("Usuario - " + username + " no encontrado"));
+                     
 
     }
+
+
 
     @Inject
     RepositoryService repositoryService;
     JdoSupportService jdoSupportService;
+    MessageService messageServic;
 }
