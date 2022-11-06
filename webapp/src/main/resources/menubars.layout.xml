@@ -11,7 +11,8 @@
             <mb3:section>
                 <mb3:named>Cliente</mb3:named>
                 <mb3:serviceAction objectType="simple.ClienteAdd" id="AddCliente"/>
-                <mb3:serviceAction objectType="simple.ClienteRepositorio" id="findByName"/>
+                <mb3:serviceAction objectType="simple.ReporteMenu" id="generarReporteClientes"/>
+                <mb3:serviceAction objectType="simple.ReporteMenu" id="generarReporteLocalidades"/>
                 <mb3:serviceAction objectType="simple.ClienteRepositorio" id="listarCliente"/>
             </mb3:section>
             <mb3:section>
@@ -80,8 +81,7 @@
             <mb3:section>
                 <mb3:named>Avisos</mb3:named>
                 <mb3:serviceAction objectType="simple.AvisoRepositorio" id="listarAvisos"/>
-                <mb3:serviceAction objectType="simple.AvisoRepositorio" id="prueba"/>
-                <mb3:serviceAction objectType="simple.UsuarioRepositorio" id="userValidation"/>
+                <mb3:serviceAction objectType="simple.AvisoAdd" id="AddAviso"/>
             </mb3:section>
         </mb3:menu>
     </mb3:primary>

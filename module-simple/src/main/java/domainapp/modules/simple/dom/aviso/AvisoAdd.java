@@ -12,30 +12,21 @@ import org.apache.isis.applib.services.title.TitleService;
 import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
-
-@Action(
-        semantics = SemanticsOf.IDEMPOTENT,
-        commandPublishing = Publishing.ENABLED,
-        executionPublishing = Publishing.ENABLED
-)
-@ActionLayout(associateWith = "Aviso", sequence = "12",named = "Publicar nuevo Aviso",promptStyle = PromptStyle.DIALOG_MODAL)
-@RequiredArgsConstructor
+@DomainService( nature = NatureOfService.REST,logicalTypeName = "simple.AvisoAdd")
+//@Action(semantics = SemanticsOf.IDEMPOTENT,commandPublishing = Publishing.ENABLED,executionPublishing = Publishing.ENABLED)
+//@ActionLayout(associateWith = "Aviso", sequence = "12",named = "Publicar nuevo Aviso",promptStyle = PromptStyle.DIALOG_MODAL)
+//@RequiredArgsConstructor
 public class AvisoAdd {
 
-    private final Aviso aviso;
+    private  Aviso aviso;
 
-
-    public Aviso AddAviso(String descripcion,
-                          Inmueble inmueble ,
-                          Double valor,
-                          TipoOperacion tipoOperacion,
-                          Date fechaInicio,
-                          Date fechaFin,
-                          EstadoAviso estadoAviso
-    ) {
+    @Action(semantics = SemanticsOf.IDEMPOTENT,commandPublishing = Publishing.ENABLED,executionPublishing = Publishing.ENABLED)
+    @ActionLayout(associateWith = "AvisoAdd", sequence = "12",named = "Publicar nuevo Aviso",promptStyle = PromptStyle.DIALOG_MODAL)
+    public Aviso AddAviso(String descripcion, Inmueble inmueble , Double valor, TipoOperacion tipoOperacion,Date fechaInicio,
+                          Date fechaFin,EstadoAviso estadoAviso ) {
         repositoryService.persist(new Aviso(descripcion,inmueble,valor,tipoOperacion,
                 fechaInicio,fechaFin,estadoAviso ));
-        return aviso;
+        return this.aviso;
     }
     public List<Inmueble> autoComplete1AddAviso(String name) {return repositoryService.allInstances(Inmueble.class); }
     public List<TipoOperacion> autoComplete3AddAviso(String name) {return repositoryService.allInstances(TipoOperacion.class); }

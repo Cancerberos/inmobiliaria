@@ -58,7 +58,7 @@ public class UsuarioRepositorio {
                                 .withParameter("password", password))
                 .orElseThrow(() ->
                         new Exception("Usuario - " + username + " no encontrado"));
-                     
+
 
     }
 

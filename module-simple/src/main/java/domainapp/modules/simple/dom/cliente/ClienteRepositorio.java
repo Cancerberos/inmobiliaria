@@ -1,22 +1,20 @@
 package domainapp.modules.simple.dom.cliente;
-
-
+import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.dom.provincia.Provincia;
-import domainapp.modules.simple.types.Name;
+import domainapp.modules.simple.dom.reporte.EjecutarReportes;
+import net.sf.jasperreports.engine.JRException;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.isis.applib.value.Blob;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
 import javax.jdo.JDOQLTypedQuery;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-@DomainService(
-        nature = NatureOfService.VIEW,
-        logicalTypeName = "simple.ClienteRepositorio"
-)
-
-
+@DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.ClienteRepositorio")
 public class ClienteRepositorio {
 
 
@@ -26,23 +24,11 @@ public class ClienteRepositorio {
         return repositoryService.allInstances(Cliente.class);
     }
 
-
-    @Programmatic
-    public Cliente findByNameExact(final String name) {
-        return repositoryService.firstMatch(
-                        Query.named(Cliente.class, Cliente.NAMED_QUERY__FIND_BY_NAME_EXACT_CLIENTE)
-                                .withParameter("name", name))
-                .orElse(null);
-    }
-
-
-
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     public List<Provincia> listAll() {
         return repositoryService.allInstances(Provincia.class);
     }
-
 
     @Programmatic
     public void ping() {
@@ -53,8 +39,20 @@ public class ClienteRepositorio {
         q.executeList();
     }
 
+    @Programmatic
+    public Blob generarReporteClientes()throws JRException, IOException
+    {
+        List<Cliente> clientes = new ArrayList<Cliente>();
+        EjecutarReportes ejecutarReportes=new EjecutarReportes();
+        clientes = repositoryService.allInstances(Cliente.class);
+        return ejecutarReportes.ListadoClientesPDF(clientes);
+    }
+
     @javax.inject.Inject
     RepositoryService repositoryService;
     JdoSupportService jdoSupportService;
+
+
+
 
 }

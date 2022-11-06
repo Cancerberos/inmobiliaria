@@ -35,7 +35,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                         + " FROM domainapp.modules.simple.dom.aviso_contacto.AvisoContacto"
                         + " ORDER BY mensaje ASC"),
 })
-@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="AvisoContactoId")
+//@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="AvisoContactoId")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(logicalTypeName = "simple.avisocontacto",entityChangePublishing = Publishing.ENABLED,editing=Editing.DISABLED)
 @RequiredArgsConstructor
@@ -56,6 +56,10 @@ public class AvisoContacto implements Comparable<AvisoContacto>{
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_AVISO_CONTACTO_CLIENTE = "buscarAvidoContacto";
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT_MENSAJE = null;
 
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    @Property(hidden = Where.EVERYWHERE)
+    private int idAdeT;
+
     @Getter @Setter
     @PropertyLayout(fieldSetId = "name", sequence = "1")
     @Column(allowsNull = "true", name = "UsuarioId")
@@ -63,7 +67,7 @@ public class AvisoContacto implements Comparable<AvisoContacto>{
 
     @Getter @Setter
     @PropertyLayout(fieldSetId = "name", sequence = "2")
-    @Column(allowsNull = "true", name = "AvisoId")
+    @Column(allowsNull = "true", name = "Aviso_Id")
     private Aviso aviso;
 
     @Column(allowsNull = "false")

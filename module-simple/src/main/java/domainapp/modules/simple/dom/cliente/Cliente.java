@@ -3,6 +3,7 @@ package domainapp.modules.simple.dom.cliente;
 import domainapp.modules.simple.dom.localidad.Localidad;
 
 import domainapp.modules.simple.dom.provincia.Provincia;
+import domainapp.modules.simple.dom.reporte.RepoClientes;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.Action;
@@ -15,7 +16,8 @@ import javax.inject.Inject;
 import javax.jdo.annotations.*;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
+import java.util.List;
+import java.util.Map;
 
 import java.util.Comparator;
 import java.util.List;
@@ -166,6 +168,8 @@ public class Cliente implements Comparable<Cliente>{
 
     private final static Comparator<Cliente> comparator =
             Comparator.comparing(Cliente::getNombre).thenComparing(Cliente:: getNombre);
+
+//   @javax.jdo.annotations.Persistent(mappedBy = "cliente",dependentElement = "false"    )
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_MODAL,named = "Listar Clientes")

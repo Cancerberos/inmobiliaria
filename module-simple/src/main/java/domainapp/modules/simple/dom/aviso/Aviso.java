@@ -42,7 +42,7 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 
 })
 
-@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="AvisoId")
+//@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="AvisoId")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(logicalTypeName = "simple.aviso",entityChangePublishing = Publishing.ENABLED,editing=Editing.DISABLED)
 @RequiredArgsConstructor
@@ -68,6 +68,11 @@ public class Aviso  implements Comparable<Aviso> {
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_AVISO_DES = "buscarAviso";
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT_AVISO = "listAll";
     public static final String PRUEBA = "prueba";
+
+    @Getter
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    @Property(hidden = Where.EVERYWHERE)
+    private int Aviso_Id;
     @Getter@Setter
     @Column(allowsNull = "false")
     @Property(commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)

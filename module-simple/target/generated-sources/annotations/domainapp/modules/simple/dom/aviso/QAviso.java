@@ -29,6 +29,7 @@ public class QAviso extends PersistableExpressionImpl<Aviso> implements Persista
         return new QAviso(Aviso.class, name, ExpressionType.VARIABLE);
     }
 
+    public final NumericExpression<Integer> Aviso_Id;
     public final StringExpression descripcion;
     public final domainapp.modules.simple.dom.inmueble.QInmueble inmueble;
     public final NumericExpression<Double> valor;
@@ -45,6 +46,7 @@ public class QAviso extends PersistableExpressionImpl<Aviso> implements Persista
     public QAviso(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
+        this.Aviso_Id = new NumericExpressionImpl<Integer>(this, "Aviso_Id");
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         if (depth > 0)
         {
@@ -83,6 +85,7 @@ public class QAviso extends PersistableExpressionImpl<Aviso> implements Persista
     public QAviso(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
+        this.Aviso_Id = new NumericExpressionImpl<Integer>(this, "Aviso_Id");
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.inmueble = new domainapp.modules.simple.dom.inmueble.QInmueble(this, "inmueble", 5);
         this.valor = new NumericExpressionImpl<Double>(this, "valor");

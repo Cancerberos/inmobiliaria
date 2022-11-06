@@ -35,6 +35,7 @@ public class AvisoRepositorio {
         return repositoryService.allInstances(Aviso.class);
     }
 
+
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     public List<Localidad> findByProvincia_Localidad(
             final Provincia provincia
@@ -52,6 +53,7 @@ public class AvisoRepositorio {
     @javax.inject.Inject
     RepositoryService repositoryService;
     JdoSupportService jdoSupportService;
+    AvisoAdd avisoAdd;
 
 
 }

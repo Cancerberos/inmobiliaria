@@ -1,0 +1,10 @@
+.gradle
+translations.pot
+*.jar
+simpleapp-jdo-webapp-2.0.0-M7.jar
+simpleapp-jdo-webapp-2.0.0-M7-exec.jar
+gradle/wrapper
+!gradle-wrapper.jar
+/.apt_generated/
+/.factorypath
+/.apt_generated_tests/

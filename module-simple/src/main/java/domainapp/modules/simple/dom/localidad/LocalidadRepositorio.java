@@ -1,12 +1,17 @@
 package domainapp.modules.simple.dom.localidad;
 
 import domainapp.modules.simple.dom.provincia.Provincia;
+import domainapp.modules.simple.dom.reporte.EjecutarReportes;
+import net.sf.jasperreports.engine.JRException;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.events.domain.ActionDomainEvent;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.isis.applib.value.Blob;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.LocalidadRepositorio")
@@ -34,7 +39,15 @@ public class LocalidadRepositorio {
 
         );
     }
-    public static class CreateDomainEvent extends ActionDomainEvent<LocalidadRepositorio> {}
+    @Programmatic
+    public Blob generarReporteLocalidades()throws JRException, IOException
+    {
+        List<Localidad> localidades = new ArrayList<Localidad>();
+        EjecutarReportes ejecutarReportes=new EjecutarReportes();
+        localidades = repositoryService.allInstances(Localidad.class);
+        return ejecutarReportes.ListadoLocalidadesPDF(localidades);
+    }
+
 
     @javax.inject.Inject
     RepositoryService repositoryService;

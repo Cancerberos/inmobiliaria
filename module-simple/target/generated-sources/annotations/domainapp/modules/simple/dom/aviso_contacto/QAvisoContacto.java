@@ -29,6 +29,7 @@ public class QAvisoContacto extends PersistableExpressionImpl<AvisoContacto> imp
         return new QAvisoContacto(AvisoContacto.class, name, ExpressionType.VARIABLE);
     }
 
+    public final NumericExpression<Integer> idAdeT;
     public final domainapp.modules.simple.dom.usuario.QUsuario usuario;
     public final domainapp.modules.simple.dom.aviso.QAviso aviso;
     public final StringExpression mensaje;
@@ -42,6 +43,7 @@ public class QAvisoContacto extends PersistableExpressionImpl<AvisoContacto> imp
     public QAvisoContacto(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
+        this.idAdeT = new NumericExpressionImpl<Integer>(this, "idAdeT");
         if (depth > 0)
         {
             this.usuario = new domainapp.modules.simple.dom.usuario.QUsuario(this, "usuario", depth-1);
@@ -77,6 +79,7 @@ public class QAvisoContacto extends PersistableExpressionImpl<AvisoContacto> imp
     public QAvisoContacto(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
+        this.idAdeT = new NumericExpressionImpl<Integer>(this, "idAdeT");
         this.usuario = new domainapp.modules.simple.dom.usuario.QUsuario(this, "usuario", 5);
         this.aviso = new domainapp.modules.simple.dom.aviso.QAviso(this, "aviso", 5);
         this.mensaje = new StringExpressionImpl(this, "mensaje");

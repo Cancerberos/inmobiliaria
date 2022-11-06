@@ -10,7 +10,7 @@
             <bs3:row>
                 <bs3:col span="12">
                     <bs3:tabGroup collapseIfOne="false">
-                        <bs3:tab name="Datos Localidad">
+                        <bs3:tab name="Datos Aviso de Contactos">
                             <bs3:row>
                                 <bs3:col span="12">
                                     <cpt:action id="duplicate" position="PANEL_DROPDOWN"/>

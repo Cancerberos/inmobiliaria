@@ -1,9 +1,16 @@
 package domainapp.modules.simple.dom.provincia;
+import domainapp.modules.simple.dom.localidad.Localidad;
+import domainapp.modules.simple.dom.reporte.EjecutarReportes;
 import domainapp.modules.simple.types.Name;
+import net.sf.jasperreports.engine.JRException;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.isis.applib.value.Blob;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
@@ -57,6 +64,8 @@ public class ProvinciaRepositorio {
     public List<Provincia> listAll() {
         return repositoryService.allInstances(Provincia.class);
     }
+
+
 
     @javax.inject.Inject
     RepositoryService repositoryService;
