@@ -38,6 +38,7 @@ public class HomePageViewModel {
     }
 
       public List<Aviso> getAviso() { return avisoRepositorio.listarAvisos(); }
+
     public List<Cliente> getCliente() {
         return clienteRepositorio.listarCliente();
     }
