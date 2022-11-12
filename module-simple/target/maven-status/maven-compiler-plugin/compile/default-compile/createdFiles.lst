@@ -87,13 +87,12 @@ domainapp\modules\simple\dom\aviso\AvisoAdd.class
 domainapp\modules\simple\dom\caracteristica\Caracteristica.class
 domainapp\modules\simple\dom\imagen\Caracteristicas_Imagen.class
 domainapp\modules\simple\dom\usuario\UsuarioRemove$ActionEvent.class
-domainapp\modules\simple\dom\reporte\RepoLocalidades.class
 domainapp\modules\simple\dom\aviso_contacto\AvisoContactoRemove.class
 domainapp\modules\simple\dom\inmueble_caracteristica\Caracteristica_Inmueble.class
 domainapp\modules\simple\dom\inmueble\InmuebleRepositorio$CreateDomainEvent.class
 domainapp\modules\simple\dom\localidad\QLocalidad.class
 domainapp\modules\simple\dom\aviso\AvisoRemove.class
-domainapp\modules\simple\dom\aviso\AvisoRepositorio$CreateDomainEvent.class
+domainapp\modules\simple\dom\reporte\RepoAvisos.class
 domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristicaRemove.class
 domainapp\modules\simple\dom\red_social\QRedSocial.class
 domainapp\modules\simple\fixture\SimpleObject_persona$PersistAll.class

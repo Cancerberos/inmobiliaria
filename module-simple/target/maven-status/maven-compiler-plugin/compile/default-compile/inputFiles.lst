@@ -60,6 +60,7 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\t
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\inmueble_caracteristica\InmuebleCaracteristica.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso_contacto\AvisoContactoList.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\cliente\ClienteRepositorio.java
+C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\reporte\RepoAvisos.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso\AvisoRepositorio.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\cliente\ClienteAdd.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipocaracteristica\TipoCaracteristicaAdd.java
@@ -77,7 +78,6 @@ C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\s
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\fixture\SimpleObjectBuilder.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_unidad\TipoUnidadRemove.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\aviso\AvisoRemove.java
-C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\reporte\RepoLocalidades.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipocaracteristica\TipoCaracteristica.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\tipo_operacion\TipoOperacion.java
 C:\tesis\inmobiliaria\module-simple\src\main\java\domainapp\modules\simple\dom\usuario\UsuarioRepositorio.java

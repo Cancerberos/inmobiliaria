@@ -39,15 +39,6 @@ public class LocalidadRepositorio {
 
         );
     }
-    @Programmatic
-    public Blob generarReporteLocalidades()throws JRException, IOException
-    {
-        List<Localidad> localidades = new ArrayList<Localidad>();
-        EjecutarReportes ejecutarReportes=new EjecutarReportes();
-        localidades = repositoryService.allInstances(Localidad.class);
-        return ejecutarReportes.ListadoLocalidadesPDF(localidades);
-    }
-
 
     @javax.inject.Inject
     RepositoryService repositoryService;

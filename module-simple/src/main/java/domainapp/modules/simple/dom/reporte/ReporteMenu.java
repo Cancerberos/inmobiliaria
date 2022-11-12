@@ -1,6 +1,7 @@
 package domainapp.modules.simple.dom.reporte;
 
 
+import domainapp.modules.simple.dom.aviso.AvisoRepositorio;
 import domainapp.modules.simple.dom.cliente.ClienteRepositorio;
 import domainapp.modules.simple.dom.localidad.LocalidadRepositorio;
 import lombok.AccessLevel;
@@ -21,15 +22,15 @@ class ReporteMenu {
         return clienteRepositorio.generarReporteClientes();
     }
     @Action(semantics = SemanticsOf.SAFE,restrictTo = RestrictTo.PROTOTYPING )
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Exportar Localidades - Pdf",sequence = "1")
-    public Blob generarReporteLocalidades() throws JRException, IOException {
-        return localidadRepositorio.generarReporteLocalidades();
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Exportar Avisos - Pdf",sequence = "1")
+    public Blob generarReporteAvisos() throws JRException, IOException {
+        return avisoRepositorio.generarReporteAvisos();
     }
     @javax.inject.Inject
     @javax.jdo.annotations.NotPersistent
     @lombok.Getter(AccessLevel.NONE) @lombok.Setter(AccessLevel.NONE)
     ClienteRepositorio clienteRepositorio;
-    LocalidadRepositorio localidadRepositorio;
+    AvisoRepositorio avisoRepositorio;
     @javax.inject.Inject
     RepositoryService repositoryService;
 

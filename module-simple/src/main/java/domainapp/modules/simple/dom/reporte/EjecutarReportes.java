@@ -1,12 +1,14 @@
 package domainapp.modules.simple.dom.reporte;
 
 
+import domainapp.modules.simple.dom.aviso.Aviso;
 import domainapp.modules.simple.dom.cliente.Cliente;
-import domainapp.modules.simple.dom.localidad.Localidad;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.value.Blob;
 
 import java.io.IOException;
@@ -16,41 +18,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@DomainService(nature = NatureOfService.VIEW, logicalTypeName = "simple.EjecutarReportes")
+@DomainService(nature = NatureOfService.VIEW, logicalTypeName = "simple.EjecutarReportes")
 public class EjecutarReportes {
 
 
     public Blob  ListadoClientesPDF(List<Cliente> clientes)throws JRException, IOException{
-
         List<RepoClientes> clientesDatasource = new ArrayList<RepoClientes>();
-
         clientesDatasource.add(new RepoClientes());
-
         for (Cliente cli : clientes) {
-
             RepoClientes repoClientes = new RepoClientes(cli.getNombre(),cli.getApellido(),cli.getEmail(),cli.getTelefono(),cli.getCalle());
-
             clientesDatasource.add(repoClientes);
-
         }
         JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(clientesDatasource);
         return GenerarArchivoPDF("ListadoCliente.jrxml","ListadoClientes.pdf", ds);
     }
 
-    public Blob  ListadoLocalidadesPDF(List<Localidad> localidades)throws JRException, IOException{
+    public Blob  ListadoAvisosPDF(List<Aviso> avisos)throws JRException, IOException{
+        List<RepoAvisos> avisoDatasource = new ArrayList<RepoAvisos>();
+        avisoDatasource.add(new RepoAvisos());
+        for (Aviso av : avisos) {
 
-        List<RepoLocalidades> localidadesDatasource = new ArrayList<RepoLocalidades>();
+            RepoAvisos repoAvisos = new RepoAvisos(av.getDescripcion());
 
-        localidadesDatasource.add(new RepoLocalidades());
-
-        for (Localidad loc : localidades) {
-
-            RepoLocalidades repoLocalidades = new RepoLocalidades(loc.getProvincia(),loc.getDescripcion(), loc.getCodigoPostal());
-
-            localidadesDatasource.add(repoLocalidades);
+            avisoDatasource.add(repoAvisos);
         }
-        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(localidadesDatasource);
-        return GenerarArchivoPDF("ListadoLocalidades.jrxml","ListadoLocalidades.pdf", ds);
+        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(avisoDatasource);
+        return GenerarArchivoPDF("ListadoAviso.jrxml","ListadoAviso.pdf", ds);
     }
 
     private Blob GenerarArchivoPDF(String archivoDesing, String nombreSalida, JRBeanCollectionDataSource ds) throws JRException, IOException{

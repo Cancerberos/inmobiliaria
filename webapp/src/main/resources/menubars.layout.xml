@@ -12,7 +12,7 @@
                 <mb3:named>Cliente</mb3:named>
                 <mb3:serviceAction objectType="simple.ClienteAdd" id="AddCliente"/>
                 <mb3:serviceAction objectType="simple.ReporteMenu" id="generarReporteClientes"/>
-                <mb3:serviceAction objectType="simple.ReporteMenu" id="generarReporteLocalidades"/>
+                <mb3:serviceAction objectType="simple.ReporteMenu" id="generarReporteAvisos"/>
                 <mb3:serviceAction objectType="simple.ClienteRepositorio" id="listarCliente"/>
             </mb3:section>
             <mb3:section>
