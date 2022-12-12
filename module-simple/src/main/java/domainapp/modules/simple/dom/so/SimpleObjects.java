@@ -21,7 +21,7 @@ import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 import domainapp.modules.simple.types.Name;
 
 @DomainService(
-        nature = NatureOfService.VIEW,
+        nature = NatureOfService.REST,
         logicalTypeName = "simple.SimpleObjects"
 )
 @javax.annotation.Priority(PriorityPrecedence.EARLY)

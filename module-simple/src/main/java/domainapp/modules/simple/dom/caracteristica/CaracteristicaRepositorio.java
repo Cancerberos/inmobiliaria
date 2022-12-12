@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.jdo.JDOQLTypedQuery;
 
 @DomainService(
-        nature = NatureOfService.VIEW,
+        nature = NatureOfService.REST,
         logicalTypeName = "simple.CaracteristicaRepositorio"
 )
 @javax.annotation.Priority(PriorityPrecedence.EARLY)
@@ -18,14 +18,6 @@ public class CaracteristicaRepositorio {
 
     final RepositoryService repositoryService;
     final JdoSupportService jdoSupportService;
-
-
-    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public Caracteristica createCaracteristica(
-            final String descripcion) {
-        return repositoryService.persist(new Caracteristica(descripcion));
-    }
 
     @Programmatic
     public void ping() {

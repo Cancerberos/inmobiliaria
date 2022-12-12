@@ -68,7 +68,7 @@ public class Provincia implements Comparable<Provincia>{
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout( named = "Listar Provincia" )
     public List<Provincia> listarProvincia() {
-        return provinciaRepositorio.listAll();
+        return repositoryService.allInstances(Provincia.class);
     }
 
     @Action(semantics =IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)

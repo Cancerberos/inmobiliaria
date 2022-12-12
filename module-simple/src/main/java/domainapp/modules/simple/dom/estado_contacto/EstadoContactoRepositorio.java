@@ -13,25 +13,19 @@ import java.util.List;
 )
 public class EstadoContactoRepositorio {
 
+
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, promptStyle = PromptStyle.DIALOG_MODAL)
-    public List<EstadoContacto> ListarEstadoContactoFiltraPorDescripcion(String descripcion) {
-        return repositoryService.allMatches(
-                Query.named(EstadoContacto.class, "buscarPorDescripcion")
-                        .withParameter("descripcion",descripcion));
-    }
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(named = "Listado de Estados Contacto por Descripcion")
+    @ActionLayout(named = "Listado de Estados Contacto")
     public List<EstadoContacto> ListarEstadoContactoOrdenaPorDescripcion() {
         return repositoryService.allMatches(
                 Query.named(EstadoContacto.class, EstadoContacto.NAMED_QUERY__FIND_BY_NAME_LIKE_CONTACTO)
                           );
     }
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(named = "Listar Todos los Estados")
-    public List<EstadoContacto> listarEstadoCotacto() {
-        return repositoryService.allInstances(EstadoContacto.class);
-    }
+    //@Action(semantics = SemanticsOf.SAFE)
+  //  @ActionLayout(named = "Listar Todos los Estados")
+    //public List<EstadoContacto> listarEstadoCotacto() {
+     //   return repositoryService.allInstances(EstadoContacto.class);
+ //   }
 
     @javax.inject.Inject
     RepositoryService repositoryService;

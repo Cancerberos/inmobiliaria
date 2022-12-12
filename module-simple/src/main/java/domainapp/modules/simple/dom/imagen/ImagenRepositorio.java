@@ -10,7 +10,7 @@ import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
 import java.util.List;
 
-@DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.ImagenRepositorio")
+@DomainService(nature = NatureOfService.REST,logicalTypeName = "simple.ImagenRepositorio")
 public class ImagenRepositorio {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)

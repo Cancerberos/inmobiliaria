@@ -1,6 +1,8 @@
 package domainapp.modules.simple.dom.reporte;
 
 
+import java.util.Locale;
+
 @lombok.Getter @lombok.Setter
 public class RepoClientes {
 
@@ -11,8 +13,8 @@ public class RepoClientes {
     private String calle;
     public RepoClientes(String nombre, String apellido, String telefono, String email, String calle)
     {
-        this.nombre=nombre;
-        this.apellido=apellido;
+        this.nombre=nombre.toLowerCase();
+        this.apellido=apellido.toLowerCase();
         this.email=email;
         this.telefono=telefono;
         this.calle=calle;

@@ -3,8 +3,8 @@
 #
 # See also config/application.properties
 #
-isis:
 
+isis:
   applib:
     annotation:
       action:
@@ -47,7 +47,7 @@ isis:
         favicon-url: images/favicon.png
         js: scripts/application.js
         menubars-layout-xml: menubars.layout.xml
-        name: Simple App
+        name: Del Sur - Inmobiliaria
         # https://stackoverflow.com/a/38983935/56880
         version: @project.version@
 
@@ -97,7 +97,7 @@ resteasy:
     defaultPath: "/restful"
 
 server:
-  max-http-header-size: 16KB
+  max-http-header-size: 26KB
 
 spring:
   banner:

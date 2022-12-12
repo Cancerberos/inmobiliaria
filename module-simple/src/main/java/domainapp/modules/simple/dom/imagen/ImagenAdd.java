@@ -1,15 +1,11 @@
 package domainapp.modules.simple.dom.imagen;
 
 import domainapp.modules.simple.dom.inmueble.Inmueble;
-import domainapp.modules.simple.dom.inmueble_caracteristica.InmuebleCaracteristica;
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
-
-import java.util.List;
 
 @Action(
         semantics = SemanticsOf.IDEMPOTENT,

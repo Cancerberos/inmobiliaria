@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import javax.jdo.JDOQLTypedQuery;
 
 @DomainService(
-        nature = NatureOfService.VIEW,
+        nature = NatureOfService.REST,
         logicalTypeName = "simple.RedesSociales"
 )
 @javax.annotation.Priority(PriorityPrecedence.EARLY)

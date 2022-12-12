@@ -135,8 +135,8 @@ public class Usuario implements Comparable<Usuario>{
 
     @Action(semantics = IDEMPOTENT, commandPublishing = Publishing.ENABLED, executionPublishing = Publishing.ENABLED)
     @ActionLayout( promptStyle =PromptStyle.DIALOG_MODAL ,associateWith = "name", sequence = "1", named = "Modifica Usuario")
-    public Object UpdateUsuario(String userName, String nombre, String apellido, String telefono,
-                                String email, String password, Boolean esAdmin
+    public Object UpdateUsuario(String userName, String nombre, String apellido, String email,
+                                String telefono, String password, Boolean esAdmin
     ) {
         setUsername(userName);
         setNombre(nombre);

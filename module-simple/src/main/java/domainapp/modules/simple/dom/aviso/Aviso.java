@@ -38,6 +38,27 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                         + " FROM domainapp.modules.simple.dom.aviso.Aviso "
                         + " WHERE cliente == :cliente"
                         + " ORDER BY descripcion ASC"),
+        @Query(
+                name = "getAllAvisos", language = "JDOQL",
+                value = "SELECT "
+                        + " FROM domainapp.modules.simple.dom.aviso.Aviso a "
+                        + " INNER JOIN domainapp.modules.simple.dom.inmueble.Inmueble i "
+                        + " ON a.Inmuebleid = i.Inmuebleid"
+                        + " INNER JOIN  domainapp.modules.simple.dom.tipoOperacion.TipoOperacion t "
+                        + " t.TipoOperacionId = a.TipoOperacionId"
+                        + " INNER JOIN  domainapp.modules.simple.dom.estadoAviso.EstadoAviso e "
+                        + " a.EstadoAvisoId = e.EstadoAvisoId"
+                        + " INNER JOIN  domainapp.modules.simple.dom.inmuebleCaracteristica.InmuebleCaracteristica c "
+                        + " a.Inmuebleid = c.INMUEBLE_ID"
+                        + " INNER JOIN  domainapp.modules.simple.dom.tipoCaracteristica.TipoCaracteristica x "
+                        + " c.TipoCaracteristicaId = x.TipoCaracteristicaId"
+                        + " INNER JOIN  domainapp.modules.simple.dom.imagen.Imagen d "
+                        + " i.Inmuebleid = d.IMAGEN_ID"
+                        + " INNER JOIN  domainapp.modules.simple.dom.localidad.Localidad l "
+                        + " i.Localidadid = l.Localidadid"
+                        + " INNER JOIN  domainapp.modules.simple.dom.provincia.Provincia l "
+                        + " p.provinciaId = l.Localidadid"
+        ),
 
 
 })
@@ -58,7 +79,7 @@ public class Aviso  implements Comparable<Aviso> {
                  Date fechaInicio, Date fechaFin, EstadoAviso estadoAviso) {
         this.descripcion=descripcion;
         this.inmueble=inmueble;
-        this.valor=valor;
+        this.valor= valor;
         this.tipoOperacion=tipoOperacion;
         this.fechaInicio=fechaInicio;
         this.fechaFin=fechaFin;
@@ -66,6 +87,7 @@ public class Aviso  implements Comparable<Aviso> {
     }
 
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_AVISO_DES = "buscarAviso";
+    public static final String GET_ALL_AVISOS = "getAllAvisos";
     public static final String NAMED_QUERY__FIND_BY_NAME_EXACT_AVISO = "listAll";
     public static final String PRUEBA = "prueba";
 

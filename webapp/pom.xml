@@ -55,7 +55,10 @@
     </build>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.apache.isis.extensions</groupId>
+            <artifactId>isis-extensions-flyway-impl</artifactId>
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>simpleapp-jdo-module-simple</artifactId>
