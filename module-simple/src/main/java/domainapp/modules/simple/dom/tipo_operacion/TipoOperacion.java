@@ -1,6 +1,5 @@
 package domainapp.modules.simple.dom.tipo_operacion;
 
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio;
 import domainapp.modules.simple.types.Name;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;

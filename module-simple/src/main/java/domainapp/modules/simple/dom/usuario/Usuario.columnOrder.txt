@@ -1,0 +1,7 @@
+username
+apellido
+nombre
+email
+telefono
+password
+esadmin

@@ -29,6 +29,7 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
         return new QInmueble(Inmueble.class, name, ExpressionType.VARIABLE);
     }
 
+    public final NumericExpression<Integer> Inmuebleid;
     public final StringExpression descripcion;
     public final LocalDateTimeExpression fechaExclusividad;
     public final StringExpression calle;
@@ -53,6 +54,7 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
     public QInmueble(PersistableExpression parent, String name, int depth)
     {
         super(parent, name);
+        this.Inmuebleid = new NumericExpressionImpl<Integer>(this, "Inmuebleid");
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.fechaExclusividad = new LocalDateTimeExpressionImpl(this, "fechaExclusividad");
         this.calle = new StringExpressionImpl(this, "calle");
@@ -113,6 +115,7 @@ public class QInmueble extends PersistableExpressionImpl<Inmueble> implements Pe
     public QInmueble(Class type, String name, ExpressionType exprType)
     {
         super(type, name, exprType);
+        this.Inmuebleid = new NumericExpressionImpl<Integer>(this, "Inmuebleid");
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.fechaExclusividad = new LocalDateTimeExpressionImpl(this, "fechaExclusividad");
         this.calle = new StringExpressionImpl(this, "calle");

@@ -1,0 +1,9 @@
+Inmuebleid
+descripcion
+fechaExclusividad
+calle
+altura
+edificacion
+piso
+departamento
+

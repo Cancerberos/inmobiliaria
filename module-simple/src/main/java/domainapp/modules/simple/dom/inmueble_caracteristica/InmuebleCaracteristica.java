@@ -1,10 +1,8 @@
 package domainapp.modules.simple.dom.inmueble_caracteristica;
 
 import domainapp.modules.simple.dom.inmueble.Inmueble;
-import domainapp.modules.simple.dom.provincia.Provincia;
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio;
-import domainapp.modules.simple.types.Name;
+import domainapp.modules.simple.dom.tipo_unidad.tipocaracteristica.TipoCaracteristica;
+import domainapp.modules.simple.dom.tipo_unidad.tipocaracteristica.TipoCaracteristicaRepositorio;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;

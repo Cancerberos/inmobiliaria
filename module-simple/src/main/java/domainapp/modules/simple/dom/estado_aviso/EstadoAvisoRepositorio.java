@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @DomainService(
-        nature = NatureOfService.VIEW,
+        nature = NatureOfService.REST,
         logicalTypeName = "simple.EstadoAvisoRepositorio"
 )
 @javax.annotation.Priority(PriorityPrecedence.EARLY)

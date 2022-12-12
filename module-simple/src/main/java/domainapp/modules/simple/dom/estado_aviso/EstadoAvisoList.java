@@ -16,8 +16,8 @@ public class EstadoAvisoList {
 
     private final EstadoAviso estadoAviso;
 
-    @ActionLayout( named = "Lista de Estados")
-    public List<EstadoAviso> coll() {return estadoAvisoRepositorio.listarEstadoAviso(); }
+   // @ActionLayout( named = "Lista de Estados")
+   // public List<EstadoAviso> coll() {return estadoAvisoRepositorio.listarEstadoAviso(); }
 
     @Inject
    EstadoAvisoRepositorio estadoAvisoRepositorio;

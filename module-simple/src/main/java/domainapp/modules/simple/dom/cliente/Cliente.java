@@ -53,10 +53,6 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
 @javax.jdo.annotations.Unique(name="Cliente_UNQ", members = {"nombre"})
 public class Cliente implements Comparable<Cliente>{
 
-   @NotPersistent
-   private   Localidad descCp;
-   @NotPersistent
-   private   Localidad descProv;
 
     public Cliente(String nombre, String apellido, String telefono,
                    String email, String calle , String altura, String edificacion, String piso, String departamento,String latitud,String longitud, Localidad localidad) {
@@ -148,14 +144,6 @@ public class Cliente implements Comparable<Cliente>{
     @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "9", labelPosition=LabelPosition.RIGHT, typicalLength=180,cssClass="x-key")
     @javax.jdo.annotations.Column(allowsNull = "true", name = "Localidadid")
     private Localidad localidad;
-
-    /*@Transient
-    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "10",named = "Codigo Postal")
-    public String getdescCp() {  return    localidad.getCodigoPostal(); }
-
-    @Transient
-    @PropertyLayout(fieldSetId = "Datos del Cliente", sequence = "11",named = "Provincia")
-    public String getdescProv() {  return  localidad.getProvincia().getDescripcion(); }*/
 
     public String title() {
         return getNombre() ;

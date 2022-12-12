@@ -1,7 +1,7 @@
 package domainapp.modules.simple.dom.inmueble_caracteristica;
 
 import domainapp.modules.simple.dom.inmueble.Inmueble;
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
+import domainapp.modules.simple.dom.tipo_unidad.tipocaracteristica.TipoCaracteristica;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.services.repository.RepositoryService;

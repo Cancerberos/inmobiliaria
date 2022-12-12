@@ -14,14 +14,13 @@ import java.util.List;
 import java.util.Optional;
 
 @DomainService(
-        nature = NatureOfService.VIEW,
+        nature = NatureOfService.REST,
         logicalTypeName = "simple.UsuarioRepositorio"
 )
 
 public class UsuarioRepositorio {
 
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(named = "Listar Usuarios Registrados")
+
     public List<Usuario> listarUsuario() {
         return repositoryService.allInstances(Usuario.class);
     }
@@ -31,8 +30,7 @@ public class UsuarioRepositorio {
         return repositoryService.allMatches(Query.named(Usuario.class,Usuario.NAMED_QUERY__FIND_BY_NAME_LIKE_USUARIO));
     }
 
-    @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(named = "Listar Usuario por Id")
+    @Programmatic
     public Optional<Usuario> getByUserById(final int id) {
         return repositoryService.uniqueMatch(
                         Query.named(Usuario.class, Usuario.NAMED_QUERY__FIND_BY_USER_BY_ID)

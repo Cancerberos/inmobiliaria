@@ -1,8 +1,7 @@
 package domainapp.modules.simple.dom.imagen;
 
 import domainapp.modules.simple.dom.inmueble.Inmueble;
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio;
+import domainapp.modules.simple.dom.tipo_unidad.tipocaracteristica.TipoCaracteristicaRepositorio;
 import lombok.*;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.jaxb.PersistentEntityAdapter;
@@ -10,15 +9,12 @@ import org.apache.isis.applib.services.message.MessageService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.services.title.TitleService;
 import org.apache.isis.applib.value.Blob;
-import org.openjdk.jmh.util.Optional;
 
 
 import javax.inject.Inject;
 import javax.jdo.annotations.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;

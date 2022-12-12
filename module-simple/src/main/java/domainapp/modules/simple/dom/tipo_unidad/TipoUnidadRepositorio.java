@@ -1,6 +1,5 @@
 package domainapp.modules.simple.dom.tipo_unidad;
 
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
 import domainapp.modules.simple.types.Name;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.query.Query;

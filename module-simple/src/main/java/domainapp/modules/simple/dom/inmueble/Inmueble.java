@@ -32,20 +32,29 @@ import static org.apache.isis.applib.annotation.SemanticsOf.IDEMPOTENT;
                 value = "SELECT "
                         + " FROM domainapp.modules.simple.dom.cliente.Cliente "
                         + "ORDER BY nombre ASC"),
+        @Query(
+                name = "getAllAvisos", language = "JDOQL",
+                value = "SELECT "
+                        + " FROM domainapp.modules.simple.dom.inmueble.Inmueble in "
+                        + " INNER JOIN domainapp.modules.simple.dom.imagen.Imagen im "
+                        + " ON in.Inmuebleid = im.IMAGEN_ID"
+                        + " INNER JOIN domainapp.modules.simple.inmuebleCaracteristica.InmuebleCaracteristica ic "
+                        + " ON in.Inmuebleid = ic.IMAGEN_ID"
+        ),
 
 })
-@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Inmuebleid")
+//@DatastoreIdentity(strategy=IdGeneratorStrategy.IDENTITY, column="Inmuebleid")
 @Version(strategy= VersionStrategy.DATE_TIME, column="version")
 @DomainObject(logicalTypeName = "simple.inmueble",entityChangePublishing = Publishing.ENABLED,editing=Editing.DISABLED)
 @RequiredArgsConstructor
 @DomainObjectLayout(cssClassFa = "file-text-o")
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
-//@ToString(onlyExplicitlyIncluded = true)
-@Unique(name="Inmueble_UNQ", members = {"descripcion"})
+@ToString(onlyExplicitlyIncluded = true)
+@javax.jdo.annotations.Unique(name="Inmueble_UNQ", members = {"descripcion"})
 public class Inmueble implements Comparable<Inmueble>{
 
 
- public  Inmueble(String descripcion, LocalDateTime fechaExclusividad, String calle , String altura,
+ public  Inmueble( String descripcion, LocalDateTime fechaExclusividad, String calle , String altura,
                   String edificacion, String piso, String departamento, String latitud, String longitud,
                   Localidad  localidad,TipoUnidad tipoUnidad, Cliente cliente){
      this.descripcion=descripcion;
@@ -70,8 +79,12 @@ public class Inmueble implements Comparable<Inmueble>{
     @NotPersistent
     private   TipoUnidad tipoU;
     public static final String NAMED_QUERY__FIND_BY_NAME_LIKE_INMUEBLE = "findClientes";
-    public static final String NAMED_QUERY__FIND_BY_NAME_EXACT_INMUEBLE = null;
+    public static final String NAMED_QUERY__FIND_ALL_INMUEBLE = "getAllAvisos";
 
+    @Getter
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    @Property(hidden = Where.EVERYWHERE)
+    private int Inmuebleid;
     @Column(allowsNull = "false")
     @Getter @Setter
     @PropertyLayout(fieldSetId = "name", sequence = "1")

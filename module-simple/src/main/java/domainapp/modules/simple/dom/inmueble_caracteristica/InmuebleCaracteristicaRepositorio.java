@@ -9,7 +9,7 @@ import org.apache.isis.persistence.jdo.applib.services.JdoSupportService;
 
 import java.util.List;
 
-@DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.InmuebleCaracteristicaRepositorio")
+@DomainService(nature = NatureOfService.REST,logicalTypeName = "simple.InmuebleCaracteristicaRepositorio")
 public class InmuebleCaracteristicaRepositorio {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)

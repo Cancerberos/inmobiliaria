@@ -1,13 +1,11 @@
 package domainapp.modules.simple.dom.aviso;
 
 import domainapp.modules.simple.dom.cliente.Cliente;
-import domainapp.modules.simple.dom.cliente.QCliente;
 import domainapp.modules.simple.dom.localidad.Localidad;
 import domainapp.modules.simple.dom.provincia.Provincia;
-import domainapp.modules.simple.dom.reporte.EjecutarReportes;
+import domainapp.modules.simple.dom.reporte.EjecutarReportesAvisos;
 import net.sf.jasperreports.engine.JRException;
 import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.events.domain.ActionDomainEvent;
 import org.apache.isis.applib.query.Query;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.value.Blob;
@@ -19,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@DomainService(nature = NatureOfService.VIEW,logicalTypeName = "simple.AvisoRepositorio")
+@DomainService(nature = NatureOfService.REST,logicalTypeName = "simple.AvisoRepositorio")
 public class AvisoRepositorio {
     @ActionLayout(named = "Listar todos los Avisos")
     public List<Aviso> findByName() {
@@ -62,17 +60,15 @@ public class AvisoRepositorio {
         q.orderBy(candidate.descripcion.asc());
         q.executeList();
     }
+
     @Programmatic
     public Blob generarReporteAvisos()throws JRException, IOException
     {
         List<Aviso> avisos = new ArrayList<Aviso>();
-        EjecutarReportes ejecutarReportes=new EjecutarReportes();
+        EjecutarReportesAvisos ejecutarReportes=new EjecutarReportesAvisos();
         avisos = repositoryService.allInstances(Aviso.class);
         return ejecutarReportes.ListadoAvisosPDF(avisos);
     }
-   // public static class CreateDomainEvent extends ActionDomainEvent<domainapp.modules.simple.dom.localidad.LocalidadRepositorio> {
-   // }
-
     @javax.inject.Inject
     RepositoryService repositoryService;
     JdoSupportService jdoSupportService;

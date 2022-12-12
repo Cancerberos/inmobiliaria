@@ -33,7 +33,7 @@ public class QImagen extends PersistableExpressionImpl<Imagen> implements Persis
     public final StringExpression descripcion;
     public final domainapp.modules.simple.dom.inmueble.QInmueble inmueble;
     public final ObjectExpression<org.apache.isis.applib.services.repository.RepositoryService> repositoryService;
-    public final ObjectExpression<domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio> tipoCaracteristicaRepositorio;
+    public final ObjectExpression<domainapp.modules.simple.dom.tipo_unidad.tipocaracteristica.TipoCaracteristicaRepositorio> tipoCaracteristicaRepositorio;
     public final ObjectExpression<org.apache.isis.applib.services.message.MessageService> messageService;
     public final ObjectExpression<org.apache.isis.applib.services.title.TitleService> titleService;
 
@@ -51,7 +51,7 @@ public class QImagen extends PersistableExpressionImpl<Imagen> implements Persis
             this.inmueble = null;
         }
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.tipoCaracteristicaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio>(this, "tipoCaracteristicaRepositorio");
+        this.tipoCaracteristicaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipo_unidad.tipocaracteristica.TipoCaracteristicaRepositorio>(this, "tipoCaracteristicaRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }
@@ -63,7 +63,7 @@ public class QImagen extends PersistableExpressionImpl<Imagen> implements Persis
         this.descripcion = new StringExpressionImpl(this, "descripcion");
         this.inmueble = new domainapp.modules.simple.dom.inmueble.QInmueble(this, "inmueble", 5);
         this.repositoryService = new ObjectExpressionImpl<org.apache.isis.applib.services.repository.RepositoryService>(this, "repositoryService");
-        this.tipoCaracteristicaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristicaRepositorio>(this, "tipoCaracteristicaRepositorio");
+        this.tipoCaracteristicaRepositorio = new ObjectExpressionImpl<domainapp.modules.simple.dom.tipo_unidad.tipocaracteristica.TipoCaracteristicaRepositorio>(this, "tipoCaracteristicaRepositorio");
         this.messageService = new ObjectExpressionImpl<org.apache.isis.applib.services.message.MessageService>(this, "messageService");
         this.titleService = new ObjectExpressionImpl<org.apache.isis.applib.services.title.TitleService>(this, "titleService");
     }

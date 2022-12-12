@@ -1,5 +1,4 @@
 package domainapp.modules.simple.dom.aviso;
-import domainapp.modules.simple.dom.tipocaracteristica.TipoCaracteristica;
 import lombok.RequiredArgsConstructor;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
